@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
-
 import {LectureService} from "./lecture.service";
 
 @Component({
     selector: "ns-items",
-    templateUrl: "./lectures.component.html"
+    templateUrl: "./lectures.component.html",
+    styleUrls: ['./lectures.component.css']
 })
 export class LecturesComponent implements OnInit {
 
@@ -15,12 +15,14 @@ export class LecturesComponent implements OnInit {
     constructor(private lectureService: LectureService) { }
 
     ngOnInit(): void {
-        console.log(this.lectureService.getLectures());
+
         this.allLectures = this.lectureService.getLectures().subscribe(
             data =>{
-               this.allLectures = data;
-               console.log(this.allLectures);
-            }
-        )
+                console.log(data)
+               this.allLectures = data['result'];
+            },
+                error => console.log(error)
+        );
+
     }
 }
