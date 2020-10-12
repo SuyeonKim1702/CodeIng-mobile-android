@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import { LecturesComponent } from "./lecture/lectures.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
     bootstrap: [
@@ -15,6 +16,8 @@ import { LecturesComponent } from "./lecture/lectures.component";
         NativeScriptModule,
         AppRoutingModule,
         HttpClientModule,
+        CommonModule
+
     ],
     declarations: [
         AppComponent,

@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class LectureService {
 
-    baseUrl = 'http://3.34.74.250/';
+    baseUrl = 'http://3.34.74.250/ranking-overview';
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
@@ -16,8 +16,7 @@ export class LectureService {
     constructor(private httpClient:HttpClient) { }
 
     getLectures() {
-        const dynamicLectures = this.httpClient.get(this.baseUrl+ 'lectures' ,{headers: this.headers});
-        return this.httpClient.get(this.baseUrl + 'lectures', {headers: this.headers});
+        return this.httpClient.get(this.baseUrl, {headers: this.headers});
 
     }
 
