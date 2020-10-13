@@ -7,6 +7,7 @@ import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import { LecturesComponent } from "./lecture/lectures.component";
 import {CommonModule} from "@angular/common";
+import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 
 @NgModule({
     bootstrap: [
@@ -23,7 +24,8 @@ import {CommonModule} from "@angular/common";
         AppComponent,
         ItemsComponent,
         ItemDetailComponent,
-        LecturesComponent
+        LecturesComponent,
+        LecturesSearchComponent
     ],
     providers: [],
     schemas: [

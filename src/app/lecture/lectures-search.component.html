@@ -1,0 +1,13 @@
+<ListView [items]="lectures" (itemTap)="onItemTap($event)" (loadMoreItems)="loadMoreItems()">
+    <ng-template let-item="item" let-i="index">
+        <StackLayout orientation="horizontal">
+
+            <StackLayout orientation="vertical">
+                <Label [text]= "item['lectureIdx']"></Label>
+            </StackLayout>
+
+        </StackLayout>
+    </ng-template>
+</ListView>
+
+

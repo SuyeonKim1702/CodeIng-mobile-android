@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-
-import {LectureService} from "./lecture.service";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {GestureEventData} from "@nativescript/core";
+import {OtherService} from "./other.service";
 
 @Component({
     selector: "ns-items",
@@ -9,14 +9,16 @@ import {LectureService} from "./lecture.service";
 })
 export class LecturesComponent implements OnInit {
 
+
     allLectures: any = [];
 
 
-    constructor(private lectureService: LectureService) { }
+
+    constructor(private otherService: OtherService) { }
 
     ngOnInit(): void {
 
-        this.allLectures = this.lectureService.getLectures().subscribe(
+        this.otherService.getRankingPreview().subscribe(
             data =>{
                 console.log(data)
                this.allLectures = data['result'];
@@ -25,4 +27,5 @@ export class LecturesComponent implements OnInit {
         );
 
     }
+
 }
