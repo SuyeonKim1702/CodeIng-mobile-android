@@ -36,3 +36,11 @@
     color: #4D4D4D;
 
 }
+
+.searchBt{
+    margin-left: 16;
+    margin-right: 16;
+    height: 35;
+    color: #999999;
+    border-radius: 80;
+}

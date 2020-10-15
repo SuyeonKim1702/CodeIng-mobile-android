@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Injectable({
     providedIn: "root"
 })
-export class LectureService {
+export class OtherService {
 
     baseUrl = 'http://3.34.74.250/ranking-overview';
     headers = new HttpHeaders({
@@ -15,7 +15,7 @@ export class LectureService {
 
     constructor(private httpClient:HttpClient) { }
 
-    getLectures() {
+    getRankingPreview() {
         return this.httpClient.get(this.baseUrl, {headers: this.headers});
 
     }

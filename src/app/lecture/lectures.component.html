@@ -1,6 +1,7 @@
-
+<ScrollView orientation="vertical" class="card">
 <stackLayout orientation="vertical" child>
 
+    <Button [nsRouterLink]="['/lectures/search']" text="  " class="searchBt" ></Button>
 
     <Label text="프로그램 주제별 랭킹" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>
 <ScrollView orientation="horizontal" class="card">
@@ -14,11 +15,10 @@
     </StackLayout>
 
 
-
 </StackLayout>
 </ScrollView>
 
-    <Label text="오늘의 추천 컨텐츠" class="title" horizontalAlignment="left" fontAttributes="Bold" ></Label>
-
+    <Label text="오늘의 추천 컨텐츠"  class="title" horizontalAlignment="left" fontAttributes="Bold" textWrap="true" ></Label>
 
 </stackLayout>
+</ScrollView>
