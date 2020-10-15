@@ -8,6 +8,8 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { LecturesComponent } from "./lecture/lectures.component";
 import {CommonModule} from "@angular/common";
 import {LecturesSearchComponent} from "./lecture/lectures-search.component";
+import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
+
 
 @NgModule({
     bootstrap: [
@@ -17,7 +19,9 @@ import {LecturesSearchComponent} from "./lecture/lectures-search.component";
         NativeScriptModule,
         AppRoutingModule,
         HttpClientModule,
-        CommonModule
+        CommonModule,
+        NativeScriptUISideDrawerModule,
+
 
     ],
     declarations: [
@@ -25,7 +29,8 @@ import {LecturesSearchComponent} from "./lecture/lectures-search.component";
         ItemsComponent,
         ItemDetailComponent,
         LecturesComponent,
-        LecturesSearchComponent
+        LecturesSearchComponent,
+
     ],
     providers: [],
     schemas: [

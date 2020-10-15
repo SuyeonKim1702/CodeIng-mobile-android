@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "@nativescript/angular";
 
-import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import {LecturesComponent} from "./lecture/lectures.component";
 import {LecturesSearchComponent} from "./lecture/lectures-search.component";

@@ -15,8 +15,13 @@ export class LectureService {
 
     constructor(private httpClient:HttpClient) { }
 
-    getLectures() {
-        return this.httpClient.get(this.baseUrl+'lectures', {headers: this.headers});
+    getLectures(page: number) {
+        return this.httpClient.get(this.baseUrl+'lectures', {
+            params: {
+                page: page+'',
+
+            },
+            headers: this.headers});
 
     }
 
