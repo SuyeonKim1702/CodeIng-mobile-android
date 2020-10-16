@@ -1,8 +1,7 @@
-<GridLayout rows="*" height="1500px">
-    <RadSideDrawer drawerLocation="Bottom">
-        <StackLayout tkDrawerContent backgroundColor="gray" height="300">
-            <StackLayout height="56"
-                         style="text-align: center; vertical-align: center;">
+<GridLayout rows="*">
+    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="700">
+        <StackLayout tkDrawerContent>
+            <StackLayout style="text-align: center; vertical-align: center;">
                 <Label text="Navigation Menu"></Label>
             </StackLayout>
             <StackLayout>
@@ -21,30 +20,40 @@
                    style="horizontal-align: center" (tap)="onCloseDrawerTap()">
             </Label>
         </StackLayout>
-        <StackLayout tkMainContent orientation="vertical">
-            <Button text="Open Drawer" (tap)="onOpenDrawerTap()" margin="10"
-                    style="horizontal-align: left"></Button>
-            <ListView [items]="lectures" (itemTap)="onItemTap($event)" (loadMoreItems)="loadMoreItems()">
+        <DockLayout tkMainContent stretchLastChild="true">
+
+            <Image  src="~/assets/codeIngLogo.png" stretch="aspectFill" dock="Top"></Image>
+
+            <GridLayout class="top" columns="40, *, 40", rows="40" dock="Top">
+                <Label row="0" col="0" class="fas h2 searchIcon" text ="&#xf002;"> </Label>
+                <TextField class="searchword"  row="0" col="1" hint="Frontend" returnKeyType="go" (returnPress)="performSearch($event)" [(ngModel)]="searchword"></TextField>
+                <Label row="0" col="2" class="fas h2 searchIcon" text ="&#xf0b0;" (tap)="onOpenDrawerTap()"> </Label>
+            </GridLayout>
+            <ListView [items]="lectures" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
                 <ng-template let-item="item" let-i="index">
-                    <StackLayout orientation="horizontal">
-                        <Image class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
-                        <StackLayout orientation="vertical">
-                            <Label [text]= "item['siteName']"></Label>
-                            <Label [text]= "item['lectureName']"></Label>
-                            <Label [text]= "item['price']"></Label>
-                            <Label text ="&#xf005;" class="fas" [ngClass]="{'yellow': item['rating'] > 5}"> </Label>
-
+                    <GridLayout class="grid" columns="73, *, 105" rows="80">
+                        <Image row="0" col="0" class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
+                        <StackLayout row="0" col="1" orientation="vertical">
+                            <Label class="siteName" [text]= "item['siteName']" (tap)="onOpenDrawerTap()"></Label>
+                            <Label class="lecName" [text]= "item['lectureName']"></Label>
+                            <Label class="price" [text]= "item['price']"></Label>
                         </StackLayout>
+                        <StackLayout row="0" col="2" orientation="vertical">
+                        <StackLayout orientation="horizontal" width="130">
+                            <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': item['rating'] > rate, 'default': item['rating'] <= rate}"> </Label>
+                        </StackLayout>
+                            <Label class="searchBt" text="VIEW Details" >
+                            </Label>
+                            </StackLayout>
 
-                    </StackLayout>
+                    </GridLayout>
                 </ng-template>
             </ListView>
-
-
-
-
-
-        </StackLayout>
+        </DockLayout>
     </RadSideDrawer>
+
+
+
+
 </GridLayout>
 
