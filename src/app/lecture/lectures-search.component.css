@@ -6,5 +6,79 @@
 }
 
 .yellow{
-    color: yellow;
+    color: #ffc30f;
+    margin-right: -8;
+
+}
+
+.default{
+    color: #efefef;
+    margin-right: -8;
+
+}
+
+.searchBt{
+    width: 65;
+    height: 23;
+    font-size: 8;
+    color: #34353a;
+    border-radius: 80;
+    outline-color: #34353a;
+    border-width: 1;
+    text-align: center;
+    text-align-all: center;
+    margin-top: -5;
+
+}
+
+.siteName{
+    margin-bottom: -3;
+    font-size: 12;
+    color: #4d4d4d;
+    font-family: Helvetica;
+}
+
+.lecName{
+    margin-top: -3;
+    max-bottom: -3;
+    font-size: 13;
+    color: #4d4d4d;
+    font-family: NotoSansCJKkr-Medium;
+}
+
+.price{
+    margin-top: -3;
+    font-size: 12;
+    color: #999999;
+    font-family: NotoSansCJKkr-Medium;
+}
+
+.grid{
+    padding-top: -2;
+    padding-bottom: -2;
+}
+
+.top{
+    margin: 16;
+    border-radius: 80;
+    border-color: #999999;
+    outline-color: #999999;
+    border-width: 1;
+}
+
+.searchIcon{
+    alignment: center;
+    alignment: center;
+    margin-left:10 ;
+    margin-top:10;
+
+}
+
+.searchword{
+    color: #999999;
+    font-size: 14;
+    border-bottom-color: transparent;
+    alignment: bottom;
+    margin-bottom: 3;
+
 }

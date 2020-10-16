@@ -3,8 +3,10 @@ import {OtherService} from "./other.service";
 import {LectureService} from "./lectures.service";
 import {lectureCard} from "./lectureCard";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
-import { registerElement} from "@nativescript/angular";
-registerElement('StarRating', () => require('nativescript-star-ratings').StarRating);
+import {observable} from "rxjs";
+
+
+
 
 
 @Component({
@@ -20,6 +22,7 @@ export class LecturesSearchComponent implements OnInit {
     public lectures: Array<lectureCard>;
     private counter: number;
     page: number;
+    searchword ="";
 
 
     constructor(private lectureService: LectureService) {
@@ -34,7 +37,8 @@ export class LecturesSearchComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.lectureService.getLectures(1).subscribe(
+        this.searchword = "";
+        this.lectureService.getLectures(1, this.searchword).subscribe(
             data =>{
                 var tmp = data['result'];
                 for(var i =0; i<tmp.length; i++){
@@ -51,7 +55,7 @@ export class LecturesSearchComponent implements OnInit {
     // infinite scroll
     loadMoreItems() {
         this.page++;
-        this.lectureService.getLectures(this.page).subscribe(
+        this.lectureService.getLectures(this.page, this.searchword).subscribe(
             data =>{
                 var tmp = data['result'];
                 for(var i =0; i<tmp.length; i++){
@@ -75,4 +79,29 @@ export class LecturesSearchComponent implements OnInit {
         this.drawerComponent.sideDrawer.closeDrawer();
     }
 
+    performSearch(args){
+
+      console.log(this.searchword);
+        this.lectureService.getLectures(this.page, this.searchword).subscribe(
+            data =>{
+                var tmp = data['result'];
+                this.lectures.length = 0;
+                for(var i =0; i<tmp.length; i++){
+                    this.lectures.push(new lectureCard(tmp[i]['lectureIdx'],tmp[i]['lectureName'],tmp[i]['siteName'],tmp[i]['thumbUrl'], tmp[i]['price'],tmp[i]['rating'] ));
+                    this.counter = i;
+
+                }
+
+            },
+            error => console.log(error)
+        );
+
+
+
+
+
+    }
+
 }
+
+
