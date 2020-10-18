@@ -11,10 +11,18 @@
 
 }
 
+.yellow2{
+    color: #ffc30f;
+
+}
+
+.default2{
+    color: #efefef;
+}
+
 .default{
     color: #efefef;
     margin-right: -8;
-
 }
 
 .searchBt{
@@ -80,5 +88,83 @@
     border-bottom-color: transparent;
     alignment: bottom;
     margin-bottom: 3;
+
+}
+
+.filter{
+    color: #efefef;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 14;
+    margin-left: 32;
+    margin-bottom: 17;
+}
+.title{
+    margin-top:30;
+    margin-bottom: 30;
+    text-align: center;
+    color: #ffffff;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 15;
+}
+
+.redoChoose{
+    font-family: NotoSansCJKkr-Bold;
+    font-size: 13;
+    color: #efefef;
+    font-weight: bold;
+    text-align: center;
+
+
+}
+
+.completeChoose{
+    font-family: NotoSansCJKkr-Bold;
+    font-weight: bold;
+    font-size: 13;
+    color: #34353a;
+    background-color: #efefef;
+    border-radius: 29;
+    text-align: center;
+    height: 80;
+}
+
+.drawerBottom{
+    margin-bottom: 65;
+    margin-right: 22;
+    margin-left: 32;
+    height: 80;
+}
+
+.outerDock{
+    background-color: #34353a;
+    border-top-right-radius: 10;
+    border-top-left-radius: 10;
+}
+
+.slider{
+    margin-left: 32;
+    color: #efefef;
+    size: 5;
+    margin-right: 32;
+    background-color: #efefef;
+    tab-size: 13;
+    font-size: 13;
+    background-size: 13;
+    mask-size: 13;
+
+}
+
+.cost{
+    color: #efefef;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 12;
+    margin-right:45;
+}
+
+.cost-last{
+    color: #efefef;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 12;
+
 
 }

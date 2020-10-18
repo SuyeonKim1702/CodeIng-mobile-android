@@ -1,32 +1,47 @@
 <GridLayout rows="*">
-    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="700">
-        <StackLayout tkDrawerContent>
-            <StackLayout style="text-align: center; vertical-align: center;">
-                <Label text="Navigation Menu"></Label>
+    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="750"  >
+        <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="false" >
+            <StackLayout orientation="vertical" dock="Top">
+                <Label class="title" text="강의 검색 필터"></Label>
+                <Label class="filter" text="평점"></Label>
+                <StackLayout orientation="horizontal" marginLeft="32" marginBottom="36">
+                    <Label *ngFor="let rate of [1,2,3,4,5]" class="fas h1" text ="&#xf005;" [ngClass]="{'yellow2': rating >=rate, 'default2':rating < rate }"
+                    (tap)="setRatingHighlight(rate)"> </Label>
+                </StackLayout>
+                <Label class="filter" text="수준"></Label>
+                <StackLayout orientation="horizontal" marginLeft="32" marginBottom="36">
+                    <Label *ngFor="let rate of [1,2,3,4,5]" class="fas h1" text ="&#xf005;" [ngClass]="{'yellow2': level >=rate, 'default2':level < rate }"
+                           (tap)="setLevelHighlight(rate)"> </Label>
+                </StackLayout>
+                <Label class="filter" text="가격"></Label>
+                <Slider class='slider' minValue="0" maxValue="100"
+                        (valueChange)="onSliderValueChange($event)">
+                </Slider>
+
+                <StackLayout orientation="horizontal" marginLeft="34" marginBottom="36">
+                    <Label class="cost" text="0만원"></Label>
+                    <Label class="cost" text="5만원"></Label>
+                    <Label class="cost" text="10만원"></Label>
+                    <Label class="cost" text="20만원"></Label>
+                    <Label class="cost-last" text="30만원~"></Label>
+                </StackLayout>
+
+
             </StackLayout>
-            <StackLayout>
-                <Label text="Primary" padding="10"
-                       backgroundColor="lightgray"></Label>
-                <Label text="Social" padding="10"></Label>
-                <Label text="Promotions" padding="10"></Label>
-                <Label text="Labels" padding="10" backgroundColor="lightgray">
-                </Label>
-                <Label text="Important" padding="10"></Label>
-                <Label text="Starred" padding="10"></Label>
-                <Label text="Sent Mail" padding="10"></Label>
-                <Label text="Drafts" padding="10"></Label>
-            </StackLayout>
-            <Label text="Close" color="lightgray" padding="10"
-                   style="horizontal-align: center" (tap)="onCloseDrawerTap()">
-            </Label>
-        </StackLayout>
+
+
+            <GridLayout class="drawerBottom" columns="2*,3*" rows="52" dock="Bottom">
+                <Label class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="onRedoTap()"></Label>
+                <Label class="completeChoose" row="0" col="1" text="선택 완료" (tap)="completeCheck()"></Label>
+            </GridLayout>
+        </DockLayout>
         <DockLayout tkMainContent stretchLastChild="true">
 
             <Image  src="~/assets/codeIngLogo.png" stretch="aspectFill" dock="Top"></Image>
 
             <GridLayout class="top" columns="40, *, 40", rows="40" dock="Top">
                 <Label row="0" col="0" class="fas h2 searchIcon" text ="&#xf002;"> </Label>
-                <TextField class="searchword"  row="0" col="1" hint="Frontend" returnKeyType="go" (returnPress)="performSearch($event)" [(ngModel)]="searchword"></TextField>
+                <TextField class="searchword"  row="0" col="1" hint="Frontend" returnKeyType="go" (returnPress)="performSearch()" [(ngModel)]="searchword"></TextField>
                 <Label row="0" col="2" class="fas h2 searchIcon" text ="&#xf0b0;" (tap)="onOpenDrawerTap()"> </Label>
             </GridLayout>
             <ListView [items]="lectures" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
@@ -34,7 +49,7 @@
                     <GridLayout class="grid" columns="73, *, 105" rows="80">
                         <Image row="0" col="0" class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
                         <StackLayout row="0" col="1" orientation="vertical">
-                            <Label class="siteName" [text]= "item['siteName']" (tap)="onOpenDrawerTap()"></Label>
+                            <Label class="siteName" [text]= "item['siteName']"></Label>
                             <Label class="lecName" [text]= "item['lectureName']"></Label>
                             <Label class="price" [text]= "item['price']"></Label>
                         </StackLayout>
@@ -51,9 +66,5 @@
             </ListView>
         </DockLayout>
     </RadSideDrawer>
-
-
-
-
 </GridLayout>
 
