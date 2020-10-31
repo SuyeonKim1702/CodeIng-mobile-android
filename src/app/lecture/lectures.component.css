@@ -10,7 +10,7 @@
 
 }
 .title{
-
+    margin-left: 16;
     margin-bottom: 15;
     height: 20;
     font-size: 14;
@@ -23,6 +23,7 @@
 }
 
 .card{
+   padding-left: -16;
     margin-bottom:15;
 }
 
@@ -42,9 +43,24 @@
 
 }
 
+
+.rec{
+    margin-right:4;
+    margin-left:4;
+    width: 168;
+    height: 240;
+}
+
+.rec-img{
+    width: 168;
+    height: 189;
+    border-radius: 5;
+    margin-bottom: 8;
+}
+
 .searchBt{
-    width: 344;
-    height: 35;
+    width: 65;
+    height: 23;
     font-size: 8;
     color: #34353a;
     border-radius: 80;
@@ -53,6 +69,51 @@
     text-align: center;
     text-align-all: center;
     margin-top: -5;
-    margin-bottom: 30;
 
+}
+
+.top{
+    margin: 16;
+    border-radius: 80;
+    border-color: #999999;
+    outline-color: #999999;
+    border-width: 1;
+}
+
+.searchword{
+    color: #999999;
+    font-size: 13;
+    border-bottom-color: transparent;
+    alignment: bottom;
+    margin-bottom: 3;
+
+}
+
+.searchIcon{
+    alignment: center;
+    alignment: center;
+    margin-left:10 ;
+    margin-top:10;
+
+}
+.ad{
+    margin-bottom: 15;
+    width: 359;
+    height: 59;
+    background-color: lightgray;
+    border-radius: 5;
+
+}
+.cards{
+    margin-left: 16;
+    margin-right: 8;
+}
+
+.each-card{
+    margin-right: 8;
+}
+
+.wrap{
+  margin-right: 11;
+    margin-left: 11;
 }

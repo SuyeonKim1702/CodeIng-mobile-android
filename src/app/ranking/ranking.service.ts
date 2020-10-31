@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Injectable({
     providedIn: "root"
 })
-export class LectureService {
+export class RankingService {
 
     baseUrl = 'http://3.34.74.250';
     headers = new HttpHeaders({
@@ -15,14 +15,12 @@ export class LectureService {
 
     constructor(private httpClient:HttpClient) { }
 
-    getLectures(page: number, searchword: string, price:number, level:number, rating:number) {
-        return this.httpClient.get(this.baseUrl+'/lectures', {
+    getLectures(page: number, categoryIdx: number, subcategoryIdx: number) {
+        return this.httpClient.get(this.baseUrl+'/lectures-ranking', {
             params: {
                 page: page+'',
-                keyword: searchword,
-                price: price+'',
-                level: level+'',
-                rating: rating+''
+                categoryIdx: categoryIdx+'',
+                subCategoryIdx: subcategoryIdx+''
             },
             headers: this.headers});
 

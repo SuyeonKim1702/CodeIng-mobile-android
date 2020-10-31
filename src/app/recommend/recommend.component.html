@@ -7,5 +7,28 @@
       <Label [nsRouterLink]="['/my-page']" row="0" col="4" text="마이페이지"></Label>
    </GridLayout>
 
-   <Label text="recommend"></Label>
+
+   <Label class="title" text="오늘의 추천 컨텐츠" dock="Top"></Label>
+
+   <ScrollView orientation="vertical" class="card">
+      <StackLayout orientation="vertical">
+   <GridLayout class="top" columns="40, *", rows="40" >
+      <Label row="0" col="0" class="fas h2 searchIcon" text ="&#xf002;"> </Label>
+      <TextField class="searchword"  row="0" col="1" hint="검색어를 입력해주세요" returnKeyType="go"></TextField>
+      </GridLayout>
+
+
+         <Image class="rank" *ngFor="let lecture of recLectures" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png"   stretch="aspectFill"></Image>
+
+
+      </StackLayout>
+
+
+      </ScrollView>
+
+
+
+
+
+
 </DockLayout>

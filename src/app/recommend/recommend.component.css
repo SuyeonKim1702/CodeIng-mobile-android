@@ -4,55 +4,48 @@
 }
 
 
-.rank{
-    height: 130;
-    border-radius: 5;
-
-}
 .title{
-
-    margin-bottom: 15;
-    height: 20;
-    font-size: 14;
-    line-height:12;
-    alignment:left;
-    font-family:NotoSansCJKkr-Medium;
-    color: #34353a;
-    letter-spacing: 0;
-
-}
-
-.card{
-    margin-bottom:15;
-}
-
-.site{
-    size:12;
-    font-family:Helvetica;
-    line-height:12;
-    color: #4D4D4D;
-
-}
-
-.lecName{
-    font-family: NotoSansCJKkr-Medium;
-    font-size: 10;
-    line-height: 12;
-    color: #4D4D4D;
-
-}
-
-.searchBt{
-    width: 344;
-    height: 35;
-    font-size: 8;
-    color: #34353a;
-    border-radius: 80;
-    outline-color: #34353a;
-    border-width: 1;
     text-align: center;
-    text-align-all: center;
-    margin-top: -5;
-    margin-bottom: 30;
 
+    padding-top: 41;
+    font-size: 17;
+    color: #34353a;
+    height: 88;
+    background-color: #f9f9f9;
+    border-bottom-width: 1;
+    border-bottom-color: #999999;
+}
+
+.top{
+    margin: 16;
+    border-radius: 80;
+    border-color: #999999;
+    outline-color: #999999;
+    border-width: 1;
+}
+
+.searchword{
+    color: #999999;
+    font-size: 13;
+    border-bottom-color: transparent;
+    alignment: bottom;
+    margin-bottom: 3;
+
+}
+
+.searchIcon{
+    alignment: center;
+    alignment: center;
+    margin-left:10 ;
+    margin-top:10;
+
+}
+
+.rank{
+    width: 344;
+    height: 189;
+    border-radius: 5;
+    margin-bottom: 13;
+    margin-left: 15;
+    margin-right: 15;
 }

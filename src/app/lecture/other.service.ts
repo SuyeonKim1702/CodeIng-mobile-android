@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class OtherService {
 
-    baseUrl = 'http://3.34.74.250/ranking-overview';
+    baseUrl = 'http://3.34.74.250';
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
@@ -16,7 +16,12 @@ export class OtherService {
     constructor(private httpClient:HttpClient) { }
 
     getRankingPreview() {
-        return this.httpClient.get(this.baseUrl, {headers: this.headers});
+        return this.httpClient.get(this.baseUrl+'/ranking-overview', {headers: this.headers});
+
+    }
+
+    getRecommendContent(){
+        return this.httpClient.get(this.baseUrl+'/api/recommend', {headers: this.headers});
 
     }
 

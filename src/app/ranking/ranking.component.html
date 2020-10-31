@@ -1,11 +1,69 @@
-<DockLayout>
-   <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
-      <Label [nsRouterLink]="['/lectures']" row="0" col="0" text="홈"></Label>
-      <Label [nsRouterLink]="['/ranking']" row="0" col="1" text="랭킹"></Label>
-      <Label [nsRouterLink]="['/recommend']" row="0" col="2" text="추천"></Label>
-      <Label [nsRouterLink]="['/favorite']" row="0" col="3" text="즐겨찾기"></Label>
-      <Label [nsRouterLink]="['/my-page']" row="0" col="4" text="마이페이지"></Label>
-   </GridLayout>
-   <Label text="ranking"></Label>
+<GridLayout rows="*">
+   <RadSideDrawer drawerLocation="Bottom" drawerContentSize="700"  >
+      <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="false" >
+         <StackLayout orientation="vertical" dock="Top">
+            <Label class="title" text="프로그램 랭킹 필터"></Label>
+            <Label class="category" text="카테고리"></Label>
+            <WrapLayout class="wrap" orientation="horizontal">
+               <Label  *ngFor="let category of categoryList" [text]="category" (tap)="changeHighlight(categoryList.indexOf(category))"
+                      [ngClass]="{'clicked': state[categoryList.indexOf(category)] == true, 'category-list': state[categoryList.indexOf(category)] != true}"></Label >
+            </WrapLayout>
+            <Label class="category" text="해시태그"></Label>
 
-</DockLayout>
+
+
+
+         </StackLayout>
+
+         <GridLayout class="drawerBottom" columns="2*,3*" rows="52" dock="Bottom">
+            <Label class="redoChoose" row="0" col="0" text="필터 초기화"></Label>
+            <Label class="completeChoose" row="0" col="1" text="선택 완료" ></Label>
+         </GridLayout>
+
+      </DockLayout>
+
+      <DockLayout tkMainContent stretchLastChild="true">
+         <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
+            <Label [nsRouterLink]="['/lectures']" row="0" col="0" text="홈"></Label>
+            <Label [nsRouterLink]="['/ranking']" row="0" col="1" text="랭킹"></Label>
+            <Label [nsRouterLink]="['/recommnd']" row="0" col="2" text="추천"></Label>
+            <Label [nsRouterLink]="['/favorite']" row="0" col="3" text="즐겨찾기"></Label>
+            <Label [nsRouterLink]="['/my-page']" row="0" col="4" text="마이페이지"></Label>
+         </GridLayout>
+         <Label class="title" text="프로그램 주제별 랭킹" dock="Top"></Label>
+
+         <GridLayout class="top" columns="40, *, 40", rows="40" dock="Top">
+            <Label  row="0" col="0"></Label>
+            <Label class="searchword"  row="0" col="1" text="Web Frontend Ranking"></Label>
+            <Label row="0" col="2" class="fas h3 searchIcon" text ="&#xf0b0;" (tap)="onOpenDrawerTap()"> </Label>
+         </GridLayout>
+
+         <ListView dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+            <ng-template let-item="item" let-i="index">
+               <GridLayout class="grid" columns="73, *, 105" rows="80">
+                  <Image row="0" col="0" class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
+                  <StackLayout row="0" col="1" orientation="vertical">
+                     <Label class="siteName" [text]= "item['siteName']"></Label>
+                     <Label class="lecName" [text]= "item['lectureName']"></Label>
+                     <Label class="price" [text]= "item['price']"></Label>
+                  </StackLayout>
+                  <StackLayout row="0" col="2" orientation="vertical">
+                     <StackLayout orientation="horizontal" width="130">
+                        <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': item['rating'] > rate, 'default': item['rating'] <= rate}"> </Label>
+                     </StackLayout>
+                     <Label class="searchBt" text="VIEW Details" >
+                     </Label>
+                  </StackLayout>
+
+               </GridLayout>
+            </ng-template>
+         </ListView>
+
+      </DockLayout>
+
+   </RadSideDrawer>
+</GridLayout>
+
+
+
+

@@ -3,48 +3,69 @@
     background-color: darkkhaki;
 }
 
-
-.rank{
-    height: 130;
-    border-radius: 5;
-
-}
 .title{
-
-    margin-bottom: 15;
-    height: 20;
-    font-size: 14;
-    line-height:12;
-    alignment:left;
-    font-family:NotoSansCJKkr-Medium;
+    margin-top:30;
+    margin-bottom: 30;
+    text-align: center;
+    color: #ffffff;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 15;
+}
+.searchword{
     color: #34353a;
-    letter-spacing: 0;
+    font-size: 16;
+    text-align: center;
 
 }
 
-.card{
-    margin-bottom:15;
+.searchIcon{
+    alignment: center;
+    margin-left:10 ;
+    margin-top:10;
+
 }
-
-.site{
-    size:12;
-    font-family:Helvetica;
-    line-height:12;
-    color: #4D4D4D;
-
+.top {
+    margin-top: 5;
+    margin-right: 15;
+}
+.siteName{
+    margin-bottom: -3;
+    font-size: 12;
+    color: #4d4d4d;
+    font-family: Helvetica;
 }
 
 .lecName{
+    margin-top: -3;
+    max-bottom: -3;
+    font-size: 13;
+    color: #4d4d4d;
     font-family: NotoSansCJKkr-Medium;
-    font-size: 10;
-    line-height: 12;
-    color: #4D4D4D;
+}
+
+.price{
+    margin-top: -3;
+    font-size: 12;
+    color: #999999;
+    font-family: NotoSansCJKkr-Medium;
+}
+
+.rank{
+    height: 48;
+    width: 48;
+    border-radius: 50;
 
 }
 
+
+.grid{
+    padding-top: -2;
+    padding-bottom: -2;
+}
+
 .searchBt{
-    width: 344;
-    height: 35;
+    width: 65;
+    height: 23;
     font-size: 8;
     color: #34353a;
     border-radius: 80;
@@ -53,6 +74,88 @@
     text-align: center;
     text-align-all: center;
     margin-top: -5;
-    margin-bottom: 30;
 
+}
+.yellow{
+    color: #ffc30f;
+    margin-right: -8;
+
+}
+.default{
+    color: #efefef;
+    margin-right: -8;
+}
+.category{
+    color: #efefef;
+    font-family: NotoSansCJKkr-Medium;
+    font-size: 14;
+    margin-left: 32;
+    margin-bottom: 17;
+}
+.redoChoose{
+    font-family: NotoSansCJKkr-Bold;
+    font-size: 13;
+    color: #efefef;
+    font-weight: bold;
+    text-align: center;
+
+
+}
+
+.completeChoose{
+    font-family: NotoSansCJKkr-Bold;
+    font-weight: bold;
+    font-size: 13;
+    color: #34353a;
+    background-color: #efefef;
+    border-radius: 29;
+    text-align: center;
+    height: 80;
+}
+.drawerBottom{
+    margin-bottom: 65;
+    margin-right: 22;
+    margin-left: 32;
+    height: 80;
+}
+
+.outerDock{
+    background-color: #34353a;
+    border-top-right-radius: 10;
+    border-top-left-radius: 10;
+}
+.category-list{
+    font-size: 10;
+    color: #efefef;
+    font-family: NotoSansCJKkr-Medium;
+    border-radius: 30;
+    border-color: #efefef;
+    border-width: 1;
+    margin-right: 5.3;
+    margin-bottom: 10;
+    padding-right: 12.4;
+    padding-left: 12.4;
+    padding-top: 7;
+    padding-bottom: 7;
+
+
+}
+.wrap{
+    margin-left: 32;
+    margin-bottom: 37;
+
+}
+.clicked{
+    color: #ffc000;
+    font-size: 10;
+    font-family: NotoSansCJKkr-Medium;
+    border-radius: 30;
+    border-color: #ffc000;
+    border-width: 1;
+    margin-right: 5.3;
+    margin-bottom: 10;
+    padding-right: 12.4;
+    padding-left: 12.4;
+    padding-top: 7;
+    padding-bottom: 7;
 }

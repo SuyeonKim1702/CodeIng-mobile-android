@@ -8,15 +8,29 @@
     </GridLayout>
 
 
+
+
 <ScrollView orientation="vertical" class="card">
 <stackLayout orientation="vertical" child>
-    <Label [nsRouterLink]="['/lectures/search']" class="searchBt" ></Label>
+    <DockLayout>
+        <Image  src="~/image/codeing.png" stretch="aspectFill" dock="Top"></Image>
+
+        <GridLayout class="top" columns="40, *", rows="40" dock="Top">
+            <Label  row="0" col="0" class="fas h2 searchIcon" text ="&#xf002;"> </Label>
+            <Label [nsRouterLink]="['/lectures/search']" class="searchword" row="0" col="1" text="검색어를 입력해주세요"></Label>
+
+        </GridLayout>
+
+    </DockLayout>
+
+    <Label class="ad"></Label>
+
 
     <Label text="프로그램 주제별 랭킹" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>
 <ScrollView orientation="horizontal" class="card">
-<StackLayout orientation="horizontal">
+<StackLayout orientation="horizontal" class="cards" >
 
-    <StackLayout  *ngFor="let lecture of allLectures" orientation="vertical" width="100" margin="4">
+    <StackLayout class="each-card" *ngFor="let lecture of allLectures" orientation="vertical" width="100">
         <Image class="rank" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png"   stretch="aspectFill"></Image>
     <Label class="site" [text]="lecture['siteName']"></Label >
         <Label class="lecName" [text]="lecture['lectureName']"></Label >
@@ -28,6 +42,15 @@
 </ScrollView>
 
     <Label text="오늘의 추천 컨텐츠"  class="title" horizontalAlignment="left" fontAttributes="Bold" textWrap="true" ></Label>
+    <WrapLayout class="wrap" orientation="horizontal">
+
+        <StackLayout class="rec" *ngFor="let lecture of recLectures" orientation="vertical">
+            <Image class="rec-img" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png" stretch="aspectFill"></Image>
+            <Label class="site" [text]="lecture['lectureIdx']"></Label >
+            <Label class="lecName" [text]="lecture['lectureName']"></Label >
+        </StackLayout>
+    </WrapLayout>
+
 
 </stackLayout>
 </ScrollView>
