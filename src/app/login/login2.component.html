@@ -1,0 +1,21 @@
+
+
+<StackLayout>
+    <Label class="ad" ></Label>
+    <GridLayout columns="auto,*" rows="auto">
+        <Label col="0" class="login-icon"></Label>
+        <TextField col="1" class="id" hint="아이디"></TextField>
+    </GridLayout>
+    <GridLayout columns="auto,*" rows="auto">
+        <Label col="0" class="login-icon"></Label>
+        <TextField col="1" class="password" hint="비밀번호" secure="true"></TextField>
+    </GridLayout>
+
+
+
+
+
+    <Label [nsRouterLink]="['/lectures/search']" class="login"  text="로그인"></Label>
+    <Label [nsRouterLink]="['/lectures/search']" class="google-login"  text="구글 아이디로 로그인"></Label>
+    <Label [nsRouterLink]="['/lectures/search']" class="signup"  text="회원가입"></Label>
+</StackLayout>

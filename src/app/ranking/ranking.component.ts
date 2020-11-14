@@ -3,6 +3,7 @@ import {GestureEventData} from "@nativescript/core";
 import {RankingService} from "./ranking.service";
 import {lectureCard} from "../lecture/lectureCard";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
+import {subcategoryCard} from "./subcategoryCard";
 
 
 
@@ -17,6 +18,7 @@ export class RankingComponent implements OnInit {
 
     public lectures: Array<lectureCard>;
     public categoryList: Array<String>;
+    public subcategoryList: Array<subcategoryCard>
     categoryIdx: number;
     page: number;
     subcategoryIdx: number;
@@ -33,9 +35,10 @@ export class RankingComponent implements OnInit {
 
         this.state =[]
         this.categoryList =[];
+        this.subcategoryList=[];
         this.lectures = [];
-        this.categoryList = ['웹 Frontend','앱 Frontend','Backend','Full Stack','게임','언어','알고리즘','데이터사이언스','네트워크/보안','기타'];
-        for(var i=0;i<10;i++)
+        this.categoryList = ['웹 Frontend','앱 Frontend','Backend','Full Stack','게임','ai','알고리즘','데이터사이언스','네트워크/보안','컴퓨터 과학','언어','기타'];
+        for(var i=0;i<this.categoryList.length;i++)
             this.state.push(false);
         this.rankingService.getLectures(this.page, this.categoryIdx, this.subcategoryIdx).subscribe(
             data =>{
@@ -81,8 +84,24 @@ export class RankingComponent implements OnInit {
 
     changeHighlight(index: number){
 
-        for(var i=0;i<10;i++) this.state[i] = false;
+        for(var i=0;i<this.state.length;i++) this.state[i] = false;
         this.state[index] = true;
+
+
+        this.rankingService.getSubcategoryList(index+1).subscribe(
+            data =>{
+                var tmp = data['result'];
+                for(var i =0; i<tmp.length; i++){
+                  //  console.log(tmp[i]['subcategoryName'])
+
+                   this.subcategoryList.push(new subcategoryCard(tmp[i]['subcategoryIdx'],tmp[i]['subcategoryName']));
+
+                }
+
+            },
+            error => console.log(error)
+        );
+
 
 
     };

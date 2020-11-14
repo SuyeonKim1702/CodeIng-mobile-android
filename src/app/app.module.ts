@@ -13,6 +13,8 @@ import {RankingComponent} from "./ranking/ranking.component";
 import {RecommendComponent} from "./recommend/recommend.component";
 import {FavoriteComponent} from "./favorite/favorite.component";
 import {MypageComponent} from "./mypage/mypage.component";
+import {LoginComponent} from "./login/login.component";
+import {Login2Component} from "./login/login2.component";
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import {MypageComponent} from "./mypage/mypage.component";
         RankingComponent,
         RecommendComponent,
         FavoriteComponent,
-        MypageComponent
+        MypageComponent,
+        LoginComponent,
+        Login2Component
 
     ],
     providers: [],

@@ -9,9 +9,14 @@ import {RankingComponent} from "./ranking/ranking.component";
 import {RecommendComponent} from "./recommend/recommend.component";
 import {FavoriteComponent} from "./favorite/favorite.component";
 import {MypageComponent} from "./mypage/mypage.component";
+import {LoginComponent} from "./login/login.component";
+import {Login2Component} from "./login/login2.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/lectures", pathMatch: "full" },
+
+    { path: "", redirectTo: "login", pathMatch: "full" },
+    { path: "login", component: LoginComponent },
+    { path: "login2", component: Login2Component },
     { path: "lectures", component: LecturesComponent },
     { path: "lectures/search", component: LecturesSearchComponent },
     { path: "ranking", component: RankingComponent },

@@ -27,4 +27,14 @@ export class RankingService {
     }
 
 
+    getSubcategoryList(categoryIdx: number) {
+        return this.httpClient.get(this.baseUrl+'/subcategory-list', {
+            params: {
+                categoryIdx: categoryIdx+'',
+            },
+            headers: this.headers});
+
+    }
+
+
 }

@@ -1,0 +1,51 @@
+.ad{
+    height: 44;
+    background-color: lightgray;
+    margin-top: 250;
+    margin-bottom: 297;
+    margin-right: 82;
+    margin-left: 82;
+}
+.login{
+    width: 345;
+    height: 45;
+    background-color: #1c7ced;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16;
+    margin-left: 15;
+    margin-right: 15;
+    border-radius: 3;
+    margin-bottom: 6;
+}
+
+.google-login{
+    width: 345;
+    height: 45;
+    color: #1c7ced;
+    background-color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16;
+    margin-left: 15;
+    margin-right: 15;
+    border-radius: 3;
+    border-color: #1c7ced;
+    border-width: 1;
+}
+
+.signup{
+    width: 345;
+    height: 45;
+    text-align: center;
+    font-size: 14;
+    color: #333333;
+    text-decoration: underline;
+    text-decoration-line: underline;
+    text-underline: #333333;
+    font-weight: bold;
+
+
+
+}
