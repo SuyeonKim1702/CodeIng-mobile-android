@@ -15,6 +15,10 @@ import {FavoriteComponent} from "./favorite/favorite.component";
 import {MypageComponent} from "./mypage/mypage.component";
 import {LoginComponent} from "./login/login.component";
 import {Login2Component} from "./login/login2.component";
+import {SignupComponent} from "./login/signup.component";
+import {Signup2Component} from "./login/signup2.component";
+import {Signup3Component} from "./login/signup3.component";
+import {Signup4Component} from "./login/signup4.component";
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import {Login2Component} from "./login/login2.component";
         FavoriteComponent,
         MypageComponent,
         LoginComponent,
-        Login2Component
+        Login2Component,
+        SignupComponent,
+        Signup2Component,
+        Signup3Component,
+        Signup4Component,
 
     ],
     providers: [],

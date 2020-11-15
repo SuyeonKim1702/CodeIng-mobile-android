@@ -1,21 +1,36 @@
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
 
-
-<StackLayout>
+<StackLayout class="content">
     <Label class="ad" ></Label>
     <GridLayout columns="auto,*" rows="auto">
         <Label col="0" class="login-icon"></Label>
-        <TextField col="1" class="id" hint="아이디"></TextField>
+        <TextField col="1" class="id" hint="아이디" [(ngModel)]="email" style.placeholderColor="#A6A6A6"></TextField>
     </GridLayout>
     <GridLayout columns="auto,*" rows="auto">
         <Label col="0" class="login-icon"></Label>
-        <TextField col="1" class="password" hint="비밀번호" secure="true"></TextField>
+        <TextField col="1" class="password" hint="비밀번호" [(ngModel)]="password" secure="true" style.placeholderColor="#A6A6A6"></TextField>
+    </GridLayout>
+
+    <GridLayout class="grid" columns="auto,auto,auto" rows="auto">
+        <Label  col="0" class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+        <Label col="1" class="loginstatus" text="로그인 상태 유지"></Label>
+        <Label col="2" class="find" text="아이디 / 비밀번호 찾기 >"></Label>
+
+
+
     </GridLayout>
 
 
-
-
-
-    <Label [nsRouterLink]="['/lectures/search']" class="login"  text="로그인"></Label>
+    <Label class="login" (tap)="login()" text="로그인"></Label>
     <Label [nsRouterLink]="['/lectures/search']" class="google-login"  text="구글 아이디로 로그인"></Label>
-    <Label [nsRouterLink]="['/lectures/search']" class="signup"  text="회원가입"></Label>
 </StackLayout>
+
+    <AbsoluteLayout class="dialog-wrapper">
+        <StackLayout class="dialog">
+            <Label class="text" [text]=alert_message></Label>
+            <Button class="btn" text="확인" (tap)="closeDialog()"></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+
+
+</GridLayout>

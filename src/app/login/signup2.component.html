@@ -1,0 +1,38 @@
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
+
+<StackLayout class="content">
+
+  <StackLayout class="st" orientation="horizontal">
+    <Label class="circle"></Label>
+    <Label class="blue"></Label>
+    <Label class="circle"></Label>
+    <Label class="circle"></Label>
+
+  </StackLayout>
+
+  <Label class="title" text="스마트 본인 인증"></Label>
+  <Label class="subtitle" text="이름" ></Label>
+  <TextField col="1" class="name" hint="이름을 입력해 주세요" style.placeholderColor="#A6A6A6" [(ngModel)]="inputName"></TextField>
+  <Label class="subtitle" text="휴대폰 번호"></Label>
+  <TextField col="1" class="name" hint="'-'구분 없이 입력해 주세요" style.placeholderColor="#A6A6A6" keyboardType="phone" [(ngModel)]="phoneNumber"></TextField>
+  <Label class="subtitle" text="인증번호"></Label>
+  <TextField col="1" class="name" hint="휴대폰 인증 번호를 확인해 주세요" style.placeholderColor="#A6A6A6"></TextField>
+
+
+
+  <Label (tap)="next()" class="next"  text="다음"></Label>
+
+
+
+
+
+</StackLayout>
+
+  <AbsoluteLayout class="dialog-wrapper">
+    <StackLayout class="dialog">
+      <Label class="text" [text]=alert_message></Label>
+      <Button class="btn" text="확인" (tap)="closeDialog()"></Button>
+    </StackLayout>
+  </AbsoluteLayout>
+
+</GridLayout>

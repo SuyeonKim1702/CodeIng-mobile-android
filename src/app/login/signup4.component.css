@@ -1,0 +1,82 @@
+
+.complete{
+    width: 345;
+    height: 45;
+    background-color: #1c7ced;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16;
+    margin-left: 15;
+    margin-right: 15;
+    margin-top: 170;
+    border-radius: 3;
+
+}
+
+.circle{
+    width: 9;
+    height: 9;
+    border-radius: 5;
+    background-color: #efefef;
+    margin-right: 4;
+
+}
+
+.blue{
+    border-radius: 5;
+    width: 30;
+    height: 9;
+    margin-right: 4;
+    background-color: #1c7ced;
+}
+
+
+
+.page{
+    margin-right:153;
+    margin-left: 153;
+    margin-top:21;
+    margin-bottom:21;
+}
+.check{
+    text-align: center;
+    width: 66;
+    height: 66;
+    background-color: #A6A6A6;
+    border-radius: 33;
+    margin-top: 136;
+}
+
+.logo{
+    text-align: center;
+    width:176;
+    height:37;
+    background-color: #A6A6A6;
+    margin-top: 36;
+}
+
+.nickname{
+    font-size: 24;
+    font-weight: bold;
+}
+
+.greeting{
+    font-size: 24;
+}
+
+.block{
+    margin-top: 45;
+    text-align: center;
+}
+
+.congratz{
+    margin-top: 21;
+    text-align: center;
+    width: 250;
+    height: 80;
+    font-size: 16;
+    font-family: NotoSansCJKkr-Regular;
+    letter-spacing: 0.05;
+}
+
