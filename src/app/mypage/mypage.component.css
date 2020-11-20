@@ -11,14 +11,16 @@
 }
 .title{
 
-    margin-bottom: 15;
-    height: 20;
-    font-size: 14;
+    margin-top: 9;
+    height: 25;
+
+    font-size: 17;
+    font-weight: bold;
     line-height:12;
-    alignment:left;
+    text-align :center;
     font-family:NotoSansCJKkr-Medium;
-    color: #34353a;
-    letter-spacing: 0;
+    color: #333333;
+
 
 }
 
@@ -55,4 +57,39 @@
     margin-top: -5;
     margin-bottom: 30;
 
+}
+
+.underline{
+    color: #f3f5f9;
+    margin-top: 15;
+    height: 0.1;
+    width: 100%;
+}
+
+.text{
+    width: 224;
+    height: 48;
+    font-size: 16;
+    color: #34353a;
+    text-align: center;
+    margin-top: 25.3;
+}
+
+.btn{
+    margin-left: 21;
+    margin-right: 21;
+    height: 40;
+    color: #fc8f41;
+    border-color: #fc8f41;
+    text-align: center;
+    border-width: 1;
+    border-radius: 3;
+    margin-top: 12;
+    font-size: 16;
+}
+
+.empty{
+    margin-top: 23;
+    background-color: #f3f5f9;
+    height: 8;
 }

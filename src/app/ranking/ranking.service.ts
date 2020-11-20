@@ -16,6 +16,7 @@ export class RankingService {
     constructor(private httpClient:HttpClient) { }
 
     getLectures(page: number, categoryIdx: number, subcategoryIdx: number) {
+
         return this.httpClient.get(this.baseUrl+'/lectures-ranking', {
             params: {
                 page: page+'',
@@ -25,7 +26,6 @@ export class RankingService {
             headers: this.headers});
 
     }
-
 
     getSubcategoryList(categoryIdx: number) {
         return this.httpClient.get(this.baseUrl+'/subcategory-list', {
@@ -38,3 +38,4 @@ export class RankingService {
 
 
 }
+

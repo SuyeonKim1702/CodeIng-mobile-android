@@ -56,3 +56,22 @@
     margin-bottom: 30;
 
 }
+
+.tab-name{
+    font-size: 17;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    color: #1c7ced;
+}
+
+.test{
+
+    background-color: transparent;
+}
+
+TabStrip {
+    highlight-color: #1c7ced;
+
+
+
+}

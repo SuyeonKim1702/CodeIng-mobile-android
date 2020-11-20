@@ -1,0 +1,195 @@
+.hi{
+
+    height: 495;
+
+}
+
+.tab-name{
+    font-size: 16;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    color: #000000;
+}
+
+.test{
+
+    background-color: transparent;
+}
+
+TabStrip {
+    highlight-color: #000000;
+}
+
+.title{
+    font-size: 28;
+    width: 310;
+    color: #34353a;
+    font-family: Roboto-M;
+    font-weight: bold;
+
+}
+
+.subtitle{
+    margin-top: 9;
+    width: 319;
+    color: #a6a6a6;
+    font-size: 17;
+    font-family: Roboto-M;
+    font-weight: bold;
+}
+
+.thumb2{
+    margin-top: 14;
+    margin-bottom: 6;
+    width: 333;
+    height: 174;
+    border-radius: 3;
+    visibility: collapsed;
+}
+.thumb{
+    margin-top: 14;
+    margin-bottom: 6;
+    width: 333;
+    height: 174;
+    border-radius: 3;
+
+}
+
+.heart{
+    color: #fe373e;
+}
+
+.dock{
+    margin-left: 20;
+    margin-right: 20;
+    margin-bottom: 24;
+}
+.back{
+    color: #34353a;
+}
+
+.star{
+    color: #ffc30f;
+    margin-right: 3;
+}
+
+.dock2{
+    margin-left: 21;
+    margin-right: 21;
+}
+.rating-text{
+    color: #737373;
+    font-family: Montserrat;
+    font-size: 12;
+}
+
+.cost{
+    font-family: Montserrat;
+    color: #34353a;
+    font-size: 21;
+    margin-left: 21;
+
+}
+
+.outer-tab{
+    margin-top: 10;
+
+}
+.info-title{
+    font-size: 16;
+    color: #34353a;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    margin-bottom: 8;
+    margin-top: 16;
+}
+
+.content{
+    font-size: 14;
+    color: #737373;
+    font-family: roboto;
+}
+
+.tab1{
+    margin-left: 21;
+    margin-right: 28;
+}
+
+
+.goToLink{
+    width: 160;
+    height: 50;
+    background-color: #fc8f41;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14;
+    border-radius: 3;
+    font-weight: bold;
+    alignment: right;
+}
+
+.cost2{
+    font-family: Montserrat;
+    font-size: 25;
+    color: #34353a;
+}
+
+.bottom-button{
+    margin-top: 28;
+}
+
+.writeQna{
+    width: 345;
+    height: 45;
+    color: #1c7ced;
+    background-color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16;
+    margin-left: 15;
+    margin-right: 15;
+    border-radius: 3;
+    border-color: #1c7ced;
+    border-width: 1;
+    margin-bottom: 15;
+}
+.item-dock{
+
+}
+
+.left{
+}
+.right{
+}
+
+.qnaTitle{
+    width: 230;
+    color: #34353a;
+    font-size: 16;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+
+}
+
+.qnaDes{
+    width: 230;
+  color: #737373;
+    font-size: 14;
+    font-family: NotoSansCJKkr;
+}
+
+.time{
+    font-size: 9;
+    font-family: Roboto;
+    color: #a6a6a6;
+    font-weight: bold;
+}
+
+.likesCount{
+    width: 26;
+    height: 26;
+    font-size: 14;
+    color: #1c7ced;
+    background-color: #f3f5f9;
+    border-radius: 13;
+}

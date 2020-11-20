@@ -16,23 +16,14 @@
 
 }
 
-.title2{
-    padding-top: 51;
-    padding-bottom: 12;
-    text-align: center;
-    color:#ffffff;
-    font-family: NotoSansCJKkr-Medium;
-    font-size: 15;
-
-
-
-}
 
 
 .searchword{
-    color: #34353a;
-    font-size: 16;
+    color: #1c7ced;
+    font-size: 20;
     text-align: center;
+    font-family: Roboto;
+    margin-top: -5;
 
 }
 
@@ -50,35 +41,37 @@
     margin-bottom: -3;
     font-size: 12;
     color: #4d4d4d;
-    font-family: Helvetica;
+    font-family: NotoSansCJKkr-Medium;
 }
 
 .lecName{
-    margin-top: -3;
+    margin-top: -7;
     max-bottom: -3;
-    font-size: 13;
-    color: #4d4d4d;
+    font-size: 14;
+    color: #333333;
     font-family: NotoSansCJKkr-Medium;
+    font-weight: bold;
 }
 
 .price{
     margin-top: -3;
-    font-size: 12;
-    color: #999999;
-    font-family: NotoSansCJKkr-Medium;
+    font-size: 14;
+    color: #333333;
+    font-family: "Montserrat";
 }
 
 .rank{
-    height: 48;
-    width: 48;
-    border-radius: 50;
+    height: 160;
+    width: 350;
+    border-radius: 3;
+    margin-bottom: -10;
 
 }
 
 
-.grid{
-    padding-top: -2;
-    padding-bottom: -2;
+.outer-stack{
+    padding-top: -6;
+    padding-bottom: -6;
 }
 
 .searchBt{
@@ -95,80 +88,79 @@
 
 }
 .yellow{
+
     color: #ffc30f;
     margin-right: -8;
 
+
 }
 .default{
-    color: #efefef;
+    color: #a6a6a6;
     margin-right: -8;
+
 }
 .category{
-    color: #efefef;
-    font-family: NotoSansCJKkr-Medium;
-    font-size: 14;
+    color: #1c7ced;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    font-size: 17;
     margin-left: 32;
     margin-bottom: 17;
 }
 .redoChoose{
-    font-family: NotoSansCJKkr-Bold;
-    font-size: 13;
-    color: #efefef;
-    font-weight: bold;
+    font-family: NotoSansCJKkr;
+    font-size: 14;
+    color: #34353a;
     text-align: center;
+    font-weight: bold;
 
 
 }
 
 .completeChoose{
-    font-family: NotoSansCJKkr-Bold;
+    font-family: NotoSansCJKkr;
     font-weight: bold;
-    font-size: 13;
-    color: #34353a;
-    background-color: #efefef;
-    border-radius: 29;
+    font-size: 14;
+    color: #fafafa;
+    background-color: #fc8f41;
+    border-radius: 3;
     text-align: center;
-    height: 80;
+    height: 50;
+    width: 160;
 }
 .drawerBottom{
-    margin-bottom: 65;
     margin-right: 22;
     margin-left: 32;
-    height: 80;
+    margin-bottom: 50;
+
 }
 
 .outerDock{
-    background-color: #34353a;
+    background-color: #f3f5f9;
     border-top-right-radius: 10;
     border-top-left-radius: 10;
 }
 
-.wrap{
-    margin-left: 32;
-    margin-bottom: 37;
 
-}
 .clicked{
-    color: #ffc000;
-    font-size: 10;
-    font-family: NotoSansCJKkr-Medium;
-    border-radius: 30;
-    border-color: #ffc000;
-    border-width: 1;
-    margin-right: 5.3;
-    margin-bottom: 10;
-    padding-right: 12.4;
-    padding-left: 12.4;
-    padding-top: 7;
-    padding-bottom: 7;
+    color: #ffffff;
+    background-color: #1c7ced;
+    border-color: #1c7ced;
 }
 
 .category-list{
-    font-size: 10;
-    color: #efefef;
+
+    color: #a6a6a6;
+    border-color: #a6a6a6;
+
+
+}
+
+.w{
+    font-size: 12;
     font-family: NotoSansCJKkr-Medium;
     border-radius: 30;
-    border-color: #efefef;
+    border-color: #a6a6a6;
     border-width: 1;
     margin-right: 5.3;
     margin-bottom: 10;
@@ -176,6 +168,84 @@
     padding-left: 12.4;
     padding-top: 7;
     padding-bottom: 7;
+}
+
+.rank-small{
+    font-family: "Montserrat";
+    color: #fc8f41;
+    font-size: 17;
+    margin-left: -20;
+
+}
+
+.searchIcon{
+    alignment: center;
+    alignment: center;
+    margin-left:10 ;
+    margin-top:10;
+    color: #a6a6a6;
+
+}
+
+.circle-small{
+    background-color: #ffe7d4;
+    width: 16;
+    height: 16;
+    border-radius: 8;
+
+}
+
+.up{
+    margin-bottom: -5;
+}
+
+
+
+.rating-text{
+    font-family: "Montserrat";
+    color: #ffc30f;
+    font-size: 11;
+    margin-left: -5;
+
+}
+
+.searchbar{
+    font-size: 14;
+    border-bottom-color: transparent;
+    alignment: bottom;
+    margin-bottom: 3;
+    font-weight: bold;
+    margin-left: -10;
+    margin-right: -10;
+}
+
+.search-set{
+    margin-top: 16;
+    margin-right: 16;
+    margin-left: 16;
+    margin-bottom: 8;
+
+    border-radius: 80;
+    border-color: #f3f5f9;
+    outline-color: #999999;
+    border-width: 1;
+
+}
+
+.title-top{
+    color: #34353a;
+    font-size: 17;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -10;
+    margin-bottom: 39;
+}
+
+.wrap{
+    margin-left: 23;
+    margin-right: 23;
 
 
 }
+
+

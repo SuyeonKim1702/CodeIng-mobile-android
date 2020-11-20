@@ -4,14 +4,13 @@ import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
 import { LecturesComponent } from "./lecture/lectures.component";
 import {CommonModule} from "@angular/common";
 import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
 import {RankingComponent} from "./ranking/ranking.component";
 import {RecommendComponent} from "./recommend/recommend.component";
-import {FavoriteComponent} from "./favorite/favorite.component";
+import {ClassComponent} from "./class/class.component";
 import {MypageComponent} from "./mypage/mypage.component";
 import {LoginComponent} from "./login/login.component";
 import {Login2Component} from "./login/login2.component";
@@ -38,12 +37,11 @@ import {Signup4Component} from "./login/signup4.component";
     declarations: [
         AppComponent,
         ItemsComponent,
-        ItemDetailComponent,
         LecturesComponent,
         LecturesSearchComponent,
         RankingComponent,
         RecommendComponent,
-        FavoriteComponent,
+        ClassComponent,
         MypageComponent,
         LoginComponent,
         Login2Component,
@@ -51,6 +49,7 @@ import {Signup4Component} from "./login/signup4.component";
         Signup2Component,
         Signup3Component,
         Signup4Component,
+        ItemsComponent
 
     ],
     providers: [],

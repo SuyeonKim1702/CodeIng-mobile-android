@@ -46,7 +46,14 @@
     text-underline: #333333;
     font-weight: bold;
 
-
-
 }
 
+.rank{
+    height: 44;
+    background-color: lightgray;
+    margin-top: 250;
+    margin-bottom: 297;
+    margin-right: 82;
+    margin-left: 82;
+    height: 43;
+}
