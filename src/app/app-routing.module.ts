@@ -15,6 +15,7 @@ import {Signup2Component} from "./login/signup2.component";
 import {Signup3Component} from "./login/signup3.component";
 import {Signup4Component} from "./login/signup4.component";
 import {ItemsComponent} from "./item/items.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
 
@@ -31,7 +32,8 @@ const routes: Routes = [
     { path: "recommend", component: RecommendComponent},
     { path: "class", component: ClassComponent},
     { path: "my-page", component: MypageComponent},
-    { path: "lecture/:lectureIdx", component: ItemsComponent}
+    { path: "lecture/:lectureIdx", component: ItemsComponent},
+    { path: "profile", component: ProfileComponent}
 
 
 ];

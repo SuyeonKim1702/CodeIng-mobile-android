@@ -1,0 +1,62 @@
+
+<DockLayout>
+    <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
+        <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
+        <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
+        <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
+        <Label [nsRouterLink]="['/class']" pageTransition="none" row="0" col="3" text="클래스"></Label>
+        <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
+    </GridLayout>
+
+
+<StackLayout dock="top" orientation="vertical">
+    <DockLayout class="dock" stretchLastChild="false">
+
+    </DockLayout>
+    <StackLayout>
+        <Label  textWrap="true" class="title" ></Label>
+        <StackLayout  id="stack">
+            <Label class="cost" ></Label>
+        </StackLayout>
+
+    </StackLayout>
+
+    <StackLayout class="outer-tab">
+
+        <Tabs>
+            <TabStrip class="test">
+                <TabStripItem class="test">
+                    <Label class="tab-name" text="클래스 만들기"></Label>
+                </TabStripItem>
+                <TabStripItem>
+                    <Label  class="tab-name" text="내 클래스"></Label>
+                </TabStripItem>
+
+            </TabStrip>
+
+            <TabContentItem>
+                <ScrollView orientation="vertical">
+                    <StackLayout class="tab1" >
+
+
+
+                    </StackLayout>
+                </ScrollView>
+            </TabContentItem>
+
+            <TabContentItem>
+                <ScrollView orientation="vertical">
+                    <GridLayout >
+                        <Label text="Review" class="h2 text-center">
+                        </Label>
+                    </GridLayout>
+                </ScrollView>
+            </TabContentItem>
+
+        </Tabs>
+    </StackLayout>
+</StackLayout>
+
+
+
+</DockLayout>

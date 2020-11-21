@@ -24,6 +24,7 @@
     "postinstall": "npm run ngcc"
   },
   "dependencies": {
+    "@angular-devkit/schematics": "^11.0.2",
     "@angular/animations": "~10.1.0",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
@@ -35,6 +36,8 @@
     "@nativescript/angular": "~10.1.0",
     "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
+    "nativescript-filter-select": "^1.3.0",
+    "nativescript-multi-select": "^1.0.6",
     "nativescript-ui-sidedrawer": "^9.0.3",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",

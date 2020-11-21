@@ -12,8 +12,8 @@
     </GridLayout>
 
     <GridLayout class="grid" columns="auto,auto,auto" rows="auto">
-        <Label  col="0" class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
-        <Label col="1" class="loginstatus" text="로그인 상태 유지"></Label>
+        <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': loginstate , 'uncheck': !loginstate }" (tap)="auto_login()"> </Label>
+        <Label col="1" class="loginstatus" text="로그인 상태 유지" ></Label>
         <Label col="2" class="find" text="아이디 / 비밀번호 찾기 >"></Label>
 
 

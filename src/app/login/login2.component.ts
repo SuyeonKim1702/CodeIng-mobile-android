@@ -3,6 +3,17 @@ import {GestureEventData} from "@nativescript/core";
 import {LectureService} from "../lecture/lectures.service";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "@nativescript/core/application-settings";
 
 
 @Component({
@@ -15,6 +26,7 @@ export class Login2Component implements OnInit {
     password="";
     alert_message="";
     dialogOpen = false;
+    loginstate: boolean = false;
 
 
 
@@ -25,6 +37,10 @@ export class Login2Component implements OnInit {
     ngOnInit(): void {
      this.jwt = "";
 
+    }
+
+    getJwt(){
+        return this.jwt;
     }
 
     showDialog() {
@@ -43,6 +59,10 @@ export class Login2Component implements OnInit {
                     this.jwt = data["token"];
                     this.router.navigate(['/lectures']);
 
+                    if(this.loginstate){ //자동 로그인 설정된 상태
+                        setString("JWT", data["token"]);
+                    }
+
 
                 },
                 error => {
@@ -54,6 +74,10 @@ export class Login2Component implements OnInit {
             );
 
         }
-            }
+    }
+
+    public auto_login(){
+        this.loginstate = !this.loginstate;
+    }
 
 }

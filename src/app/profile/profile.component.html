@@ -1,0 +1,25 @@
+<StackLayout class="content">
+
+
+    <DockLayout class="dock" stretchLastChild="true">
+        <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+        <Label dock="right" class="title" text ="프로필 수정"> </Label>
+    </DockLayout>
+     <Label class="subtitle" text="관심있는 분야" ></Label>
+      <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="onSelectTapped()" ></TextField>
+      <Label class="subtitle" text="관심있는 언어"></Label>
+      <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" ></TextField>
+      <Label class="subtitle" text="현재 개발 레벨"></Label>
+      <TextField col="1" class="name" hint="기초" style.placeholderColor="#A6A6A6"></TextField>
+
+
+
+      <Label (tap)="next()" class="next"  text="다음"></Label>
+
+
+
+
+
+   </StackLayout>
+
+

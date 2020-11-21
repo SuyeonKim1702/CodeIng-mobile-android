@@ -7,33 +7,70 @@
       <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
    </GridLayout>
 
-   <StackLayout class="stack-outer" dock="Top">
+   <StackLayout  dock="Top">
+      <StackLayout [ngClass]="{'stack-outer-no': !setting , 'stack-outer-yes': setting}">
       <Label class="title" text="프로필"></Label>
       <Label class="underline"> </Label>
       <Label class="text" textWrap="true" text="관심 언어와 분야를 설정해주세요. 더 많은 정보를 얻을 수 있습니다."> </Label>
       <Label class="btn" text="설정하기"></Label>
+      </StackLayout>
+
+      <StackLayout [ngClass]="{'stack-outer-no': setting , 'stack-outer-yes': !setting}">
+         <Label  class="title" text="프로필"></Label>
+         <Label class="underline2"> </Label>
+         <Label  (tap)="next()" class="modify" text="수정하기"></Label>
+         <Label class="nickname" [text]=nickname></Label>
+         <StackLayout orientation="horizontal">
+            <Label class="level" text="회원님의 현재 레벨: "></Label>
+            <Label class="level2" [text]=level></Label>
+         </StackLayout>
+
+         <WrapLayout class="wrap" orientation="horizontal">
+            <Label  *ngFor="let category of interest" [text]="category" class="w" ></Label >
+
+         </WrapLayout>
+
+      </StackLayout>
+
+
+
+         <Label class="empty"></Label>
+
+
+
+
+      <StackLayout orientation="horizontal" class="blank">
+         <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+         <Label  class="name" text="나의 관심 강의"></Label>
+      </StackLayout>
+      <Label class="empty2"></Label>
+
+
+      <StackLayout orientation="horizontal" class="blank">
+         <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+         <Label  class="name" text="내 리뷰 관리"></Label>
+      </StackLayout>
       <Label class="empty"></Label>
+      <StackLayout orientation="horizontal" class="blank">
+         <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+         <Label  class="name" text="회원 정보 수정"></Label>
+      </StackLayout>
+      <Label class="empty2"></Label>
 
-      <GridLayout class="grid" columns="23,*" rows="auto,auto">
-         <Label  col="0" row="0" class="icon" text ="&#xf058;"> </Label>
-         <Label col="1" row="0" class="name" text="나의 관심 강의"></Label>
-         <Label  col="0" row="1" class="icon" text ="&#xf058;"> </Label>
-         <Label col="1" row="1" class="name" text="내 리뷰 관리"></Label>
+      <StackLayout orientation="horizontal" class="blank">
+         <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+         <Label  class="name" text="결제 정보 관리"></Label>
+      </StackLayout>
+      <Label class="empty2"></Label>
 
-
-      </GridLayout>
-
-
-
-
-
-
-      </GridLayout>
-
-
+      <StackLayout orientation="horizontal" class="blank">
+         <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+         <Label  class="name" text="고객 센터 연락"></Label>
+      </StackLayout>
 
 
    </StackLayout>
+   <StackLayout class="st" dock="bottom"></StackLayout>
 
 
 
