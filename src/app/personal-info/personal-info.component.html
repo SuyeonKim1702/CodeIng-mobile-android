@@ -1,0 +1,20 @@
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
+    <StackLayout class="content">
+    <DockLayout class="dock" stretchLastChild="true" >
+        <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+        <Label dock="right" class="title" text ="회원정보 수정"> </Label>
+    </DockLayout>
+     <Label class="subtitle" text="비밀번호 확인" ></Label>
+      <TextField secure="true" class="name" hint="회원정보 변경을 위해 비밀번호를 입력해주세요" style.placeholderColor="#A6A6A6" [(ngModel)]="password"></TextField>
+
+            <Label (tap)="modify()" class="next"  text="수정하기"></Label>
+            </StackLayout>
+
+    <AbsoluteLayout class="dialog-wrapper">
+        <StackLayout class="dialog">
+            <Label class="text" textWrap="true" [text]=alert_message></Label>
+            <Button class="btn" text="확인" (tap)="closeDialog()"></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+
+</GridLayout>

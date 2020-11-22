@@ -81,4 +81,9 @@ public next(){
     this.router.navigate(['/profile']);
 }
 
+public personalinfo(){
+    this.router.navigate(['/personal-info']);
+
+}
+
 }

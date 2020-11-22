@@ -12,6 +12,7 @@
     border-radius: 3;
     border-color: #fc8f41;
     border-width: 1;
+    margin-top: 20;
 }
 
 .circle{
@@ -35,6 +36,7 @@
     font-size: 17;
     color: #34353a;
     margin-left: 20;
+    font-weight: bold;
 }
 
 .name{
@@ -66,8 +68,8 @@
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
-    height: 300;
-    margin-top: 100;
+    height: 150;
+    margin-top: 200;
     background-color: #ffffff;
     border-radius: 5;
 }
@@ -165,4 +167,14 @@
     background-color: #f3f5f9;
     border-top-right-radius: 10;
     border-top-left-radius: 10;
+
+}
+
+.name2{
+    font-size: 16;
+    margin-left: 20;
+    margin-bottom: 34;
+    margin-top: 20;
+    color: #fc8f41;
+
 }

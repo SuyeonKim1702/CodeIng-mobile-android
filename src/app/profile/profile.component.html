@@ -1,12 +1,32 @@
-<StackLayout class="content">
+<GridLayout rows="*">
+    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="350" >
+
+        <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="false" >
+            <StackLayout orientation="vertical" dock="Top">
+
+                <Label class="title-top" text="관심있는 분야"></Label>
+
+                <WrapLayout class="wrap" orientation="horizontal">
+                    <Label  *ngFor="let category of categoryList" [text]="category" (tap)="changeHighlight(categoryList.indexOf(category))"
+                            class="w" [ngClass]="{'clicked': state[categoryList.indexOf(category)] == true, 'category-list': state[categoryList.indexOf(category)] != true}"></Label >
+
+                </WrapLayout>
+
+            </StackLayout>
+
+        </DockLayout>
 
 
-    <DockLayout class="dock" stretchLastChild="true">
+
+
+        <DockLayout tkMainContent stretchLastChild="true">
+    <StackLayout dock="top">
+    <DockLayout class="dock" stretchLastChild="true" >
         <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
         <Label dock="right" class="title" text ="프로필 수정"> </Label>
     </DockLayout>
      <Label class="subtitle" text="관심있는 분야" ></Label>
-      <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="onSelectTapped()" ></TextField>
+      <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="onOpenDrawerTap()" ></TextField>
       <Label class="subtitle" text="관심있는 언어"></Label>
       <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" ></TextField>
       <Label class="subtitle" text="현재 개발 레벨"></Label>
@@ -14,12 +34,11 @@
 
 
 
-      <Label (tap)="next()" class="next"  text="다음"></Label>
+            <Label (tap)="next()" class="next"  text="다음"></Label>
+            </StackLayout>
+        </DockLayout>
 
 
 
-
-
-   </StackLayout>
-
-
+    </RadSideDrawer>
+</GridLayout>

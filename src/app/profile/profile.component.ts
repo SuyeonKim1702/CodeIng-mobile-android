@@ -1,5 +1,8 @@
 import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
-import {AShowType, MSOption, MultiSelect, ADismissType} from "nativescript-multi-select";
+import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
+
+
+
 
 @Component({
     selector: "ns-items",
@@ -7,59 +10,78 @@ import {AShowType, MSOption, MultiSelect, ADismissType} from "nativescript-multi
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+    @ViewChild(RadSideDrawerComponent, { static: false }) public drawerComponent: RadSideDrawerComponent;
 
-    private _MSelect: MultiSelect;
-    private predefinedItems: Array<any>;
-    public selectedItems: Array<any>;
+    categoryList=[];
+    categorys=[];
+    state: Array<boolean>;
+    state2: Array<boolean>;
 
 
-    constructor(private zone: NgZone) {
-        this._MSelect = new MultiSelect();
-        this.predefinedItems = ["moi-a", "moi-b"];
+    dialogOpen = false;
+    keyword="";
+
+
+
+    constructor() {
+
+
+
     }
 
     ngOnInit(): void {
+        this.categorys = [{1: 'web'}, {2: 'app'}, {3: 'backEnd'}, {4: 'fullStack'}, {5: 'game'}, {6: 'ai'}, {7: 'algorithm'}, {8: 'dataScience'},
+            {9: 'network'}, {10: 'computerScience'}, {11: 'language'}, {12: 'otherCategory'}];
+        this.categoryList =['web', 'app', 'backEnd','fullStack','game','ai','algorithm', 'dataScience',
+            'network', 'computerScience','language','otherCategory'];
 
-}
+        this.state =[];
+        this.state2 =[];
 
-    public onSelectTapped(): void {
-        const options: MSOption = {
-            title: "Please Select",
-            selectedItems: this.predefinedItems,
-            items: [
-                { name: "A", value: "moi-a" },
-                { name: "B", value: "moi-b" },
-                { name: "C", value: "moi-c" },
-                { name: "D", value: "moi-d" },
-            ],
-            bindValue: 'value',
-            displayLabel: 'name',
-            onConfirm: selectedItems => {
-                this.zone.run(() => {
-                    this.selectedItems = selectedItems;
-                    this.predefinedItems = selectedItems;
-                    console.log("SELECTED ITEMS => ", selectedItems);
-                })
-            },
-            onItemSelected: selectedItem => {
-                console.log("SELECTED ITEM => ", selectedItem);
-            },
-            onCancel: () => {
-                console.log('CANCEL');
-            },
-            android: {
-                titleSize: 25,
+        for(var i=0;i<80;i++) this.state.push(false);
+        for(var i=0;i<80;i++) this.state2.push(false);
 
-            },
-            ios: {
-
-                showType: AShowType.TypeBounceIn
-            }
-        };
-
-        this._MSelect.show(options);
     }
 
+    onOpenDrawerTap() {
+        this.drawerComponent.sideDrawer.showDrawer();
+    }
+    onCloseDrawerTap() {
+        this.drawerComponent.sideDrawer.closeDrawer();
+    }
+
+
+    public onSelectTapped(): void {
+
+    }
+
+
+    showDialog() {
+        this.dialogOpen = true;
+
+    }
+
+    closeDialog() {
+        this.dialogOpen = false;
+    }
+
+    onTextChanged(args){
+
+
+
+    }
+
+    onItemTap(args){
+
+    }
+
+    //얘를 눌렀을 때, api 호출
+    changeHighlight(index: number){
+
+        this.state[index] = !this.state[index];
+
+
+    };
 
 
 
@@ -67,5 +89,14 @@ export class ProfileComponent implements OnInit {
 public next(){
 
 }
+
+    redo(){
+
+    }
+
+    //close & 검색
+    complete() {
+    }
+
 
 }

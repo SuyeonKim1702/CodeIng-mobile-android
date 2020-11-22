@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import {Component, NgModule} from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "@nativescript/angular";
 
@@ -16,6 +16,8 @@ import {Signup3Component} from "./login/signup3.component";
 import {Signup4Component} from "./login/signup4.component";
 import {ItemsComponent} from "./item/items.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {PersonalInfoComponent} from "./personal-info/personal-info.component";
+import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
 
 const routes: Routes = [
 
@@ -33,7 +35,10 @@ const routes: Routes = [
     { path: "class", component: ClassComponent},
     { path: "my-page", component: MypageComponent},
     { path: "lecture/:lectureIdx", component: ItemsComponent},
-    { path: "profile", component: ProfileComponent}
+    { path: "profile", component: ProfileComponent},
+    { path: "personal-info", component: PersonalInfoComponent},
+    { path: "personal-info2", component: PersonalInfo2Component}
+
 
 
 ];

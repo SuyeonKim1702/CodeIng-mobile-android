@@ -3,7 +3,7 @@
       <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
       <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
       <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
-      <Label [nsRouterLink]="['/favorite']" pageTransition="none" row="0" col="3" text="클래"></Label>
+      <Label [nsRouterLink]="['/favorite']" pageTransition="none" row="0" col="3" text="클래스"></Label>
       <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
    </GridLayout>
 
@@ -53,7 +53,7 @@
       <Label class="empty"></Label>
       <StackLayout orientation="horizontal" class="blank">
          <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
-         <Label  class="name" text="회원 정보 수정"></Label>
+         <Label  class="name" text="회원 정보 수정" (tap)="personalinfo()"></Label>
       </StackLayout>
       <Label class="empty2"></Label>
 

@@ -19,6 +19,9 @@ import {Signup2Component} from "./login/signup2.component";
 import {Signup3Component} from "./login/signup3.component";
 import {Signup4Component} from "./login/signup4.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {NativeScriptUIListViewModule} from "nativescript-ui-listview/angular";
+import {PersonalInfoComponent} from "./personal-info/personal-info.component";
+import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import {ProfileComponent} from "./profile/profile.component";
         HttpClientModule,
         CommonModule,
         NativeScriptUISideDrawerModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        NativeScriptUIListViewModule
 
 
     ],
@@ -51,7 +55,9 @@ import {ProfileComponent} from "./profile/profile.component";
         Signup3Component,
         Signup4Component,
         ItemsComponent,
-        ProfileComponent
+        ProfileComponent,
+        PersonalInfoComponent,
+        PersonalInfo2Component
 
     ],
     providers: [],
