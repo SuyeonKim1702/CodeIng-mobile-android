@@ -1,5 +1,7 @@
 import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
+import {ProfileService} from "./profile.service";
+import {getString} from "@nativescript/core/application-settings";
 
 
 
@@ -21,15 +23,53 @@ export class ProfileComponent implements OnInit {
     dialogOpen = false;
     keyword="";
 
+    level: number;
+    interestCategory = [];
+    interestSubcategory = [];
+    cateState: boolean;
+    subcateState: boolean;
 
 
-    constructor() {
 
+    constructor(private profileService: ProfileService) {
 
 
     }
 
     ngOnInit(): void {
+        this.cateState = false;
+        this.subcateState = false;
+
+        const jwt: string = getString("JWT");
+
+        this.profileService.getProfile(jwt).subscribe(
+            data =>{
+
+                this.level = data['result']['level'];
+                this.interestCategory = data['result']['category'];
+                console.log(this.interestCategory);
+                this.interestSubcategory = data['result']['subcategory'];
+
+
+                //관심 카테고리 설정되어 있을  - visibility 변경
+                if(this.interestCategory.length>0){
+                    this.cateState = true;
+
+
+
+                }
+
+
+
+
+            },
+            error => console.log(error)
+        );
+
+
+
+
+
         this.categorys = [{1: 'web'}, {2: 'app'}, {3: 'backEnd'}, {4: 'fullStack'}, {5: 'game'}, {6: 'ai'}, {7: 'algorithm'}, {8: 'dataScience'},
             {9: 'network'}, {10: 'computerScience'}, {11: 'language'}, {12: 'otherCategory'}];
         this.categoryList =['web', 'app', 'backEnd','fullStack','game','ai','algorithm', 'dataScience',

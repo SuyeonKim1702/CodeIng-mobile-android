@@ -9,33 +9,41 @@
     color: #ffc30f;
     margin-right: -8;
 
+
+
 }
 
 .yellow2{
     color: #ffc30f;
 
+
 }
 
 .default2{
     color: #efefef;
+
 }
 
 .default{
     color: #efefef;
     margin-right: -8;
+
+
+
 }
 
 .searchBt{
     width: 65;
     height: 23;
     font-size: 8;
-    color: #34353a;
+    font-color: #34353a;
     border-radius: 80;
     outline-color: #34353a;
     border-width: 1;
     text-align: center;
     text-align-all: center;
     margin-top: -5;
+    font-family: Roboto-M;
 
 }
 
@@ -43,22 +51,23 @@
     margin-bottom: -3;
     font-size: 12;
     color: #4d4d4d;
-    font-family: Helvetica;
+    font-family: Roboto-M;
+
 }
 
 .lecName{
     margin-top: -3;
     max-bottom: -3;
     font-size: 13;
-    color: #4d4d4d;
-    font-family: NotoSansCJKkr-Medium;
+    color: #34353a;
+    font-family: NotoSansCJKkr;
 }
 
 .price{
     margin-top: -3;
     font-size: 12;
     color: #999999;
-    font-family: NotoSansCJKkr-Medium;
+    font-family: Montserrat;
 }
 
 .grid{
@@ -69,8 +78,8 @@
 .top{
     margin: 16;
     border-radius: 80;
-    border-color: #999999;
-    outline-color: #999999;
+    border-color: #f3f5f9;
+    outline-color: #f3f5f9;
     border-width: 1;
 }
 
@@ -79,38 +88,42 @@
     alignment: center;
     margin-left:10 ;
     margin-top:10;
+    color: #a6a6a6;
 
 }
 
 .searchword{
-    color: #999999;
+    color: #34353a;
     font-size: 14;
     border-bottom-color: transparent;
     alignment: bottom;
     margin-bottom: 3;
+    font-weight: bold;
 
 }
 
 .filter{
-    color: #efefef;
+    color: #1c7ced;
     font-family: NotoSansCJKkr-Medium;
-    font-size: 14;
+    font-size: 17;
     margin-left: 32;
     margin-bottom: 17;
+    font-weight: bold;
 }
 .title{
-    margin-top:30;
+    margin-top: 5;
     margin-bottom: 30;
     text-align: center;
-    color: #ffffff;
+    color: #34353a;
     font-family: NotoSansCJKkr-Medium;
-    font-size: 15;
+    font-size: 17;
+    font-weight: bold;
 }
 
 .redoChoose{
     font-family: NotoSansCJKkr-Bold;
-    font-size: 13;
-    color: #efefef;
+    font-size: 14;
+    color: #333333;
     font-weight: bold;
     text-align: center;
 
@@ -120,12 +133,13 @@
 .completeChoose{
     font-family: NotoSansCJKkr-Bold;
     font-weight: bold;
-    font-size: 13;
-    color: #34353a;
-    background-color: #efefef;
-    border-radius: 29;
+    font-size: 14;
+    color: #efefef;
+    background-color: #fc8f41;
+    border-radius: 3;
     text-align: center;
     height: 80;
+
 }
 
 .drawerBottom{
@@ -136,17 +150,17 @@
 }
 
 .outerDock{
-    background-color: #34353a;
+    color: #f3f5f9;
     border-top-right-radius: 10;
     border-top-left-radius: 10;
 }
 
 .slider{
     margin-left: 32;
-    color: #efefef;
+    background-color: #1c7ced;
     size: 5;
     margin-right: 32;
-    background-color: #efefef;
+    color: #ffffff;
     tab-size: 13;
     font-size: 13;
     background-size: 13;
@@ -155,16 +169,16 @@
 }
 
 .cost{
-    color: #efefef;
+    color: #737373;
     font-family: NotoSansCJKkr-Medium;
-    font-size: 12;
-    margin-right:45;
+    font-size: 14;
+    margin-right:30;
 }
 
 .cost-last{
-    color: #efefef;
+    color: #737373;
     font-family: NotoSansCJKkr-Medium;
-    font-size: 12;
+    font-size: 14;
 
 
 }

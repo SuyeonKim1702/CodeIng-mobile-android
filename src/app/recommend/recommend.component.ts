@@ -1,6 +1,17 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {GestureEventData} from "@nativescript/core";
 import {OtherService} from "../lecture/other.service";
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "@nativescript/core/application-settings";
 
 
 @Component({
@@ -11,12 +22,16 @@ import {OtherService} from "../lecture/other.service";
 export class RecommendComponent implements OnInit {
 
     recLectures: any = [];
+    jwt: string;
 
-    constructor(private otherService: OtherService) { }
+    constructor(private otherService: OtherService) {
+        this.jwt = getString('JWT');
+
+    }
 
     ngOnInit(): void {
 
-        this.otherService.getRecommendContent().subscribe(
+        this.otherService.getRecommendContent(this.jwt).subscribe(
             data =>{
                 this.recLectures = data['result'];
             },

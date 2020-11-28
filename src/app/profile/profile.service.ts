@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Injectable({
     providedIn: "root"
 })
-export class ItemService {
+export class ProfileService {
 
     baseUrl = 'https://www.coconerd.tk';
     headers = new HttpHeaders({
@@ -15,17 +15,22 @@ export class ItemService {
 
     constructor(private httpClient:HttpClient) { }
 
+    getProfile(jwt: string) {
 
-    getDetail(index: number) {
-        return this.httpClient.get(this.baseUrl+'/lectures/'+index, {
+        this.headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': jwt
+        });
+
+        return this.httpClient.get(this.baseUrl+'/profile',{
             headers: this.headers});
 
     }
 
-    getQnas(index: number, page: number) {
-        return this.httpClient.get(this.baseUrl+'/lectures/'+index+'/qna', {
+    getSubcategoryList(categoryIdx: number) {
+        return this.httpClient.get(this.baseUrl+'/subcategory-list', {
             params: {
-                page: page+'',
+                categoryIdx: categoryIdx+'',
             },
             headers: this.headers});
 
@@ -33,3 +38,4 @@ export class ItemService {
 
 
 }
+

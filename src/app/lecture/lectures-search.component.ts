@@ -4,6 +4,8 @@ import {lectureCard} from "./lectureCard";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {EventData, getViewById, Slider} from "@nativescript/core";
 import { Page } from "@nativescript/core";
+import { RouterExtensions} from "@nativescript/angular";
+
 
 
 @Component({
@@ -28,7 +30,7 @@ export class LecturesSearchComponent implements OnInit {
 
 
 
-    constructor(private lectureService: LectureService,private pg: Page) {
+    constructor(private lectureService: LectureService,private pg: Page, private routerExtensions: RouterExtensions) {
         this.lectures = [];
         this.counter = 0;
         this.page = 1;
@@ -43,7 +45,7 @@ export class LecturesSearchComponent implements OnInit {
         this.check=false;
         this.rating = 0;
         this.level= 0;
-        this.price =0;
+        this.price =-1;
         this.searchword = "";
         this.lectureService.getLectures(1, this.searchword, this.price, this.level, this.rating ).subscribe(
             data =>{
@@ -56,6 +58,20 @@ export class LecturesSearchComponent implements OnInit {
             },
             error => console.log(error)
         );
+
+
+
+        this.lectureService.posttest().subscribe(
+            data =>{
+               console.log(data)
+
+            },
+            error => console.log(error)
+        );
+
+
+
+
 
     }
 
@@ -75,9 +91,7 @@ export class LecturesSearchComponent implements OnInit {
         );
     }
 
-    public onItemTap(args) {
-        console.log("------------------------ ItemTapped: " + args.index);
-    }
+
 
     onOpenDrawerTap() {
         this.drawerComponent.sideDrawer.showDrawer();
@@ -145,6 +159,12 @@ export class LecturesSearchComponent implements OnInit {
 
     }
 
+
+    itemClick(args){
+        //console.log(args.object.idx);
+        this.routerExtensions.navigate(['/lecture',args.object.idx]);
+
+    }
 
 
 

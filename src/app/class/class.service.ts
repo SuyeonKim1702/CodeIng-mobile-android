@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Injectable({
     providedIn: "root"
 })
-export class OtherService {
+export class ClassService {
 
     baseUrl = 'https://www.coconerd.tk';
     headers = new HttpHeaders({
@@ -15,20 +15,47 @@ export class OtherService {
 
     constructor(private httpClient:HttpClient) { }
 
-    getOverallRanking() {
-        return this.httpClient.get(this.baseUrl+'/overall-ranking', {headers: this.headers});
+    getAllClass(page: number) {
+        return this.httpClient.get(this.baseUrl+'/classes', {
+            params: {
+                page: page+''
+            },
+
+            headers: this.headers});
 
     }
 
-    getRecommendContent(jwt: string){
+
+    getMyClass(page: number, jwt: string) {
         this.headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': jwt
         });
 
-        return this.httpClient.get(this.baseUrl+'/api/user_recommend', {headers: this.headers});
+        return this.httpClient.get(this.baseUrl+'/my-classes', {
+            params: {
+                page: page+''
+            },
+
+            headers: this.headers});
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

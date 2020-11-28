@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class RankingService {
 
-    baseUrl = 'http://3.34.74.250';
+    baseUrl = 'https://www.coconerd.tk';
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
@@ -21,7 +21,7 @@ export class RankingService {
             params: {
                 page: page+'',
                 categoryIdx: categoryIdx+'',
-                subCategoryIdx: subcategoryIdx+''
+                subcategoryIdx: subcategoryIdx+''
             },
             headers: this.headers});
 

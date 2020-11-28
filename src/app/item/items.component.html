@@ -8,7 +8,7 @@
         <Label  textWrap="true" class="title" [text]="info['lectureName']"></Label>
         <StackLayout  id="stack">
             <Label  textWrap="true" class="subtitle" text="Pass the AWS Solutions Architect Associate Certification SAA-C02. Complete Amazon Web Services Cloud training!"></Label>
-            <Image  class="thumb" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png" stretch="aspectFill"></Image>
+            <Image  class="thumb" [src]="info['thumbUrl']" stretch="aspectFill"></Image>
 
         <DockLayout class="dock2" stretchLastChild="false">
             <Label dock="right" class="rating-text" [text]="info['rating']"> </Label>

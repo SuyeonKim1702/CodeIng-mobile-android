@@ -31,8 +31,8 @@ export class RankingComponent implements OnInit {
 
     constructor(private rankingService: RankingService) {
         this.page=1;
-        this.categoryIdx=1;
-        this.subcategoryIdx=1;
+        this.categoryIdx=0;
+        this.subcategoryIdx=0;
 
     }
 
@@ -44,7 +44,7 @@ export class RankingComponent implements OnInit {
         this.categoryList =[];
         this.subcategoryList=[];
         this.lectures = [];
-        this.categoryList = ['웹 Frontend','앱 Frontend','Backend','Full Stack','게임','ai','알고리즘','데이터사이언스','네트워크/보안','컴퓨터 과학','언어','기타'];
+        this.categoryList = ['전체 선택','웹 Frontend','앱 Frontend','Backend','Full Stack','게임','ai','알고리즘','데이터사이언스','네트워크/보안','컴퓨터 과학','언어','기타'];
         for(var i=0;i<80;i++) this.state.push(false);
         for(var i=0;i<80;i++) this.state2.push(false);
 
@@ -59,7 +59,7 @@ export class RankingComponent implements OnInit {
             error => console.log(error)
         );
 
-        this.rankingService.getSubcategoryList(1).subscribe(
+        this.rankingService.getSubcategoryList(0).subscribe(
             data =>{
                 var tmp = data['result'];
                 for(var i =0; i<tmp.length; i++){
@@ -90,7 +90,7 @@ export class RankingComponent implements OnInit {
     }
 
     public onItemTap(args) {
-        console.log("------------------------ ItemTapped: " + args.index);
+
     }
 
     onOpenDrawerTap() {
@@ -106,10 +106,11 @@ export class RankingComponent implements OnInit {
         this.prev = index;
         this.subcategoryList =[];
 
-
-        this.rankingService.getSubcategoryList(index+1).subscribe(
+        //if(index == 0) i
+        this.rankingService.getSubcategoryList(index).subscribe(
             data =>{
                 var tmp = data['result'];
+                this.subcategoryList.push(new subcategoryCard(0,'전체 선택'));
                 for(var i =0; i<tmp.length; i++){
                     this.subcategoryList.push(new subcategoryCard(tmp[i]['subcategoryIdx'],tmp[i]['subcategoryName']));
                 }
@@ -153,7 +154,7 @@ export class RankingComponent implements OnInit {
     //close & 검색
     complete(){
         this.onCloseDrawerTap();
-        this.categoryIdx= this.prev+1;
+        this.categoryIdx= this.prev;
         this.subcategoryIdx = this.subcategoryList[this.prev2].subcategoryIdx;
         this.lectures = [];
         this.title = this.categoryList[this.prev] +" Ranking";

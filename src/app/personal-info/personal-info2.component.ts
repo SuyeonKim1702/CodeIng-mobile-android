@@ -3,6 +3,7 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {getString} from "@nativescript/core/application-settings";
 import {ProfileService} from "../mypage/mypage.service";
 import {PersonalInfoService} from "./personal-info.service";
+import { RouterExtensions} from "@nativescript/angular";
 
 
 
@@ -31,7 +32,7 @@ export class PersonalInfo2Component implements OnInit {
 
 
 
-    constructor(private personalInfoService: PersonalInfoService) {
+    constructor(private personalInfoService: PersonalInfoService, private routerExtensions: RouterExtensions) {
         this.alert_message="";
         this.jwt = getString("JWT");
 
@@ -77,14 +78,19 @@ export class PersonalInfo2Component implements OnInit {
 
 
     modify(){
-        if(this.password.length == 0){
-            this.alert_message = "비밀번호를 입력해주세요.";
-            this.showDialog();
+
+        this.personalInfoService.patchPersonalInfo(this.jwt, this.email, this.name, this.nickname, this.phonenumber, this.password, this.passwordConfirm).subscribe(
+            data => {
+
+                this.routerExtensions.navigate(['/my-page'], { clearHistory: true });
 
 
-        }else{ // api 호출
+            },
+            error => {
+                console.log(error);
 
-        }
+            }
+        );
 
 
 

@@ -13,12 +13,12 @@
 <ScrollView orientation="vertical" class="card">
 <stackLayout orientation="vertical" child>
     <DockLayout>
-        <Image  src="~/image/codeing.png" stretch="aspectFill" dock="Top"></Image>
+        <Image  dock="left" class="logo" src="https://firebasestorage.googleapis.com/v0/b/codeing-9f456.appspot.com/o/logo.png?alt=media&token=e63f86e9-dfe1-4454-ad55-af5ebb425b35" stretch="aspectFill"></Image>
 
-        <GridLayout class="top" columns="40, *", rows="40" dock="Top">
-            <Label  row="0" col="0" class="fas h2 searchIcon" text ="&#xf002;"> </Label>
-            <Label [nsRouterLink]="['/lectures/search']" class="searchword" row="0" col="1" text="검색어를 입력해주세요"></Label>
 
+        <GridLayout class="top" columns="25, *", rows="40" dock="right">
+            <Label  row="0" col="0" class="fas h3 searchIcon" text ="&#xf002;"> </Label>
+            <TextField  [nsRouterLink]="['/lectures/search']" class="searchword" row="0" col="1" style.placeholderColor="#A6A6A6" editable= "false" hint="검색어를 입력해 주세요"></TextField>
         </GridLayout>
 
     </DockLayout>
@@ -26,14 +26,23 @@
     <Label class="ad"></Label>
 
 
-    <Label text="프로그램 주제별 랭킹" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>
+    <Label text="오늘의 추천 강의" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>
 <ScrollView orientation="horizontal" class="card">
 <StackLayout orientation="horizontal" class="cards" >
 
-    <StackLayout class="each-card" *ngFor="let lecture of allLectures" orientation="vertical" width="100">
-        <Image class="rank" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png"   stretch="aspectFill"></Image>
-    <Label class="site" [text]="lecture['siteName']"></Label>
+    <StackLayout class="each-card" *ngFor="let lecture of recLectures" orientation="vertical" [idx]="lecture['lectureIdx']" (tap)="itemClick($event)" >
+        <Image class="thumb" [src]="lecture['thumbUrl']"  stretch="aspectFill"></Image>
+    <Label class="site" [text]="lecture['siteinfo']"></Label>
         <Label class="lecName" [text]="lecture['lectureName']"></Label>
+
+        <StackLayout orientation="horizontal" >
+            <Label class="rating-text" [text]= "lecture['rating']"></Label>
+            <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': lecture['rating'] > rate, 'default': lecture['rating'] <= rate}"> </Label>
+        </StackLayout>
+
+        <Label class="price" [text]="lecture['price']"></Label>
+
+
 
     </StackLayout>
 
@@ -41,15 +50,30 @@
 </StackLayout>
 </ScrollView>
 
-    <Label text="오늘의 추천 컨텐츠"  class="title" horizontalAlignment="left" fontAttributes="Bold" textWrap="true" ></Label>
-    <WrapLayout class="wrap" orientation="horizontal">
+    <Label text="코드잉 인기 강의" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>
+    <ScrollView orientation="horizontal" class="card">
+        <StackLayout orientation="horizontal" class="cards" >
 
-        <StackLayout class="rec" *ngFor="let lecture of recLectures" orientation="vertical">
-            <Image class="rec-img" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png" stretch="aspectFill"></Image>
-            <Label class="site" [text]="lecture['lectureIdx']"></Label >
-            <Label class="lecName" [text]="lecture['lectureName']"></Label >
+            <StackLayout class="each-card2" *ngFor="let lecture of allLectures" orientation="vertical" [idx]="lecture['lectureIdx']" (tap)="itemClick($event)">
+                <Image class="thumb2" [src]="lecture['thumbUrl']"  stretch="aspectFill"></Image>
+                <Label class="site" [text]="lecture['siteinfo']"></Label>
+                <Label textwrap="true" class="lecName" [text]="lecture['lectureName']"></Label>
+
+                <StackLayout orientation="horizontal" >
+                    <Label class="rating-text" [text]= "lecture['rating']"></Label>
+                    <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': lecture['rating'] >= rate, 'default': lecture['rating'] < rate}"> </Label>
+                </StackLayout>
+
+                <Label class="price" [text]="lecture['price']"></Label>
+
+
+
+            </StackLayout>
+
+
         </StackLayout>
-    </WrapLayout>
+    </ScrollView>
+
 
 
 </stackLayout>

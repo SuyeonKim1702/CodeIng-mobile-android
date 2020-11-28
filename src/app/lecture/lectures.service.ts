@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class LectureService {
 
-    baseUrl = 'http://3.34.74.250';
+    baseUrl = 'https://www.coconerd.tk';
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
@@ -28,6 +28,35 @@ export class LectureService {
             headers: this.headers});
 
     }
+
+
+
+
+
+
+    posttest(){
+
+        this.headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRkZDE3MDJAbmF2ZXIuY29tIiwiZXhwaXJlIjoxNjA4MzEwNjcwfQ.-fkh_2lnjwykjG8M1eQqRTcO7l-xpswBqeQ3uYbTcmg'
+        });
+
+
+        return this.httpClient.patch(this.baseUrl+'/personal-info',JSON.stringify(
+            {'totalrating':5, 'teachingpowerrating': 3, 'pricerating': 3, 'recommend': 'Y', 'improvement': "fdf", 'pros': [1,2], 'cons': [4,5]
+            }),
+            {headers: this.headers});
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

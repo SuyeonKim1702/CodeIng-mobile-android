@@ -19,7 +19,7 @@
 
                 </WrapLayout>
 
-                <Label class="category" text="세부 카테고리"></Label>
+                <Label class="category2" text="세부 카테고리"></Label>
 
                <ScrollView orientation="vertical">
                 <WrapLayout class="wrap"  orientation="horizontal" >
@@ -36,7 +36,7 @@
                 <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
                 <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
                 <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
-                <Label [nsRouterLink]="['/favorite']" pageTransition="none" row="0" col="3" text="즐겨찾기"></Label>
+                <Label [nsRouterLink]="['/class']" pageTransition="none" row="0" col="3" text="클래스"></Label>
                 <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
             </GridLayout>
             <GridLayout class="search-set" columns="40, *, 40", rows="40" dock="Top">
@@ -54,7 +54,7 @@
             <ListView dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
                 <ng-template let-item="item" let-i="index">
                     <StackLayout [nsRouterLink]="['/lecture',item['lectureIdx']]" class="outer-stack">
-                        <Image class="rank" src="https://www.nativescript.org/images/default-source/Blogs/ns-logo_share_600x315.png" stretch="aspectFill"></Image>
+                        <Image class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
                         <StackLayout orientation="vertical">
                             <StackLayout class="up" orientation="horizontal">
                                 <Label class="circle-small" ></Label>

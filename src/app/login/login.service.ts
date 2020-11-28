@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class LoginService {
 
-    baseUrl = 'http://3.34.74.250';
+    baseUrl = 'https://www.coconerd.tk';
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });

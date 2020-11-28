@@ -15,12 +15,12 @@
     <TextField class="name" hint="위의 비밀번호를 한번 더 입력해주세요" secure="true" style.placeholderColor="#A6A6A6" [(ngModel)]="passwordConfirm"></TextField>
 
     <Label class="subtitle" text="이름"></Label>
-    <TextField col="1" class="name" [hint]="name" style.placeholderColor="#4D4D4D" ></TextField>
+    <TextField col="1" class="name" [hint]="name" [(ngModel)]="name" style.placeholderColor="#4D4D4D" ></TextField>
     <Label class="subtitle" text="닉네임"></Label>
-    <TextField col="1" class="name" [hint]="nickname" style.placeholderColor="#4D4D4D"></TextField>
+    <TextField col="1" class="name" [hint]="nickname" [(ngModel)]="nickname"  style.placeholderColor="#4D4D4D"></TextField>
 
     <Label class="subtitle" text="전화번호"></Label>
-    <TextField col="1" class="name" [hint]="phonenumber" style.placeholderColor="#4D4D4D"></TextField>
+    <TextField col="1" class="name" [hint]="phonenumber" [(ngModel)]="phonenumber" style.placeholderColor="#4D4D4D"></TextField>
 
 
 

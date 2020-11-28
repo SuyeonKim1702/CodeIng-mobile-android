@@ -1,10 +1,10 @@
 export class subcategoryCard {
 
     subcategoryIdx: number;
-    subcategoryName: number;
+    subcategoryName: string;
 
 
-    constructor(subcategoryIdx: number, subcategoryName: number ){
+    constructor(subcategoryIdx: number, subcategoryName: string ){
        this.subcategoryIdx = subcategoryIdx;
        this.subcategoryName = subcategoryName;
     }

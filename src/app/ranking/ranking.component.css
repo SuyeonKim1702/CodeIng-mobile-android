@@ -107,6 +107,19 @@
     margin-left: 32;
     margin-bottom: 17;
 }
+
+.category2{
+    color: #1c7ced;
+    font-family: NotoSansCJKkr;
+    font-weight: bold;
+    font-size: 17;
+    margin-left: 32;
+    margin-bottom: 17;
+    margin-top: 10;
+}
+
+
+
 .redoChoose{
     font-family: NotoSansCJKkr;
     font-size: 14;
@@ -237,7 +250,7 @@
     font-size: 17;
     text-align: center;
     font-weight: bold;
-    margin-top: -10;
+    margin-top: 20;
     margin-bottom: 39;
 }
 

@@ -5,7 +5,7 @@ import {
 
 } from "@nativescript/core/application-settings";
 
-import {ProfileService} from "./mypage.service";
+import {MypageService} from "./mypage.service";
 import {Router} from "@angular/router";
 
 
@@ -22,14 +22,14 @@ export class MypageComponent implements OnInit {
     level: string;
     interest: any;
 
-    constructor(private profileService: ProfileService, private router: Router) { }
+    constructor(private mypageService: MypageService, private router: Router) { }
 
     ngOnInit(): void {
         this.setting = false;
         this.interest = [];
         const jwt: string = getString("JWT");
 
-        this.profileService.getProfile(jwt).subscribe(
+        this.mypageService.getProfile(jwt).subscribe(
             data =>{
                 this.profile = data['result'];
                 this.level = data['result']['level'];
@@ -54,7 +54,7 @@ export class MypageComponent implements OnInit {
                 if(this.setting){
 
                     //회원 정보 호출
-                    this.profileService.getPersonalInfo(jwt).subscribe(
+                    this.mypageService.getPersonalInfo(jwt).subscribe(
                         data =>{
                             this.nickname = data['result']['nickname'];
 
@@ -74,16 +74,16 @@ export class MypageComponent implements OnInit {
             error => console.log(error)
         );
 
-}
+    }
 
 
-public next(){
-    this.router.navigate(['/profile']);
-}
+    public next(){
+        this.router.navigate(['/profile']);
+    }
 
-public personalinfo(){
-    this.router.navigate(['/personal-info']);
+    public personalinfo(){
+        this.router.navigate(['/personal-info']);
 
-}
+    }
 
 }

@@ -6,9 +6,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Injectable({
     providedIn: "root"
 })
-export class ProfileService {
+export class MypageService {
 
-    baseUrl = 'http://3.34.74.250';
+    baseUrl = 'https://www.coconerd.tk';
     headers: HttpHeaders;
 
     constructor(private httpClient:HttpClient) {

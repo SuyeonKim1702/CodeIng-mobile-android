@@ -3,9 +3,7 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {getString} from "@nativescript/core/application-settings";
 import {ProfileService} from "../mypage/mypage.service";
 import {PersonalInfoService} from "./personal-info.service";
-import {Router} from "@angular/router";
-
-
+import { RouterExtensions} from "@nativescript/angular";
 
 
 @Component({
@@ -30,7 +28,7 @@ export class PersonalInfoComponent implements OnInit {
 
 
 
-    constructor(private personalInfoService: PersonalInfoService, private router: Router) {
+    constructor(private personalInfoService: PersonalInfoService, private routerExtensions: RouterExtensions) {
         this.alert_message="";
         this.jwt = getString("JWT");
         this.password="";
@@ -66,7 +64,7 @@ export class PersonalInfoComponent implements OnInit {
                 data => {
                     if(data['code'] == 200){
                         //다음 페이지로 이동
-                        this.router.navigate(['/personal-info2']);
+                        this.routerExtensions.navigate(['/personal-info2'], { clearHistory: true });
                     }else{
                         this.alert_message = "비밀번호가 일치하지 않습니다.";
                         this.showDialog();
