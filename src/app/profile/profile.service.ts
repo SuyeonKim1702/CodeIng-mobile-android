@@ -37,5 +37,40 @@ export class ProfileService {
     }
 
 
+    getCategoryList() {
+        return this.httpClient.get(this.baseUrl+'/category-list', {
+            headers: this.headers});
+
+    }
+
+
+
+
+    patchProfile(jwt: string, birthday: string, school: string, job: string, gender: string, category: Array<number> , subCategory: Array<number> ,level:number) {
+
+        this.headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': jwt
+        });
+
+        return this.httpClient.patch(this.baseUrl+'/profile',JSON.stringify({
+
+            "birthday":birthday,
+            "school":school,
+            "job":job,
+            "gender":gender,
+            "subcategory":subCategory,
+            "category":category,
+            "level": level
+
+        }),
+            {
+
+            headers: this.headers});
+    }
+
+
+
+
 }
 

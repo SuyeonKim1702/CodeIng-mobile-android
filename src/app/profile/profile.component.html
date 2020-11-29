@@ -1,19 +1,61 @@
 <GridLayout rows="*">
-    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="350" >
+    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="380" >
 
-        <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="false" >
-            <StackLayout orientation="vertical" dock="Top">
+        <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="true" >
+
+            <DockLayout [ngClass]="{'visible': check1 ,'invisible': !check1}"   dock="Top" stretchLastChild="true">
+            <StackLayout  orientation="vertical" dock="Top">
 
                 <Label class="title-top" text="관심있는 분야"></Label>
 
                 <WrapLayout class="wrap" orientation="horizontal">
 
-                    <Label  *ngFor="let category of categoryList" [text]="category" (tap)="changeHighlight(categoryList.indexOf(category))"
-                            class="w" [ngClass]="{'clicked': state[categoryList.indexOf(category)] == true, 'category-list': state[categoryList.indexOf(category)] != true}"></Label >
+                    <Label  *ngFor="let category of categoryList" [text]="category['categoryName']" (tap)="changeHighlight(category['categoryIdx'])"
+                            class="w" [ngClass]="{'clicked': state[category['categoryIdx']] == true, 'category-list': state[category['categoryIdx']] != true}"></Label >
 
                 </WrapLayout>
 
+
             </StackLayout>
+
+            <GridLayout class="drawerBottom" columns="*,*" dock="Bottom">
+                <Label class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo()"></Label>
+                <Label class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete()"></Label>
+            </GridLayout>
+            </DockLayout>
+
+
+
+            <DockLayout   [ngClass]="{'visible': check2 ,'invisible': !check2}" dock="Top" stretchLastChild="true">
+                <StackLayout  orientation="vertical" dock="Top">
+
+                    <Label class="title-top" text="관심있는 언어"></Label>
+
+                    <ScrollView  class="scroll" orientation="vertical" >
+
+                        <WrapLayout class="wrap" orientation="horizontal">
+
+                            <Label  *ngFor="let subcategory of subcategoryList" [text]="subcategory['subcategoryName']" (tap)="changeHighlight2(subcategory['subcategoryIdx'])"
+                                    class="w" [ngClass]="{'clicked': state2[subcategory['subcategoryIdx']] == true, 'category-list': state2[subcategory['subcategoryIdx']] != true}"></Label >
+
+                        </WrapLayout>
+                    </ScrollView>
+
+                </StackLayout>
+
+                <GridLayout class="drawerBottom" columns="*,*" dock="Bottom">
+                    <Label class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo2()"></Label>
+                    <Label class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete2()"></Label>
+                </GridLayout>
+
+
+
+
+
+            </DockLayout>
+
+
+
 
         </DockLayout>
 
@@ -26,27 +68,80 @@
         <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
         <Label dock="right" class="title" text ="프로필 수정"> </Label>
     </DockLayout>
+        <StackLayout orientation="horizontal">
      <Label class="subtitle" text="관심있는 분야" ></Label>
-      <TextField [ngClass]="{'cate-no': !cateState , 'cate-yes': cateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="onOpenDrawerTap()" ></TextField>
+            <Label class="choose" text="선택하기" (tap)="drawer1()"></Label>
+        </StackLayout>
+      <TextField [ngClass]="{'cate-no': !cateState , 'cate-yes': cateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="drawer1()" ></TextField>
 
         <WrapLayout [ngClass]="{'wrap-no': !cateState , 'wrap-yes': cateState }" orientation="horizontal">
             <StackLayout *ngFor="let tag of interestCategory" orientation="horizontal">
             <Label class="tag" [text]="tag['categoryName']"></Label >
-                <Label class="delete" text="X"></Label>
+                <Label (tap)="onOpenDrawerTap(interestCategory.indexOf(tag), tag['categoryIdx'])" class="delete" text="X"></Label>
             </StackLayout>
 
         </WrapLayout>
-        <Label class="underline"></Label>
-
+        <Label [ngClass]="{'underline-no': !cateState , 'underline-yes': cateState }"></Label>
+      <StackLayout orientation="horizontal">
       <Label class="subtitle" text="관심있는 언어"></Label>
-      <TextField col="1" class="name" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" ></TextField>
-      <Label class="subtitle" text="현재 개발 레벨"></Label>
-      <TextField col="1" class="name" hint="기초" style.placeholderColor="#A6A6A6"></TextField>
+          <Label class="choose" text="선택하기" (tap)="drawer2()"></Label>
+      </StackLayout>
+        <TextField (tap)="drawer2()" [ngClass]="{'cate-no': !subcateState , 'cate-yes': subcateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="drawer2()" ></TextField>
 
-
-
-            <Label (tap)="next()" class="next"  text="다음"></Label>
+        <WrapLayout [ngClass]="{'wrap-no': !subcateState , 'wrap-yes': subcateState }" orientation="horizontal">
+            <StackLayout *ngFor="let tag of interestSubcategory" orientation="horizontal">
+                <Label class="tag" [text]="tag['subcategoryName']"></Label >
+                <Label (tap)="onOpenDrawerTap2(interestSubcategory.indexOf(tag), tag['subcategoryIdx'])" class="delete" text="X"></Label>
             </StackLayout>
+
+        </WrapLayout>
+        <Label [ngClass]="{'underline-no': !subcateState , 'underline-yes': subcateState }"></Label>
+      <Label class="subtitle" text="현재 개발 레벨"></Label>
+
+        <StackLayout class="row" orientation="horizontal">
+
+        <StackLayout class="line" orientation="horizontal">
+            <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[1] , 'uncheck': !level_state[1] }" (tap)="changeColor(1)"> </Label>
+            <Label col="1" class="loginstatus" text="기초" ></Label>
+        </StackLayout>
+
+            <StackLayout class="line" orientation="horizontal">
+                <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[2] , 'uncheck': !level_state[2] }" (tap)="changeColor(2)"> </Label>
+                <Label col="1" class="loginstatus" text="초급" ></Label>
+            </StackLayout>
+
+
+            <StackLayout orientation="horizontal">
+                <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[3] , 'uncheck': !level_state[3] }" (tap)="changeColor(3)"> </Label>
+                <Label col="1" class="loginstatus" text="중급" ></Label>
+            </StackLayout>
+
+        </StackLayout>
+
+
+        <StackLayout class="row" orientation="horizontal">
+
+            <StackLayout class="line" orientation="horizontal">
+                <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[4] , 'uncheck': !level_state[4] }" (tap)="changeColor(4)"> </Label>
+                <Label col="1" class="loginstatus" text="고급" ></Label>
+            </StackLayout>
+
+            <StackLayout class="line" orientation="horizontal">
+                <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[5] , 'uncheck': !level_state[5] }" (tap)="changeColor(5)"> </Label>
+                <Label col="1" class="loginstatus" text="실무" ></Label>
+            </StackLayout>
+
+
+            <StackLayout orientation="horizontal">
+                <Label  col="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': level_state[6] , 'uncheck': !level_state[6] }" (tap)="changeColor(6)"> </Label>
+                <Label col="1" class="loginstatus" text="미정" ></Label>
+            </StackLayout>
+
+        </StackLayout>
+
+            </StackLayout>
+
+            <Label dock="Bottom" (tap)="next()" class="next"  text="다음"></Label>
         </DockLayout>
 
 

@@ -32,7 +32,7 @@ export class MypageComponent implements OnInit {
         this.mypageService.getProfile(jwt).subscribe(
             data =>{
                 this.profile = data['result'];
-                this.level = data['result']['level'];
+                this.level = data['result']['levelName'];
 
                 for(var i=0;i<data['result']['category'].length;i++){
                     console.log("");

@@ -18,6 +18,8 @@ import {ItemsComponent} from "./item/items.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
+import {Profile2Component} from "./profile/profile2.component";
+import {Profile3Component} from "./profile/profile3.component";
 
 const routes: Routes = [
 
@@ -36,6 +38,8 @@ const routes: Routes = [
     { path: "my-page", component: MypageComponent},
     { path: "lecture/:lectureIdx", component: ItemsComponent},
     { path: "profile", component: ProfileComponent},
+    { path: "profile2/:category/:subcategory/:level", component: Profile2Component},
+    { path: "profile3", component: Profile3Component},
     { path: "personal-info", component: PersonalInfoComponent},
     { path: "personal-info2", component: PersonalInfo2Component}
 

@@ -22,6 +22,10 @@ import {ProfileComponent} from "./profile/profile.component";
 import {NativeScriptUIListViewModule} from "nativescript-ui-listview/angular";
 import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
+import {Profile2Component} from "./profile/profile2.component";
+import {NativeScriptDateTimePickerModule} from "@nativescript/datetimepicker/angular";
+import {Profile3Component} from "./profile/profile3.component";
+
 
 
 @NgModule({
@@ -35,7 +39,8 @@ import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
         CommonModule,
         NativeScriptUISideDrawerModule,
         NativeScriptFormsModule,
-        NativeScriptUIListViewModule
+        NativeScriptUIListViewModule,
+        NativeScriptDateTimePickerModule,
 
 
     ],
@@ -57,7 +62,9 @@ import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
         ItemsComponent,
         ProfileComponent,
         PersonalInfoComponent,
-        PersonalInfo2Component
+        PersonalInfo2Component,
+        Profile2Component,
+        Profile3Component
 
     ],
     providers: [],

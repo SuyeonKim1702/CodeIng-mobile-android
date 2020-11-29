@@ -1,7 +1,6 @@
 import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {getString} from "@nativescript/core/application-settings";
-import {ProfileService} from "../mypage/mypage.service";
 import {PersonalInfoService} from "./personal-info.service";
 import { RouterExtensions} from "@nativescript/angular";
 

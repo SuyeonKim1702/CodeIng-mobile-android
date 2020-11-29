@@ -1,0 +1,71 @@
+<GridLayout class="page" >
+    <StackLayout class="content">
+
+        <DockLayout class="dock" stretchLastChild="true" >
+            <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+            <Label dock="right" class="title" text ="프로필 수정"> </Label>
+        </DockLayout>
+
+        <Label class="subtitle" text="직업/신분"></Label>
+        <GridLayout columns="*,*" rows="auto,auto" class="row">
+            <StackLayout col="0" class="line" orientation="horizontal">
+                <Label  class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': job_state[1] , 'uncheck': !job_state[1] }" (tap)="changeColor(1)"> </Label>
+                <Label class="loginstatus" text="초등학생" ></Label>
+            </StackLayout>
+
+            <StackLayout col="1"  class="line" orientation="horizontal">
+                <Label  class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': job_state[2] , 'uncheck': !job_state[2] }" (tap)="changeColor(2)"> </Label>
+                <Label  class="loginstatus" text="중/고등학생" ></Label>
+            </StackLayout>
+
+        </GridLayout>
+
+
+        <GridLayout columns="*,*" rows="auto,auto" class="row2">
+
+            <StackLayout col="0" orientation="horizontal">
+                <Label   class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': job_state[3] , 'uncheck': !job_state[3] }" (tap)="changeColor(3)"> </Label>
+                <Label  class="loginstatus" text="비전공자/비개발 직군" ></Label>
+            </StackLayout>
+
+            <StackLayout col="1" class="line" orientation="horizontal">
+                <Label  class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': job_state[4] , 'uncheck': !job_state[4] }" (tap)="changeColor(4)"> </Label>
+                <Label class="loginstatus" text="전공자/개발 직군" ></Label>
+            </StackLayout>
+        </GridLayout>
+
+        <Label class="subtitle" text="성별"></Label>
+        <GridLayout columns="*,*" rows="auto,auto" class="row2">
+            <StackLayout col="0" class="line" orientation="horizontal">
+                <Label  class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': g_state[0] , 'uncheck': !g_state[0] }" (tap)="changeColor2(0)"> </Label>
+                <Label class="loginstatus" text="남자" ></Label>
+            </StackLayout>
+
+            <StackLayout col="1"  class="line" orientation="horizontal">
+                <Label  class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': g_state[1] , 'uncheck': !g_state[1] }" (tap)="changeColor2(1)"> </Label>
+                <Label  class="loginstatus" text="여자" ></Label>
+            </StackLayout>
+
+        </GridLayout>
+        <Label class="subtitle" text="학교"></Label>
+        <TextField class="name" hint="학교 정보를 입력해주세요" [text]="school" [(ngModel)]="school" style.placeholderColor="#A6A6A6" ></TextField>
+        <Label class="subtitle" text="생년월일"></Label>
+
+        <TextField class="name" hint="생년월일을 입력해주세요" style.placeholderColor="#A6A6A6" editable="false" [text]="dateText" (tap)="onPickDateTap($event)" ></TextField>
+
+        <Label class="next" (tap)="next()"  text="프로필 정보 저장"></Label>
+
+
+    </StackLayout>
+
+
+
+    <AbsoluteLayout class="dialog-wrapper">
+        <StackLayout class="dialog">
+            <Label class="text" textWrap="true" ></Label>
+            <Button class="btn" text="확인" ></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+
+
+</GridLayout>
