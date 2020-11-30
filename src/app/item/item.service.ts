@@ -32,4 +32,31 @@ export class ItemService {
     }
 
 
+    getReview(index: number, page: number) {
+        return this.httpClient.get(this.baseUrl+'/lectures/'+index+'/review', {
+            params: {
+                page: page+'',
+            },
+            headers: this.headers});
+
+    }
+
+    checkFavLecture(jwt: string, index: number) {
+
+        this.headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': jwt
+        });
+
+        return this.httpClient.get(this.baseUrl+'/lectures/'+index+'/check-favorite', {
+            params: {
+
+            },
+            headers: this.headers});
+
+    }
+
+
+
+
 }

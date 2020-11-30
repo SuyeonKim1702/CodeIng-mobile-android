@@ -106,6 +106,7 @@ export class RankingComponent implements OnInit {
         this.prev = index;
         this.subcategoryList =[];
 
+
         //if(index == 0) i
         this.rankingService.getSubcategoryList(index).subscribe(
             data =>{
@@ -120,18 +121,12 @@ export class RankingComponent implements OnInit {
         );
 
 
-
-
-
     };
 
     changeHighlight2(index: number){
         this.state2[this.prev2] = false;
         this.state2[index] = true;
         this.prev2 = index;
-
-
-
     };
 
     performSearch(){
@@ -148,7 +143,16 @@ export class RankingComponent implements OnInit {
         this.state2[0] = true;
         this.prev2 = 0;
 
-        this.subcategoryList =[];
+        this.rankingService.getSubcategoryList(0).subscribe(
+            data =>{
+                var tmp = data['result'];
+                for(var i =0; i<tmp.length; i++){
+                    this.subcategoryList.push(new subcategoryCard(tmp[i]['subcategoryIdx'],tmp[i]['subcategoryName']));
+                }
+
+            },
+            error => console.log(error)
+        );
     }
 
     //close & 검색

@@ -1,7 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import {Page, View} from "@nativescript/core";
 import {AnimationCurve, Visibility} from "@nativescript/core/ui/enums";
+import * as Toast from 'nativescript-toast';
+import {
+    getString, hasKey,
 
+} from "@nativescript/core/application-settings";
 
 
 import {ActivatedRoute} from "@angular/router";
@@ -20,9 +24,17 @@ export class ItemsComponent implements OnInit {
     utilityModule: any;
     page: number;
     public qnas =[];
+    rating: number;
+    review: any;
+    likeState: boolean;
+
+
 
 
     constructor(private view:Page, private itemService: ItemService, private route: ActivatedRoute) {
+
+
+
         this.route.params.subscribe((params) => {
             this.lectureIdx = params["lectureIdx"];
             this.utilityModule = require("utils/utils");
@@ -31,8 +43,11 @@ export class ItemsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        const jwt: string = getString("JWT");
+        this.review = [];
         this.page =1;
         this.check = false;
+        this.likeState = false;
         this.itemService.getDetail(this.lectureIdx).subscribe(
             data =>{
                 this.info = data['result'];
@@ -42,14 +57,37 @@ export class ItemsComponent implements OnInit {
             error => console.log(error)
         );
 
+
+        this.itemService.checkFavLecture(jwt, this.lectureIdx).subscribe(
+            data =>{
+                this.likeState =  data['state'];
+                console.log(this.likeState+'머');
+            },
+            error => console.log(error)
+        );
+
+
+
+
         this.itemService.getQnas(this.lectureIdx,1).subscribe(
             data =>{
                 var tmp = data['result'];
-                console.log(tmp);
+
                 for(var i =0; i<tmp.length; i++){
                     this.qnas.push(new Qna(tmp[i]['qnaIdx'],tmp[i]['qnaTitle'],tmp[i]['qnaDes'],tmp[i]['likesCount'], tmp[i]['createdAt']));
 
                 }
+
+            },
+            error => console.log(error)
+        );
+
+
+
+
+        this.itemService.getReview(this.lectureIdx,1).subscribe(
+            data =>{
+                this.review = data['result'];
 
             },
             error => console.log(error)
@@ -86,7 +124,6 @@ export class ItemsComponent implements OnInit {
         this.itemService.getQnas(this.lectureIdx,this.page).subscribe(
             data =>{
                 var tmp = data['result'];
-                console.log(tmp);
                 for(var i =0; i<tmp.length; i++){
                     this.qnas.push(new Qna(tmp[i]['qnaIdx'],tmp[i]['qnaTitle'],tmp[i]['qnaDes'],tmp[i]['likesCount'], tmp[i]['createdAt']));
 
@@ -98,9 +135,31 @@ export class ItemsComponent implements OnInit {
     }
 
     public onItemTap(args) {
-        console.log("------------------------ ItemTapped: " + args.index);
+
     }
 
+    changeLike(){
+        if(this.likeState){
+            this.likeState = false;
+            Toast.makeText("관심강의에서 해제되었습니다").show();
+            console.log(this.likeState);
+
+        }
+        else {
+            this.likeState = true;
+            Toast.makeText("관심강의로 등록되었습니다").show();
+            console.log(this.likeState);
+        }
+
+
+    }
+
+
+
+
+    setRatingHighlight(rate: number){
+        this.rating = rate;
+    }
 
 
 

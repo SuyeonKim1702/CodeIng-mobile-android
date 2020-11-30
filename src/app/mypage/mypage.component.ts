@@ -1,12 +1,13 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {GestureEventData} from "@nativescript/core";
 import {
-    getString,
+    getString, hasKey,
 
 } from "@nativescript/core/application-settings";
 
 import {MypageService} from "./mypage.service";
 import {Router} from "@angular/router";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 @Component({
@@ -22,12 +23,19 @@ export class MypageComponent implements OnInit {
     level: string;
     interest: any;
 
-    constructor(private mypageService: MypageService, private router: Router) { }
+    constructor(private mypageService: MypageService, private router: Router, private routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
         this.setting = false;
         this.interest = [];
         const jwt: string = getString("JWT");
+
+
+        if(!hasKey("JWT")){
+            this.routerExtensions.navigate(['/login'], { clearHistory: true });
+        }
+
+
 
         this.mypageService.getProfile(jwt).subscribe(
             data =>{

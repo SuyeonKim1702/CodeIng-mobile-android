@@ -1,7 +1,8 @@
 <StackLayout orientation="vertical">
     <DockLayout class="dock" stretchLastChild="false">
         <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
-        <Label dock="right" class="fas h2 heart" text ="&#xf004;"> </Label>
+        <Label dock="right" class="fas h2 heart" text ="&#xf004;" (tap)="changeLike()" [ngClass]="{'visible': likeState, 'invisible': !likeState}"> </Label>
+        <Label dock="right" class="far h2 heart2" text ="&#xf004;" (tap)="changeLike()" [ngClass]="{'visible': !likeState, 'invisible': likeState}" > </Label>
 
     </DockLayout>
     <StackLayout>
@@ -13,6 +14,7 @@
         <DockLayout class="dock2" stretchLastChild="false">
             <Label dock="right" class="rating-text" [text]="info['rating']"> </Label>
             <Label dock="right" class="fas star" text ="&#xf005;"> </Label>
+
 
         </DockLayout>
 
@@ -60,10 +62,24 @@
 
             <TabContentItem>
                 <ScrollView orientation="vertical">
-                <GridLayout (swipe)="please($event)">
-                    <Label text="Review" class="h2 text-center">
-                    </Label>
-                </GridLayout>
+                <DockLayout (swipe)="please($event)">
+                        <Label class="writeQna" text="후기 작성하기" dock="bottom"> </Label>
+                    <ListView dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+                        <ng-template let-item="item" let-i="index">
+                                <StackLayout class="left" orientation="vertical">
+                                    <StackLayout orientation="horizontal">
+                                    <Label class="nickname" [text]= "item['nickname']"></Label>
+                                        <StackLayout orientation="horizontal">
+                                            <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': item['totalRating'] >= rate, 'default': item['totalRating'] < rate}"> </Label>
+                                    </StackLayout>
+                                    <Label class="time" [text]= "item['createdAt']"></Label>
+                                </StackLayout>
+                                    <Label class="review-content" [text]= "item['improvement']"></Label>
+                            </StackLayout>
+                        </ng-template>
+                    </ListView>
+
+                </DockLayout>
                 </ScrollView>
             </TabContentItem>
             <TabContentItem>
@@ -76,7 +92,7 @@
                         <ng-template let-item="item" let-i="index">
                             <DockLayout stretchLastChild="false" class="item-dock">
                                 <StackLayout dock="left" class="left" orientation="vertical">
-                                    <Label class="qnaTitle" [text]= "item['qnaTitle']"></Label>
+                                    <Label class="nickname" [text]= "item['qnaTitle']"></Label>
                                     <Label class="qnaDes" [text]= "item['qnaDes']"></Label>
                                 </StackLayout>
 

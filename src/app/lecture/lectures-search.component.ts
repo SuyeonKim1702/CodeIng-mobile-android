@@ -24,7 +24,8 @@ export class LecturesSearchComponent implements OnInit {
     searchword ="";
     rating : number;
     level: number;
-    price: number;
+    upperLimit: number;
+    lowerLimit: number;
     slider: Slider;
     check: boolean;
 
@@ -45,9 +46,11 @@ export class LecturesSearchComponent implements OnInit {
         this.check=false;
         this.rating = 0;
         this.level= 0;
-        this.price =-1;
+        this.upperLimit =0;
+        this.lowerLimit=0;
         this.searchword = "";
-        this.lectureService.getLectures(1, this.searchword, this.price, this.level, this.rating ).subscribe(
+
+        this.lectureService.getLectures(1, this.searchword, this.upperLimit, this.lowerLimit, 6, this.rating).subscribe(
             data =>{
                 var tmp = data['result'];
                 for(var i =0; i<tmp.length; i++){
@@ -61,13 +64,6 @@ export class LecturesSearchComponent implements OnInit {
 
 
 
-        this.lectureService.posttest().subscribe(
-            data =>{
-               console.log(data)
-
-            },
-            error => console.log(error)
-        );
 
 
 
@@ -77,8 +73,11 @@ export class LecturesSearchComponent implements OnInit {
 
     // infinite scroll
     loadMoreItems() {
+        var i;
         this.page++;
-        this.lectureService.getLectures(this.page, this.searchword, this.price, this.level, this.rating).subscribe(
+        if(this.level == 0) i = 6;
+        else i = this.level;
+        this.lectureService.getLectures(this.page, this.searchword, this.upperLimit, this.lowerLimit, i, this.rating).subscribe(
             data =>{
                 var tmp = data['result'];
                 for(var i =0; i<tmp.length; i++){
@@ -102,7 +101,10 @@ export class LecturesSearchComponent implements OnInit {
 
     performSearch(){
         this.page =1;
-        this.lectureService.getLectures(this.page, this.searchword, this.price, this.level, this.rating).subscribe(
+        var i;
+        if(this.level == 0) i = 6;
+        else i = this.level;
+        this.lectureService.getLectures(this.page, this.searchword, this.upperLimit, this.lowerLimit, i, this.rating).subscribe(
             data =>{
                 var tmp = data['result'];
                 this.lectures.length = 0;
@@ -144,15 +146,9 @@ export class LecturesSearchComponent implements OnInit {
     completeCheck() {
 
         if(this.check){
-            let val = this.slider.value;
-            if (val < 17) this.price = 25000;
-            else if (val < 29) this.price = 50000;
-            else if (val < 40) this.price = 75000;
-            else if (val < 52) this.price = 100000;
-            else if (val < 66) this.price = 150000;
-            else if (val < 78) this.price = 200000;
-            else if (val < 93) this.price = 250000;
-            else this.price = 300000;
+
+            this.upperLimit = Math.round(this.slider.value);
+
         }
         this.onCloseDrawerTap();
         this.performSearch();

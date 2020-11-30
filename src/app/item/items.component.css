@@ -59,6 +59,10 @@ TabStrip {
     color: #fe373e;
 }
 
+.heart2{
+    color: #a6a6a6;
+}
+
 .dock{
     margin-left: 20;
     margin-right: 20;
@@ -192,4 +196,38 @@ TabStrip {
     color: #1c7ced;
     background-color: #f3f5f9;
     border-radius: 13;
+}
+
+
+.nickname{
+    font-size: 16;
+}
+
+.review-content{
+    font-size: 14;
+    font-family: Roboto;
+    color: #737373;
+}
+
+.yellow{
+    color: #ffc30f;
+    margin-right: -8;
+
+
+
+}
+.default{
+    color: #efefef;
+    margin-right: -8;
+
+
+}
+
+.visible{
+
+}
+
+
+.invisible{
+    visibility: collapse;
 }
