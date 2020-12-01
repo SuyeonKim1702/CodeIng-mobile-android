@@ -55,7 +55,11 @@
 }
 
 .id{
-    font-size: 14;
+    margin-left: 20;
+    height: 24;
+    width: 24;
+    margin-bottom: 2;
+
 
 }
 .password{

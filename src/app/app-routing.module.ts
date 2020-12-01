@@ -20,6 +20,7 @@ import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
 import {Profile2Component} from "./profile/profile2.component";
 import {Profile3Component} from "./profile/profile3.component";
+import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 
 const routes: Routes = [
 
@@ -41,7 +42,8 @@ const routes: Routes = [
     { path: "profile2/:category/:subcategory/:level", component: Profile2Component},
     { path: "profile3", component: Profile3Component},
     { path: "personal-info", component: PersonalInfoComponent},
-    { path: "personal-info2", component: PersonalInfo2Component}
+    { path: "personal-info2", component: PersonalInfo2Component},
+    { path: "fav-lecture", component: FavLectureComponent}
 
 
 

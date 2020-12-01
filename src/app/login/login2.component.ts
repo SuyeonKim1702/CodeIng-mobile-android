@@ -3,6 +3,9 @@ import {GestureEventData} from "@nativescript/core";
 import {LectureService} from "../lecture/lectures.service";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
+import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
+
+
 import {
     getBoolean,
     setBoolean,

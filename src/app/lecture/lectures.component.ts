@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {GestureEventData, ImageSource} from "@nativescript/core";
+import {EventData, GestureEventData, ImageSource} from "@nativescript/core";
 import {OtherService} from "./other.service";
 import {getString} from "@nativescript/core/application-settings";
 import { RouterExtensions} from "@nativescript/angular";
-
+import { ActivityIndicator} from "@nativescript/core";
 
 
 @Component({
@@ -17,7 +17,7 @@ export class LecturesComponent implements OnInit {
     allLectures: any = [];
     recLectures: any = [];
     jwt: string;
-
+    isBusy: boolean = true;
 
 
 
@@ -29,6 +29,7 @@ export class LecturesComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
 
 
 
@@ -62,6 +63,12 @@ export class LecturesComponent implements OnInit {
         //console.log(args.object.idx);
         this.routerExtensions.navigate(['/lecture',args.object.idx]);
 
+    }
+
+    onBusyChanged(args: EventData) {
+        let indicator: ActivityIndicator = <ActivityIndicator>args.object;
+        //console.log("indicator.busy changed to: " + indicator.busy);
+        //this.isBusy = !this.isBusy;
     }
 
 }

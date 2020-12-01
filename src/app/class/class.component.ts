@@ -4,8 +4,9 @@ import {Slider} from "@nativescript/core";
 import {ClassService} from "./class.service";
 
 import {
-    getString,
+    getString, hasKey,
 } from "@nativescript/core/application-settings";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 
@@ -22,12 +23,17 @@ export class ClassComponent implements OnInit {
     allClasses2: any = [];
     jwt="";
 
-    constructor(private classService: ClassService) {
+    constructor(private classService: ClassService, private routerExtensions: RouterExtensions) {
         this.page = 1;
         this.page2 =1;
     }
 
     ngOnInit(): void {
+
+        if(!hasKey("JWT")){
+            this.routerExtensions.navigate(['/login'], { clearHistory: true });
+        }
+
         this.jwt = getString("JWT");
 
 

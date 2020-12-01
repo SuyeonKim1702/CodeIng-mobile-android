@@ -27,6 +27,7 @@ export class ItemsComponent implements OnInit {
     rating: number;
     review: any;
     likeState: boolean;
+    jwt: string;
 
 
 
@@ -43,7 +44,7 @@ export class ItemsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const jwt: string = getString("JWT");
+        this.jwt = getString("JWT");
         this.review = [];
         this.page =1;
         this.check = false;
@@ -58,10 +59,11 @@ export class ItemsComponent implements OnInit {
         );
 
 
-        this.itemService.checkFavLecture(jwt, this.lectureIdx).subscribe(
+        this.itemService.checkFavLecture(this.jwt, this.lectureIdx).subscribe(
             data =>{
-                this.likeState =  data['state'];
-                console.log(this.likeState+'머');
+
+                this.likeState =  (data['state'] == 'true')
+
             },
             error => console.log(error)
         );
@@ -139,17 +141,17 @@ export class ItemsComponent implements OnInit {
     }
 
     changeLike(){
-        if(this.likeState){
-            this.likeState = false;
-            Toast.makeText("관심강의에서 해제되었습니다").show();
-            console.log(this.likeState);
 
-        }
-        else {
-            this.likeState = true;
-            Toast.makeText("관심강의로 등록되었습니다").show();
-            console.log(this.likeState);
-        }
+        this.itemService.changeLike(this.jwt, this.lectureIdx).subscribe(
+            data =>{
+
+            },
+            error => console.log(error)
+        );
+
+        this.likeState = !this.likeState;
+        if(!this.likeState) Toast.makeText("관심강의에서 해제되었습니다").show();
+        else Toast.makeText("관심강의로 등록되었습니다").show();
 
 
     }

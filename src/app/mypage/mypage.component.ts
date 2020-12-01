@@ -94,4 +94,9 @@ export class MypageComponent implements OnInit {
 
     }
 
+    public fav_lecture(){
+        this.router.navigate(['/fav-lecture']);
+
+    }
+
 }

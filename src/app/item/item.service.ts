@@ -57,6 +57,17 @@ export class ItemService {
     }
 
 
+    changeLike(jwt: string, index: number) {
+
+        this.headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': jwt
+        });
+
+        return this.httpClient.patch(this.baseUrl+'/favorite-lectures?lectureIdx='+index, {},{headers: this.headers});
+
+    }
+
 
 
 }
