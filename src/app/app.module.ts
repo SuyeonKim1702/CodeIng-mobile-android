@@ -27,6 +27,8 @@ import {NativeScriptDateTimePickerModule} from "@nativescript/datetimepicker/ang
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
+import {TabsComponent} from "./tabs/tabs.component";
+import {TabsModule} from "./tabs/tabs.module";
 
 
 @NgModule({
@@ -42,7 +44,7 @@ import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
         NativeScriptFormsModule,
         NativeScriptUIListViewModule,
         NativeScriptDateTimePickerModule,
-        NativeScriptSvgModule
+        NativeScriptSvgModule,
 
 
     ],
@@ -50,7 +52,6 @@ import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
         AppComponent,
         ItemsComponent,
         LecturesComponent,
-        LecturesSearchComponent,
         RankingComponent,
         RecommendComponent,
         ClassComponent,
@@ -67,7 +68,7 @@ import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
         PersonalInfo2Component,
         Profile2Component,
         Profile3Component,
-        FavLectureComponent
+        FavLectureComponent,
 
     ],
     providers: [],

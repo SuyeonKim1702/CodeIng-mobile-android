@@ -22,6 +22,7 @@ import {Profile2Component} from "./profile/profile2.component";
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 
+
 const routes: Routes = [
 
     { path: "", redirectTo: "login", pathMatch: "full" },
@@ -31,8 +32,16 @@ const routes: Routes = [
     { path: "signup2", component: Signup2Component },
     { path: "signup3/:name/:phoneNumber", component: Signup3Component },
     { path: "signup4/:name", component: Signup4Component },
+
+    {
+        path: "tabs",
+        loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsModule),
+    },
+
+
+
     { path: "lectures", component: LecturesComponent },
-    { path: "lectures/search", component: LecturesSearchComponent },
+
     { path: "ranking", component: RankingComponent },
     { path: "recommend", component: RecommendComponent},
     { path: "class", component: ClassComponent},

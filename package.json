@@ -43,7 +43,6 @@
     "nativescript-multi-select": "^1.0.6",
     "nativescript-toast": "^1.4.6",
     "nativescript-ui-listview": "^9.0.4",
-    "nativescript-ui-sidedrawer": "^9.0.3",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",
     "zone.js": "^0.10.3"

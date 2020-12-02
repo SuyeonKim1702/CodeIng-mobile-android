@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
 
         if(hasKey("JWT")){
-            this.router.navigate(['/lectures']);
+            this.router.navigate(['../tabs/default']);
         }
 
 

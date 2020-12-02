@@ -17,6 +17,7 @@ import {
     remove,
     clear
 } from "@nativescript/core/application-settings";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 @Component({
@@ -35,7 +36,7 @@ export class Login2Component implements OnInit {
 
     private jwt: string;
 
-    constructor(private loginService: LoginService, private router: Router) { }
+    constructor(private loginService: LoginService, private routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
      this.jwt = "";
@@ -60,7 +61,7 @@ export class Login2Component implements OnInit {
             this.loginService.login(this.email, this.password).subscribe(
                 data => {
                     this.jwt = data["token"];
-                    this.router.navigate(['/lectures']);
+                    this.routerExtensions.navigate(['../tabs/default'], { clearHistory: true });
 
                     if(this.loginstate){ //자동 로그인 설정된 상태
                         setString("JWT", data["token"]);
