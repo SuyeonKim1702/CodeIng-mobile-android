@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 import { ItemsComponent } from "./item/items.component";
 import { LecturesComponent } from "./lecture/lectures.component";
 import {CommonModule} from "@angular/common";
-import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
 import {RankingComponent} from "./ranking/ranking.component";
 import {RecommendComponent} from "./recommend/recommend.component";
@@ -27,8 +26,8 @@ import {NativeScriptDateTimePickerModule} from "@nativescript/datetimepicker/ang
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
-import {TabsComponent} from "./tabs/tabs.component";
-import {TabsModule} from "./tabs/tabs.module";
+import {Class2Component} from "./class2/class2.component";
+
 
 
 @NgModule({
@@ -45,6 +44,7 @@ import {TabsModule} from "./tabs/tabs.module";
         NativeScriptUIListViewModule,
         NativeScriptDateTimePickerModule,
         NativeScriptSvgModule,
+
 
 
     ],
@@ -69,6 +69,7 @@ import {TabsModule} from "./tabs/tabs.module";
         Profile2Component,
         Profile3Component,
         FavLectureComponent,
+        Class2Component
 
     ],
     providers: [],

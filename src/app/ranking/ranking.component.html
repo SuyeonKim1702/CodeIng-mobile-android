@@ -7,8 +7,6 @@
             </GridLayout>
             <StackLayout orientation="vertical" dock="Top">
 
-
-
                 <Label class="title-top" text="프로그램 랭킹 검색 필터"></Label>
 
                 <Label class="category" text="카테고리"></Label>
@@ -17,7 +15,6 @@
                 <WrapLayout class="wrap" orientation="horizontal">
                     <Label  *ngFor="let category of categoryList" [text]="category" (tap)="changeHighlight(categoryList.indexOf(category))"
                             class="w" [ngClass]="{'clicked': state[categoryList.indexOf(category)] == true, 'category-list': state[categoryList.indexOf(category)] != true}"></Label >
-
                 </WrapLayout>
 
                 <Label class="category2" text="세부 카테고리"></Label>
@@ -33,12 +30,13 @@
         </DockLayout>
 
         <DockLayout tkMainContent stretchLastChild="true">
+
             <StackLayout class="outer" dock="Bottom">
                 <Label class="line"></Label>
-                <GridLayout columns="*,*,*,*,*"  rows="auto, 52" >
+                <GridLayout columns="*,*,*,*"  rows="auto, 52" >
 
                     <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
-                        <SVGImage col="0" row="0" class="icon" src="res://home.svg"></SVGImage>
+                        <SVGImage class="icon" src="res://home.svg"></SVGImage>
                         <Label class="menu-text"  row="1" col="0" text="홈"></Label>
 
                     </GridLayout>
@@ -47,17 +45,13 @@
                         <Label class="menu-text-selected"   row="1" col="0" text="랭킹 검색"></Label>
 
                     </GridLayout>
-                    <GridLayout [nsRouterLink]="['/recommend']" pageTransition="none" col="2" class="g" rows="*,*">
-                        <SVGImage col="0" row="0" class="icon" src="res://star.svg"></SVGImage>
-                        <Label class="menu-text"  row="1" col="0" text="기업별 추천"></Label>
 
-                    </GridLayout>
-                    <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="3" class="g" rows="*,*">
+                    <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
                         <SVGImage col="0" row="0" class="icon" src="res://menu.svg"></SVGImage>
                         <Label class="menu-text"  row="1" col="0" text="클래스"></Label>
 
                     </GridLayout>
-                    <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="4" class="g" rows="*,*">
+                    <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
                         <SVGImage col="0" row="0" class="icon" src="res://id2.svg"></SVGImage>
                         <Label class="menu-text"  row="1" col="0" text="마이"></Label>
 
@@ -65,6 +59,16 @@
 
                 </GridLayout>
             </StackLayout>
+
+
+
+
+
+
+
+
+
+
 
             <GridLayout class="search-set" columns="40, *, 40", rows="40" dock="Top">
                 <Label row="0" col="0" class="fas h3 searchIcon" text ="&#xf002;"> </Label>
@@ -93,6 +97,7 @@
                                 <Label dock="right" class="price" [text] ="item['price']"></Label>
                                 <StakLayout>
                                     <Label class="lecturer" [text]= "item['professor']"></Label>
+
                                     <StackLayout dock="left" orientation="horizontal" >
                                         <Label class="rating-text" [text]= "item['rating']"></Label>
                                         <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': item['rating'] > rate, 'default': item['rating'] <= rate}"> </Label>

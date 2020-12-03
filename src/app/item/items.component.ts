@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {Page, View} from "@nativescript/core";
 import {AnimationCurve, Visibility} from "@nativescript/core/ui/enums";
-import * as Toast from 'nativescript-toast';
 import {
     getString, hasKey,
 
@@ -150,8 +149,7 @@ export class ItemsComponent implements OnInit {
         );
 
         this.likeState = !this.likeState;
-        if(!this.likeState) Toast.makeText("관심강의에서 해제되었습니다").show();
-        else Toast.makeText("관심강의로 등록되었습니다").show();
+
 
 
     }

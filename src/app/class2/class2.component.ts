@@ -1,20 +1,21 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import { ItemEventData, ListView} from "@nativescript/core";
 import {lectureCard} from "../lecture/lectureCard";
 import {Slider} from "@nativescript/core";
-import {ClassService} from "./class.service";
-
+import {Class2Service} from "./class2.service";
 import {
-    getString,
+    getString, hasKey,
 } from "@nativescript/core/application-settings";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 
 @Component({
     selector: "ns-items",
-    templateUrl: "./class.component.html",
-    styleUrls: ['./class.component.css']
+    templateUrl: "./class2.component.html",
+    styleUrls: ['./class2.component.css']
 })
-export class ClassComponent implements OnInit {
+export class Class2Component implements OnInit {
 
     page: number;
     page2: number;
@@ -22,44 +23,45 @@ export class ClassComponent implements OnInit {
     allClasses2: any = [];
     jwt="";
 
-    constructor(private classService: ClassService) {
+    constructor(private classService: Class2Service, private routerExtensions: RouterExtensions) {
         this.page = 1;
         this.page2 =1;
     }
 
     ngOnInit(): void {
-        this.jwt = getString("JWT");
-
 
         this.classService.getAllClass(this.page).subscribe(
             data =>{
                 this.allClasses = data['result'];
 
-
             },
             error => console.log(error)
         );
 
+        //if(hasKey("JWT")){
+        if(false){
+
+            this.classService.getMyClass(this.page, this.jwt).subscribe(
+                data =>{
+                    this.allClasses2 = data['result'];
 
 
-        this.classService.getMyClass(this.page, this.jwt).subscribe(
-            data =>{
-                this.allClasses2 = data['result'];
+                },
+                error => console.log(error)
+            );
 
-
-            },
-            error => console.log(error)
-        );
-
+        }
 
     }
 
 
     // infinite scroll
     loadMoreItems() {
+
         this.page++;
         this.classService.getAllClass(this.page).subscribe(
             data =>{
+                console.log(data);
                 for(var i =0; i<data['result'].length; i++){
                     this.allClasses.push(data['result'][i]);
 

@@ -3,7 +3,6 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "@nativescript/angular";
 
 import {LecturesComponent} from "./lecture/lectures.component";
-import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 import {RankingComponent} from "./ranking/ranking.component";
 import {RecommendComponent} from "./recommend/recommend.component";
 import {ClassComponent} from "./class/class.component";
@@ -21,7 +20,7 @@ import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
 import {Profile2Component} from "./profile/profile2.component";
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
-
+import {Class2Component} from "./class2/class2.component";
 
 const routes: Routes = [
 
@@ -32,19 +31,12 @@ const routes: Routes = [
     { path: "signup2", component: Signup2Component },
     { path: "signup3/:name/:phoneNumber", component: Signup3Component },
     { path: "signup4/:name", component: Signup4Component },
-
-    {
-        path: "tabs",
-        loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsModule),
-    },
-
-
-
     { path: "lectures", component: LecturesComponent },
-
     { path: "ranking", component: RankingComponent },
     { path: "recommend", component: RecommendComponent},
     { path: "class", component: ClassComponent},
+    { path: "class22", component: Class2Component},
+
     { path: "my-page", component: MypageComponent},
     { path: "lecture/:lectureIdx", component: ItemsComponent},
     { path: "profile", component: ProfileComponent},

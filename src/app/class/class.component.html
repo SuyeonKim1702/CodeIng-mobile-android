@@ -1,3 +1,4 @@
+
 <DockLayout>
     <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
         <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
@@ -8,23 +9,23 @@
     </GridLayout>
 
 
-    <StackLayout dock="top" orientation="vertical">
-        <Label dock="top" class="title" text="클래스"> </Label>
-        <StackLayout class="outer-tab">
+<StackLayout dock="top" orientation="vertical">
+    <Label dock="top" class="title" text="클래스"> </Label>
+    <StackLayout class="outer-tab">
 
 
-            <Tabs>
-                <TabStrip class="test">
-                    <TabStripItem class="test">
-                        <Label class="tab-name" text="전체 클래스"></Label>
-                    </TabStripItem>
-                    <TabStripItem>
-                        <Label  class="tab-name" text="내 클래스"></Label>
-                    </TabStripItem>
+        <Tabs>
+            <TabStrip class="test">
+                <TabStripItem class="test">
+                    <Label class="tab-name" text="전체 클래스"></Label>
+                </TabStripItem>
+                <TabStripItem>
+                    <Label  class="tab-name" text="내 클래스"></Label>
+                </TabStripItem>
 
-                </TabStrip>
+            </TabStrip>
 
-                <TabContentItem>
+            <TabContentItem>
 
                     <StackLayout class="tab1" >
 
@@ -57,47 +58,47 @@
 
                     </StackLayout>
 
-                </TabContentItem>
+            </TabContentItem>
 
-                <TabContentItem>
+            <TabContentItem>
 
-                    <StackLayout class="tab1" >
+                <StackLayout class="tab1" >
 
-                        <ListView class="list" [items]="allClasses2"  (loadMoreItems)="loadMoreItems()">
-                            <ng-template let-item="item" let-i="index">
-                                <StackLayout class="outer" [idx]="item['classIdx']" (tap)="itemClick($event)">
-                                    <label class="upper-line"></label>
+                    <ListView class="list" [items]="allClasses2"  (loadMoreItems)="loadMoreItems()">
+                        <ng-template let-item="item" let-i="index">
+                            <StackLayout class="outer" [idx]="item['classIdx']" (tap)="itemClick($event)">
+                                <label class="upper-line"></label>
 
-                                    <WrapLayout class="wrap" orientation="horizontal">
-                                        <Label class="tag"  *ngFor="let tag of item['tags']" [text]="tag"></Label >
+                                <WrapLayout class="wrap" orientation="horizontal">
+                                    <Label class="tag"  *ngFor="let tag of item['tags']" [text]="tag"></Label >
 
-                                    </WrapLayout>
+                                </WrapLayout>
 
-                                    <GridLayout class="grid" columns="*, 95">
+                                <GridLayout class="grid" columns="*, 95">
 
-                                        <StackLayout row="0" col="0" orientation="vertical">
-                                            <Label class="className" [text]= "item['className']"></Label>
-                                            <Label class="member" [text]= "item['memberCount']"></Label>
-                                        </StackLayout>
-                                        <Image row="0" col="1" class="thumb" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
-                                    </GridLayout>
-                                    <label class="line"></label>
-                                    <Label class="button" text="입장하기"></Label>
+                                    <StackLayout row="0" col="0" orientation="vertical">
+                                        <Label class="className" [text]= "item['className']"></Label>
+                                        <Label class="member" [text]= "item['memberCount']"></Label>
+                                    </StackLayout>
+                                    <Image row="0" col="1" class="thumb" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
+                                </GridLayout>
+                                <label class="line"></label>
+                                <Label class="button" text="입장하기"></Label>
 
-                                </StackLayout>
-                            </ng-template>
-                        </ListView>
-
-
-
-                    </StackLayout>
+                            </StackLayout>
+                        </ng-template>
+                    </ListView>
 
 
-                </TabContentItem>
 
-            </Tabs>
-        </StackLayout>
+                </StackLayout>
+
+
+            </TabContentItem>
+
+        </Tabs>
     </StackLayout>
+</StackLayout>
 
 
 

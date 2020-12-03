@@ -1,13 +1,5 @@
 <DockLayout>
-   <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
-      <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
-      <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
-      <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
-      <Label [nsRouterLink]="['/favorite']" pageTransition="none" row="0" col="3" text="클래스"></Label>
-      <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
-   </GridLayout>
-
-      <DockLayout dock="Top" class="dock" stretchLastChild="true">
+   <DockLayout dock="Top" class="dock" stretchLastChild="true">
          <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
          <Label dock="right" class="title" text="나의 관심 강의" > </Label>
       </DockLayout>

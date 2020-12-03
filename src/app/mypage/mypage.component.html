@@ -1,11 +1,34 @@
 <DockLayout>
-   <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
-      <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
-      <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
-      <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
-      <Label [nsRouterLink]="['/favorite']" pageTransition="none" row="0" col="3" text="클래스"></Label>
-      <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
-   </GridLayout>
+
+   <StackLayout class="outer" dock="Bottom">
+      <Label class="line"></Label>
+      <GridLayout columns="*,*,*,*"  rows="auto, 52" >
+
+         <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
+            <SVGImage col="0" row="0" class="icon" src="res://home.svg"></SVGImage>
+            <Label class="menu-text"  row="1" col="0" text="홈"></Label>
+
+         </GridLayout>
+         <GridLayout  [nsRouterLink]="['/ranking']" pageTransition="none" col="1" class="g" rows="*,*">
+            <SVGImage col="0" row="0" class="icon" src="res://search.svg"></SVGImage>
+            <Label class="menu-text"   row="1" col="0" text="랭킹 검색"></Label>
+         </GridLayout>
+
+         <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
+            <SVGImage col="0" row="0" class="icon" src="res://menu.svg"></SVGImage>
+            <Label class="menu-text"  row="1" col="0" text="클래스"></Label>
+
+         </GridLayout>
+         <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
+            <SVGImage col="0" row="0" class="icon" src="res://id2_selected.svg"></SVGImage>
+            <Label class="menu-text-selected"  row="1" col="0" text="마이"></Label>
+
+         </GridLayout>
+
+      </GridLayout>
+   </StackLayout>
+
+
 
    <StackLayout  dock="Top">
       <StackLayout [ngClass]="{'stack-outer-no': !setting , 'stack-outer-yes': setting}">
@@ -35,9 +58,6 @@
 
 
       <Label class="empty"></Label>
-
-
-
 
       <StackLayout orientation="horizontal" class="blank">
          <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>

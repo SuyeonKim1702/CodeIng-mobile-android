@@ -61,7 +61,8 @@ export class Login2Component implements OnInit {
             this.loginService.login(this.email, this.password).subscribe(
                 data => {
                     this.jwt = data["token"];
-                    this.routerExtensions.navigate(['../tabs/default'], { clearHistory: true });
+                    setString("JWT", this.jwt);
+                    this.routerExtensions.navigate(['lectures'], { clearHistory: true });
 
                     if(this.loginstate){ //자동 로그인 설정된 상태
                         setString("JWT", data["token"]);

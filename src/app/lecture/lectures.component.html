@@ -1,4 +1,33 @@
 <DockLayout>
+    <StackLayout class="outer" dock="Bottom">
+        <Label class="line"></Label>
+
+        <GridLayout columns="*,*,*,*"  rows="auto, 52" >
+
+            <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
+                <SVGImage col="0" row="0" class="icon" src="res://home_selected.svg"></SVGImage>
+                <Label class="menu-text-selected"  row="1" col="0" text="홈"></Label>
+
+            </GridLayout>
+            <GridLayout  [nsRouterLink]="['/ranking']" pageTransition="none" col="1" class="g" rows="*,*">
+                <SVGImage col="0" row="0" class="icon" src="res://search.svg"></SVGImage>
+                <Label class="menu-text"   row="1" col="0" text="랭킹 검색"></Label>
+
+            </GridLayout>
+
+            <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
+                <SVGImage col="0" row="0" class="icon" src="res://menu.svg"></SVGImage>
+                <Label class="menu-text"  row="1" col="0" text="클래스"></Label>
+
+            </GridLayout>
+            <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
+                <SVGImage col="0" row="0" class="icon" src="res://id2.svg"></SVGImage>
+                <Label class="menu-text"  row="1" col="0" text="마이"></Label>
+
+            </GridLayout>
+
+        </GridLayout>
+    </StackLayout>
 
 <ScrollView orientation="vertical" class="card">
 <stackLayout orientation="vertical" child>
@@ -6,13 +35,12 @@
         <Image  dock="left" src="res://codeing" class="logo"></Image>
 
 
+
         <GridLayout class="top" columns="25, *", rows="40" dock="right">
             <TextField  [nsRouterLink]="['/lectures/search']" class="searchword" row="0" col="1" style.placeholderColor="#A6A6A6" editable= "false" hint="검색어를 입력해 주세요"></TextField>
         </GridLayout>
 
     </DockLayout>
-
-    <Label class="ad"></Label>
 
 
     <Label text="오늘의 추천 강의" class="title" horizontalAlignment="left" fontAttributes="Bold"></Label>

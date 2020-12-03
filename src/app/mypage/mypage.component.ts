@@ -86,16 +86,18 @@ export class MypageComponent implements OnInit {
 
 
     public next(){
-        this.router.navigate(['/profile']);
+        this.routerExtensions.navigate(['/profile'], { clearHistory: false });
+
     }
 
     public personalinfo(){
-        this.router.navigate(['/personal-info']);
+        this.routerExtensions.navigate(['/personal-info'], { clearHistory: false });
+
 
     }
 
     public fav_lecture(){
-        this.router.navigate(['/fav-lecture']);
+        this.routerExtensions.navigate(['/fav-lecture'], { clearHistory: false });
 
     }
 

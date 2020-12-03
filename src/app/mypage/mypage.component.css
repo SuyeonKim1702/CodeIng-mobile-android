@@ -192,3 +192,38 @@
     margin-bottom: 5;
 
 }
+
+
+.icon{
+    width: 24;
+    height: 24;
+}
+
+
+.menu-text{
+    font-size: 13;
+    font-family: NotoSansCJKkr;
+    color: #e6e6e6;
+}
+
+.menu-text-selected{
+    font-size: 13;
+    font-family: NotoSansCJKkr;
+    color: #1c7ced;
+}
+
+.g{
+    text-align: center;
+    padding-top: 7;
+}
+
+.line{
+    width: 100%;
+    height: 1;
+    background-color: #e6e6e6;
+    margin-bottom: 15;
+}
+.outer{
+    height: 60;
+
+}

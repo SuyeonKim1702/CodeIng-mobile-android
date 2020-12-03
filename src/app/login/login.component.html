@@ -1,10 +1,10 @@
 <DockLayout>
-
+    <StackLayout class="buttons" dock="Bottom">
+        <Label [nsRouterLink]="['/login2']" class="login"  text="로그인"></Label>
+        <Label [nsRouterLink]="['/lectures']" class="google-login"  text="비회원으로 이용하기"></Label>
+        <Label [nsRouterLink]="['/signup']" class="signup"  text="회원가입"></Label>
+    </StackLayout>
     <Image  dock="Top" class="rank" src="res://codeing"  stretch="aspectFill" ></Image>
-<StackLayout dock="Bottom">
-    <Label [nsRouterLink]="['/login2']" class="login"  text="로그인"></Label>
-    <Label [nsRouterLink]="['/tabs/default']" class="google-login"  text="비회원으로 이용하기"></Label>
-    <Label [nsRouterLink]="['/signup']" class="signup"  text="회원가입"></Label>
-</StackLayout>
+
 </DockLayout>
 
