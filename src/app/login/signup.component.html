@@ -10,16 +10,16 @@
 
   <Label class="title" text="회원가입 약관 동의"></Label>
 
-  <GridLayout class="grid" columns="23,*" rows="auto,auto,auto,auto,auto">
-    <Label  col="0" row="0" class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+  <GridLayout class="grid" columns="auto,*" rows="auto,auto,auto,auto,auto">
+    <Label  col="0" row="0" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': state[0] , 'uncheck': !state[0] }" (tap)="onClick(0)"> </Label>
     <Label col="1" row="0" class="article" text="이용약관"></Label>
-    <Label  col="0" row="1" class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+    <Label  col="0" row="1" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': state[1] , 'uncheck': !state[1]}" (tap)="onClick(1)"> </Label>
      <Label col="1" row="1" class="article" text="개인정보 수집 및 이용에 대한 안내"></Label>
-    <Label  col="0" row="2" class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
+    <Label  col="0" row="2" class="far h2 fa-check-circle uncheck" text ="&#xf058;" [ngClass]="{'check': state[2] , 'uncheck': !state[2]}" (tap)="onClick(2)"> </Label>
     <Label col="1" row="2" class="article" text="이벤트, 광고성 정보 수신 동의"></Label>
     <Label col="1" row="3" class="extra" text="다양한 프로모션 소식 이벤트 정보를 보내드립니다"></Label>
 
-    <Label  col="0" row="4" class="far h2 fa-check-circle check2" text ="&#xf058;"> </Label>
+    <Label  col="0" row="4" class="far h2 fa-check-circle uncheck2" text ="&#xf058;" [ngClass]="{'check2': state[3] , 'uncheck2': !state[3]}" (tap)="onClick(3)"> </Label>
     <StackLayout col="1" row="4" orientation="horizontal">
       <Label class="last" text="전체 동의"></Label>
       <Label class="last2" text="(선택 항목 포함)"></Label>
@@ -33,7 +33,7 @@
 
   </GridLayout>
 
-  <Label [nsRouterLink]="['/signup2']" class="next"  text="다음"></Label>
+  <Button [nsRouterLink]="['/signup2']" class="next"  text="다음"></Button>
 
 
 

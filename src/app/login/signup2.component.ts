@@ -1,6 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {GestureEventData} from "@nativescript/core";
+import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
+import {AndroidActivityBackPressedEventData, AndroidApplication, GestureEventData} from "@nativescript/core";
 import {Router} from "@angular/router";
+import * as application from "@nativescript/core/application";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 @Component({
@@ -14,9 +16,26 @@ export class Signup2Component implements OnInit {
     phoneNumber: string;
     dialogOpen = false;
     alert_message="";
-    constructor(private router: Router) { }
+    constructor(private zone:NgZone, private routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
+
+        if (application.android) {
+            application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+
+                if (this.routerExtensions.router.isActive("/signup2", false)) {
+                    data.cancel = true;
+                    this.zone.run(() => {
+                        this.routerExtensions.back();
+                    });
+
+
+                }
+
+            });
+        }
+
+
      this.inputName ="";
      this.phoneNumber="";
 
@@ -37,7 +56,7 @@ export class Signup2Component implements OnInit {
             if (this.inputName.length == 0) this.alert_message = "이름을 입력해주세요";
             this.showDialog();
         } else {
-            this.router.navigate(['/signup3', this.inputName, this.phoneNumber]);
+            this.routerExtensions.navigate(['/signup3', this.inputName, this.phoneNumber]);
 
         }
 

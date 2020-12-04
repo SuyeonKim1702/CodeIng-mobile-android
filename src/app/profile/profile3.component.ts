@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {GestureEventData} from "@nativescript/core";
 import {ActivatedRoute, Router} from "@angular/router";
+import {RouterExtensions} from "@nativescript/angular";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class Profile3Component implements OnInit {
 
     nickname="";
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private routerExtensions: RouterExtensions) {
 
         }
 
@@ -23,7 +24,11 @@ export class Profile3Component implements OnInit {
     }
 
     move(){
-        this.router.navigate(['/lectures']);
+        this.routerExtensions.navigate(['/lectures']);
+    }
+
+    goBack(){
+        this.routerExtensions.back();
     }
 
 

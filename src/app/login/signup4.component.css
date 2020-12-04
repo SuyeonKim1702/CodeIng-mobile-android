@@ -1,6 +1,5 @@
 
 .complete{
-    width: 345;
     height: 45;
     background-color: #1c7ced;
     color: #ffffff;
@@ -9,8 +8,9 @@
     font-size: 16;
     margin-left: 15;
     margin-right: 15;
-    margin-top: 170;
     border-radius: 3;
+    margin-bottom: 20;
+    z-index: 0;
 
 }
 
@@ -44,8 +44,8 @@
     font-size: 80%;
     border-radius: 33;
     margin-top: 136;
-    backgrount-color: #38c976;
-    color: #efefef;
+    color: #38c976;
+
 }
 
 .logo{
@@ -57,18 +57,15 @@
 }
 
 .nickname{
+    margin-top: 30;
+    text-align: center;
     font-size: 24;
     font-weight: bold;
+    width: 100%;
 }
 
-.greeting{
-    font-size: 24;
-}
 
-.block{
-    margin-top: 45;
-    text-align: center;
-}
+
 
 .congratz{
     margin-top: 21;

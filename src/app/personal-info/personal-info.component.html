@@ -7,7 +7,7 @@
      <Label class="subtitle" text="비밀번호 확인" ></Label>
       <TextField secure="true" class="name" hint="회원정보 변경을 위해 비밀번호를 입력해주세요" style.placeholderColor="#A6A6A6" [(ngModel)]="password"></TextField>
 
-            <Label (tap)="modify()" class="next"  text="수정하기"></Label>
+            <Button (tap)="modify()" class="next"  text="수정하기"></Button>
             </StackLayout>
 
     <AbsoluteLayout class="dialog-wrapper">

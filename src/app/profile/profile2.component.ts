@@ -3,10 +3,17 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {ProfileService} from "./profile.service";
 import {getString} from "@nativescript/core/application-settings";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Button, EventData, SelectedIndexChangedEventData} from "@nativescript/core";
+import {
+    AndroidActivityBackPressedEventData,
+    AndroidApplication,
+    Button,
+    EventData,
+    SelectedIndexChangedEventData
+} from "@nativescript/core";
 import {observable} from "rxjs";
 import {DateTimePicker} from "@nativescript/datetimepicker";
 import {RouterExtensions} from "@nativescript/angular";
+import * as application from "@nativescript/core/application";
 
 
 @Component({
@@ -45,7 +52,7 @@ export class Profile2Component implements OnInit {
 
 
 
-    constructor(private profileService: ProfileService, private route: ActivatedRoute, private routerExtensions: RouterExtensions) {
+    constructor(private profileService: ProfileService, private route: ActivatedRoute, private routerExtensions: RouterExtensions, private zone: NgZone) {
 
         this.items = [];
         for (var i = 0; i < 5; i++) {
@@ -64,6 +71,25 @@ export class Profile2Component implements OnInit {
     }
 
     ngOnInit(): void {
+
+        if (application.android) {
+            application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+
+                if (this.routerExtensions.router.isActive("/profile2/"+this.category+"/"+this.subcategory+"/"+this.level, false)) {
+                    data.cancel = true;
+                    this.zone.run(() => {
+                        this.routerExtensions.back();
+                    });
+
+
+                }
+
+            });
+        }
+
+
+
+
         this.job_state = [];
         this.g_state = [];
         this.g_state[0] = false;
@@ -196,6 +222,12 @@ export class Profile2Component implements OnInit {
 
 
     }
+
+    goBack(){
+        this.routerExtensions.back();
+
+
+}
 
 
 }

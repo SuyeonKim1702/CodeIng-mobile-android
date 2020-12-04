@@ -1,12 +1,34 @@
 
 <DockLayout>
-    <GridLayout class="btnav" columns="*,*,*,*,*" rows="52" dock="Bottom">
-        <Label [nsRouterLink]="['/lectures']" pageTransition="none" row="0" col="0" text="홈"></Label>
-        <Label [nsRouterLink]="['/ranking']" pageTransition="none" row="0" col="1" text="랭킹"></Label>
-        <Label [nsRouterLink]="['/recommend']" pageTransition="none" row="0" col="2" text="추천"></Label>
-        <Label [nsRouterLink]="['/class']" pageTransition="none" row="0" col="3" text="클래스"></Label>
-        <Label [nsRouterLink]="['/my-page']" pageTransition="none" row="0" col="4" text="마이페이지"></Label>
-    </GridLayout>
+    <StackLayout class="outer2" dock="Bottom">
+        <Label class="line2"></Label>
+
+        <GridLayout columns="*,*,*,*"  rows="auto, 52" >
+
+            <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
+                <Image col="0" row="0" class="icon" src="res://home"></Image>
+                <Label class="menu-text"  row="1" col="0" text="홈"></Label>
+
+            </GridLayout>
+            <GridLayout  [nsRouterLink]="['/ranking']" pageTransition="none" col="1" class="g" rows="*,*">
+                <Image col="0" row="0" class="icon" src="res://search"></Image>
+                <Label class="menu-text"   row="1" col="0" text="랭킹 검색"></Label>
+
+            </GridLayout>
+
+            <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
+                <Image col="0" row="0" class="icon" src="res://menu_selected"></Image>
+                <Label class="menu-text-selected"  row="1" col="0" text="클래스"></Label>
+
+            </GridLayout>
+            <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
+                <Image col="0" row="0" class="icon" src="res://mypage"></Image>
+                <Label class="menu-text"  row="1" col="0" text="마이"></Label>
+
+            </GridLayout>
+
+        </GridLayout>
+    </StackLayout>
 
 
 <StackLayout dock="top" orientation="vertical">
@@ -28,8 +50,8 @@
             <TabContentItem>
 
                     <StackLayout class="tab1" >
-
-                        <ListView class="list" [items]="allClasses"  (loadMoreItems)="loadMoreItems()">
+                        <GridLayout width="100%" height="100%" columns="*">
+                        <ListView col="0" class="list" [items]="allClasses" (itemLoading)="itemloading($event)" (loadMoreItems)="loadMoreItems()">
                             <ng-template let-item="item" let-i="index">
                                 <StackLayout class="outer" [idx]="item['classIdx']" (tap)="itemClick($event)">
                                     <label class="upper-line"></label>
@@ -48,13 +70,14 @@
                                         <Image row="0" col="1" class="thumb" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
                                     </GridLayout>
                                     <label class="line"></label>
-                                    <Label class="button" text="참가하기"></Label>
+                                    <Button class="button" text="참가하기"></Button>
 
                                 </StackLayout>
                             </ng-template>
                         </ListView>
 
-
+                            <ActivityIndicator col="0" [busy]="isBusy" color="#1c7ced" width="100" height="100"></ActivityIndicator>
+                        </GridLayout>
 
                     </StackLayout>
 
@@ -64,7 +87,7 @@
 
                 <StackLayout class="tab1" >
 
-                    <ListView class="list" [items]="allClasses2"  (loadMoreItems)="loadMoreItems()">
+                    <ListView class="list" [ngClass]="{'visible': login, 'invisible': !login}" [items]="allClasses2"  (loadMoreItems)="loadMoreItems()">
                         <ng-template let-item="item" let-i="index">
                             <StackLayout class="outer" [idx]="item['classIdx']" (tap)="itemClick($event)">
                                 <label class="upper-line"></label>
@@ -88,7 +111,7 @@
                             </StackLayout>
                         </ng-template>
                     </ListView>
-
+                    <Label [ngClass]="{'visible1': !login, 'invisible1': login}" text="로그인 후 이용할 수 있습니다"> </Label>
 
 
                 </StackLayout>

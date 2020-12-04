@@ -1,15 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import {Page, View} from "@nativescript/core";
+import {Component, NgZone, OnInit} from "@angular/core";
+import {AndroidActivityBackPressedEventData, AndroidApplication, Page, View} from "@nativescript/core";
 import {AnimationCurve, Visibility} from "@nativescript/core/ui/enums";
 import {
     getString, hasKey,
 
 } from "@nativescript/core/application-settings";
 
+import * as Toast from 'nativescript-toast';
 
 import {ActivatedRoute} from "@angular/router";
 import {ItemService} from "./item.service";
 import {Qna} from "./item";
+import {RouterExtensions} from "@nativescript/angular";
+import * as application from "@nativescript/core/application";
 
 @Component({
     selector: "ns-items",
@@ -27,11 +30,12 @@ export class ItemsComponent implements OnInit {
     review: any;
     likeState: boolean;
     jwt: string;
+    scrollState: boolean;
 
 
 
 
-    constructor(private view:Page, private itemService: ItemService, private route: ActivatedRoute) {
+    constructor(private zone: NgZone, private view:Page, private itemService: ItemService, private route: ActivatedRoute,public routerExtensions: RouterExtensions) {
 
 
 
@@ -43,7 +47,26 @@ export class ItemsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.jwt = getString("JWT");
+
+
+        if (application.android) {
+            application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+
+                if (this.routerExtensions.router.isActive("/lecture/"+this.lectureIdx, false)) {
+                    data.cancel = true;
+                    this.zone.run(() => {
+                        this.routerExtensions.back();
+                    });
+
+
+                }
+
+            });
+        }
+
+
+
+        this.scrollState = false;
         this.review = [];
         this.page =1;
         this.check = false;
@@ -57,18 +80,18 @@ export class ItemsComponent implements OnInit {
             error => console.log(error)
         );
 
+        if(hasKey("JWT")) {
+            this.jwt = getString("JWT");
+            this.itemService.checkFavLecture(this.jwt, this.lectureIdx).subscribe(
+                data => {
 
-        this.itemService.checkFavLecture(this.jwt, this.lectureIdx).subscribe(
-            data =>{
+                    this.likeState = (data['state'] == 'true')
 
-                this.likeState =  (data['state'] == 'true')
+                },
+                error => console.log(error)
+            );
 
-            },
-            error => console.log(error)
-        );
-
-
-
+        }
 
         this.itemService.getQnas(this.lectureIdx,1).subscribe(
             data =>{
@@ -102,14 +125,11 @@ export class ItemsComponent implements OnInit {
     //방향 4: 위, 방향 8: 아래
     public please(args){
 
-
-        var stack = <View>this.view.getViewById("stack");
-
         if(args.direction == 4){
-            stack.visibility='collapse';
+            this.scrollState = true;
         }
-        if(args.direction == 8){
-            stack.visibility='visible';
+        else if(args.direction == 8){
+            this.scrollState = false;
         }
     }
 
@@ -140,15 +160,21 @@ export class ItemsComponent implements OnInit {
     }
 
     changeLike(){
+        if(hasKey("JWT")) {
+            this.itemService.changeLike(this.jwt, this.lectureIdx).subscribe(
+                data => {
+                    this.likeState = !this.likeState;
+                    if (!this.likeState) Toast.makeText("관심강의에서 해제되었습니다").show();
+                    else Toast.makeText("관심강의로 등록되었습니다").show();
+                },
+                error => {
+                    Toast.makeText("강의 즐겨찾기는 로그인 후 이용가능합니다").show();
+                }
+            );
+        }else{
+            Toast.makeText("강의 즐겨찾기는 로그인 후 이용가능합니다").show();
+        }
 
-        this.itemService.changeLike(this.jwt, this.lectureIdx).subscribe(
-            data =>{
-
-            },
-            error => console.log(error)
-        );
-
-        this.likeState = !this.likeState;
 
 
 
@@ -159,6 +185,10 @@ export class ItemsComponent implements OnInit {
 
     setRatingHighlight(rate: number){
         this.rating = rate;
+    }
+
+    goBack(){
+        this.routerExtensions.back();
     }
 
 

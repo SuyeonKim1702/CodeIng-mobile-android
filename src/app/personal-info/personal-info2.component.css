@@ -1,6 +1,5 @@
 
 .next{
-    width: 345;
     height: 45;
     color: #fc8f41;
     background-color: #ffffff;
@@ -13,6 +12,7 @@
     border-color: #fc8f41;
     border-width: 1;
     margin-top: 20;
+    z-index: 0;
 }
 
 .circle{
@@ -93,7 +93,6 @@
 
 .back{
     color: #34353a;
-    height: 19;
 }
 
 .title{
@@ -110,7 +109,7 @@
     margin-left: 20;
     margin-right: 20;
     margin-bottom: 24;
-    margin-top: 20;
+    margin-top: 40;
 
 }
 

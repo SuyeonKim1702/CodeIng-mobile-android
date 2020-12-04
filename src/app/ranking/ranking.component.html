@@ -1,16 +1,17 @@
 <GridLayout rows="*">
-    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="756"  >
+    <RadSideDrawer gesturesEnabled="false" drawerLocation="Bottom" [drawerContentSize]="height"  >
         <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="false" >
             <GridLayout class="drawerBottom" columns="2*,3*" rows="100" dock="bottom">
-                <Label class="redoChoose" (tap)="redo()" row="0" col="0" text="필터 초기화"></Label>
-                <Label class="completeChoose" (tap)="complete()" row="0" col="1" text="선택 완료" ></Label>
+                <Button class="redoChoose" (tap)="redo()" row="0" col="0" text="필터 초기화"></Button>
+                <Button class="completeChoose" (tap)="complete()" row="0" col="1" text="선택 완료" ></Button>
             </GridLayout>
             <StackLayout orientation="vertical" dock="Top">
 
                 <Label class="title-top" text="프로그램 랭킹 검색 필터"></Label>
 
-                <Label class="category" text="카테고리"></Label>
-
+                <ScrollView class="scroll" orientation="vertical">
+                    <StackLayout>
+                        <Label class="category" text="카테고리"></Label>
 
                 <WrapLayout class="wrap" orientation="horizontal">
                     <Label  *ngFor="let category of categoryList" [text]="category" (tap)="changeHighlight(categoryList.indexOf(category))"
@@ -19,55 +20,49 @@
 
                 <Label class="category2" text="세부 카테고리"></Label>
 
-               <ScrollView orientation="vertical">
+
                 <WrapLayout class="wrap"  orientation="horizontal" >
                     <Label  *ngFor="let subcategory of subcategoryList" [text]="subcategory['subcategoryName']" (tap)="changeHighlight2(subcategoryList.indexOf(subcategory))"
                             class="w" [ngClass]="{'clicked': state2[subcategoryList.indexOf(subcategory)] == true, 'category-list': state2[subcategoryList.indexOf(subcategory)] != true}"></Label >
                 </WrapLayout>
-                   </ScrollView>
+
+                    </StackLayout>
+                </ScrollView>
+
             </StackLayout>
 
         </DockLayout>
 
         <DockLayout tkMainContent stretchLastChild="true">
-
             <StackLayout class="outer" dock="Bottom">
                 <Label class="line"></Label>
+
                 <GridLayout columns="*,*,*,*"  rows="auto, 52" >
 
                     <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
-                        <SVGImage class="icon" src="res://home.svg"></SVGImage>
+                        <Image col="0" row="0" class="icon" src="res://home"></Image>
                         <Label class="menu-text"  row="1" col="0" text="홈"></Label>
 
                     </GridLayout>
                     <GridLayout  [nsRouterLink]="['/ranking']" pageTransition="none" col="1" class="g" rows="*,*">
-                        <SVGImage col="0" row="0" class="icon" src="res://search_selected.svg"></SVGImage>
+                        <Image col="0" row="0" class="icon" src="res://search_selected"></Image>
                         <Label class="menu-text-selected"   row="1" col="0" text="랭킹 검색"></Label>
 
                     </GridLayout>
 
                     <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
-                        <SVGImage col="0" row="0" class="icon" src="res://menu.svg"></SVGImage>
+                        <Image col="0" row="0" class="icon" src="res://menu"></Image>
                         <Label class="menu-text"  row="1" col="0" text="클래스"></Label>
 
                     </GridLayout>
                     <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
-                        <SVGImage col="0" row="0" class="icon" src="res://id2.svg"></SVGImage>
+                        <Image col="0" row="0" class="icon" src="res://mypage"></Image>
                         <Label class="menu-text"  row="1" col="0" text="마이"></Label>
 
                     </GridLayout>
 
                 </GridLayout>
             </StackLayout>
-
-
-
-
-
-
-
-
-
 
 
             <GridLayout class="search-set" columns="40, *, 40", rows="40" dock="Top">
@@ -81,8 +76,8 @@
                 <Label class="searchword"  row="0" col="1" [text]="title"></Label>
 
             </GridLayout>
-
-            <ListView dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+            <GridLayout width="100%" height="100%" columns="*">
+            <ListView col="0" dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (itemLoading)="itemloading($event)" (loadMoreItems)="loadMoreItems()">
                 <ng-template let-item="item" let-i="index">
                     <StackLayout [nsRouterLink]="['/lecture',item['lectureIdx']]" class="outer-stack">
                         <Image class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
@@ -112,6 +107,9 @@
                 </ng-template>
             </ListView>
 
+                <ActivityIndicator col="0" [busy]="isBusy" color="#1c7ced" width="100" height="100"></ActivityIndicator>
+
+            </GridLayout>
         </DockLayout>
 
     </RadSideDrawer>

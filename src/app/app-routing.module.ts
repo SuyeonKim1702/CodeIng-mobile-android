@@ -20,7 +20,7 @@ import {PersonalInfo2Component} from "./personal-info/personal-info2.component";
 import {Profile2Component} from "./profile/profile2.component";
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
-import {Class2Component} from "./class2/class2.component";
+import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 
 const routes: Routes = [
 
@@ -35,8 +35,6 @@ const routes: Routes = [
     { path: "ranking", component: RankingComponent },
     { path: "recommend", component: RecommendComponent},
     { path: "class", component: ClassComponent},
-    { path: "class22", component: Class2Component},
-
     { path: "my-page", component: MypageComponent},
     { path: "lecture/:lectureIdx", component: ItemsComponent},
     { path: "profile", component: ProfileComponent},
@@ -44,7 +42,9 @@ const routes: Routes = [
     { path: "profile3", component: Profile3Component},
     { path: "personal-info", component: PersonalInfoComponent},
     { path: "personal-info2", component: PersonalInfo2Component},
-    { path: "fav-lecture", component: FavLectureComponent}
+    { path: "fav-lecture", component: FavLectureComponent},
+    { path: "lectures/search", component: LecturesSearchComponent}
+
 
 
 

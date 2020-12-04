@@ -1,6 +1,5 @@
 
 .complete{
-    width: 345;
     height: 45;
     background-color: #1c7ced;
     color: #ffffff;
@@ -9,8 +8,9 @@
     font-size: 16;
     margin-left: 15;
     margin-right: 15;
-    margin-top: 170;
     border-radius: 3;
+    z-index: 0;
+    margin-bottom: 20;
 
 }
 

@@ -5,17 +5,17 @@
 
             <Image class="ad" src="res://codeing" stretch="aspectFill"></Image>
             <GridLayout columns="auto,*" rows="auto">
-                <SVGImage col="0" class="id" src="res://id.svg"></SVGImage>
+                <Image col="0" class="id" src="res://realid"></Image>
                 <TextField col="1" class="password" hint="아이디" [(ngModel)]="email"
                            style.placeholderColor="#A6A6A6"></TextField>
             </GridLayout>
             <GridLayout columns="auto,*" rows="auto">
-                <SVGImage col="0" class="id" src="res://password.svg"></SVGImage>
+                <Image col="0" class="id" src="res://realpw"></Image>
                 <TextField col="1" class="password" hint="비밀번호" [(ngModel)]="password" secure="true"
                            style.placeholderColor="#A6A6A6"></TextField>
             </GridLayout>
 
-            <GridLayout class="grid" columns="auto,auto,auto" rows="auto">
+            <GridLayout class="grid" columns="auto,auto,*" rows="auto">
                 <Label col="0" class="far h2 fa-check-circle uncheck" text="&#xf058;"
                        [ngClass]="{'check': loginstate , 'uncheck': !loginstate }" (tap)="auto_login()"> </Label>
                 <Label col="1" class="loginstatus" text="로그인 상태 유지"></Label>
@@ -25,8 +25,8 @@
             </GridLayout>
 
 
-            <Label class="login" (tap)="login()" text="로그인"></Label>
-            <Label [nsRouterLink]="['/lectures/search']" class="google-login" text="구글 아이디로 로그인"></Label>
+            <Button class="login" (tap)="login()" text="로그인"></Button>
+            <Button [nsRouterLink]="['/lectures/search']" class="google-login" text="구글 아이디로 로그인"></Button>
         </StackLayout>
 
         <AbsoluteLayout class="dialog-wrapper">

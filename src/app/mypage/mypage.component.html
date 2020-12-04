@@ -1,26 +1,27 @@
 <DockLayout>
-
    <StackLayout class="outer" dock="Bottom">
       <Label class="line"></Label>
+
       <GridLayout columns="*,*,*,*"  rows="auto, 52" >
 
          <GridLayout [nsRouterLink]="['/lectures']" pageTransition="none" col="0" class="g" rows="*,*">
-            <SVGImage col="0" row="0" class="icon" src="res://home.svg"></SVGImage>
+            <Image col="0" row="0" class="icon" src="res://home"></Image>
             <Label class="menu-text"  row="1" col="0" text="홈"></Label>
 
          </GridLayout>
          <GridLayout  [nsRouterLink]="['/ranking']" pageTransition="none" col="1" class="g" rows="*,*">
-            <SVGImage col="0" row="0" class="icon" src="res://search.svg"></SVGImage>
+            <Image col="0" row="0" class="icon" src="res://search"></Image>
             <Label class="menu-text"   row="1" col="0" text="랭킹 검색"></Label>
+
          </GridLayout>
 
          <GridLayout [nsRouterLink]="['/class']" pageTransition="none" col="2" class="g" rows="*,*">
-            <SVGImage col="0" row="0" class="icon" src="res://menu.svg"></SVGImage>
+            <Image col="0" row="0" class="icon" src="res://menu"></Image>
             <Label class="menu-text"  row="1" col="0" text="클래스"></Label>
 
          </GridLayout>
          <GridLayout [nsRouterLink]="['/my-page']" pageTransition="none" col="3" class="g" rows="*,*">
-            <SVGImage col="0" row="0" class="icon" src="res://id2_selected.svg"></SVGImage>
+            <Image col="0" row="0" class="icon" src="res://mypage_selected"></Image>
             <Label class="menu-text-selected"  row="1" col="0" text="마이"></Label>
 
          </GridLayout>
@@ -31,14 +32,23 @@
 
 
    <StackLayout  dock="Top">
-      <StackLayout [ngClass]="{'stack-outer-no': !setting , 'stack-outer-yes': setting}">
+      <Scrollview>
+         <StackLayout>
+
+            <StackLayout [ngClass]="{'stack-outer-no': setting == 0 , 'stack-outer-yes': setting !=0}">
+               <Label class="title" text="프로필"></Label>
+               <Label class="underline"> </Label>
+               <Label class="unset" textWrap="true"> </Label>
+            </StackLayout>
+
+      <StackLayout [ngClass]="{'stack-outer-no': setting == 2 , 'stack-outer-yes': setting !=2}">
          <Label class="title" text="프로필"></Label>
          <Label class="underline"> </Label>
          <Label class="text" textWrap="true" text="관심 언어와 분야를 설정해주세요. 더 많은 정보를 얻을 수 있습니다."> </Label>
          <Label class="btn" text="설정하기"></Label>
       </StackLayout>
 
-      <StackLayout [ngClass]="{'stack-outer-no': setting , 'stack-outer-yes': !setting}">
+      <StackLayout [ngClass]="{'stack-outer-no': setting == 1 , 'stack-outer-yes': setting != 1}">
          <Label  class="title" text="프로필"></Label>
          <Label class="underline2"> </Label>
          <Label  (tap)="next()" class="modify" text="수정하기"></Label>
@@ -87,10 +97,9 @@
          <Label  class="far h2 fa-check-circle check" text ="&#xf058;"> </Label>
          <Label  class="name" text="고객 센터 연락"></Label>
       </StackLayout>
-
-
+         </StackLayout>
+      </Scrollview>
    </StackLayout>
-   <StackLayout class="st" dock="bottom"></StackLayout>
 
 
 

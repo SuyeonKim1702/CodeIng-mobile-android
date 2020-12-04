@@ -65,8 +65,9 @@ TabStrip {
 
 .dock{
     margin-left: 20;
-    margin-right: 20;
+    margin-right: 15;
     margin-bottom: 24;
+    margin-top: 45;
 }
 .back{
     color: #34353a;
@@ -130,12 +131,14 @@ TabStrip {
     border-radius: 3;
     font-weight: bold;
     alignment: right;
+    z-index: 0;
 }
 
 .cost2{
     font-family: Montserrat;
     font-size: 25;
     color: #34353a;
+    z-index: 0;
 }
 
 .bottom-button{
@@ -156,6 +159,7 @@ TabStrip {
     border-color: #1c7ced;
     border-width: 1;
     margin-bottom: 15;
+    z-index: 0;
 }
 .item-dock{
 
@@ -176,7 +180,6 @@ TabStrip {
 }
 
 .qnaDes{
-    width: 230;
   color: #737373;
     font-size: 14;
     font-family: NotoSansCJKkr;
@@ -211,14 +214,15 @@ TabStrip {
 
 .yellow{
     color: #ffc30f;
-    margin-right: -8;
-
+    font-size: 14;
+    margin-right: -6;
 
 
 }
 .default{
     color: #efefef;
-    margin-right: -8;
+    font-size: 14;
+    margin-right: -6;
 
 
 }
@@ -230,4 +234,6 @@ TabStrip {
 
 .invisible{
     visibility: collapse;
+}
+.ff{
 }

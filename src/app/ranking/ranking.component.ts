@@ -1,11 +1,19 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {GestureEventData} from "@nativescript/core";
+import * as application from "@nativescript/core/application";
+
+import {
+    ActivityIndicator, AndroidActivityBackPressedEventData,
+    AndroidActivityBundleEventData, AndroidActivityEventData, AndroidActivityResultEventData,
+    AndroidApplication,
+    EventData,
+    GestureEventData
+} from "@nativescript/core";
 import {RankingService} from "./ranking.service";
 import {lectureCard} from "../lecture/lectureCard";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {subcategoryCard} from "./subcategoryCard";
-
-
+import {isAndroid, isIOS} from "@nativescript/core";
+import {Screen} from "@nativescript/core";
 
 @Component({
     selector: "ns-items",
@@ -28,6 +36,9 @@ export class RankingComponent implements OnInit {
     prev: number;
     prev2: number;
     title = "Web Frontend Ranking";
+    height: number;
+    isBusy: boolean = true;
+    cnt: number;
 
     constructor(private rankingService: RankingService) {
         this.page=1;
@@ -37,38 +48,45 @@ export class RankingComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.prev = 0;
-        this.prev2 = 0;
-        this.state =[];
-        this.state2 =[];
-        this.categoryList =[];
-        this.subcategoryList=[];
-        this.lectures = [];
-        this.categoryList = ['전체 선택','웹 Frontend','앱 Frontend','Backend','Full Stack','게임','ai','알고리즘','데이터사이언스','네트워크/보안','컴퓨터 과학','언어','기타'];
-        for(var i=0;i<80;i++) this.state.push(false);
-        for(var i=0;i<80;i++) this.state2.push(false);
 
-        this.rankingService.getLectures(this.page, this.categoryIdx, this.subcategoryIdx).subscribe(
-            data =>{
-                var tmp = data['result'];
-                for(var i =0; i<tmp.length; i++){
-                    this.lectures.push(new lectureCard(tmp[i]['lectureIdx'],tmp[i]['lectureName'],tmp[i]['siteName'],tmp[i]['thumbUrl'], tmp[i]['price'], tmp[i]['rating']));
-                }
 
-            },
-            error => console.log(error)
-        );
+                this.cnt = 0;
+                this.height = Screen.mainScreen.heightDIPs*0.8;
+                this.prev = 0;
+                this.prev2 = 0;
+                this.state =[];
+                this.state2 =[];
+                this.categoryList =[];
+                this.subcategoryList=[];
+                this.lectures = [];
+                this.categoryList = ['전체 선택','웹 Frontend','앱 Frontend','Backend','Full Stack','게임','ai','알고리즘','데이터사이언스','네트워크/보안','컴퓨터 과학','언어','기타'];
+                for(var i=0;i<80;i++) this.state.push(false);
+                for(var i=0;i<80;i++) this.state2.push(false);
 
-        this.rankingService.getSubcategoryList(0).subscribe(
-            data =>{
-                var tmp = data['result'];
-                for(var i =0; i<tmp.length; i++){
-                    this.subcategoryList.push(new subcategoryCard(tmp[i]['subcategoryIdx'],tmp[i]['subcategoryName']));
-                }
+                this.rankingService.getLectures(this.page, this.categoryIdx, this.subcategoryIdx).subscribe(
+                    data =>{
+                        var tmp = data['result'];
+                        for(var i =0; i<tmp.length; i++){
+                            this.lectures.push(new lectureCard(tmp[i]['lectureIdx'],tmp[i]['lectureName'],tmp[i]['siteName'],tmp[i]['thumbUrl'], tmp[i]['price'], tmp[i]['rating']));
+                        }
 
-            },
-            error => console.log(error)
-        );
+                    },
+                    error => console.log(error)
+                );
+
+                this.rankingService.getSubcategoryList(0).subscribe(
+                    data =>{
+                        var tmp = data['result'];
+                        for(var i =0; i<tmp.length; i++){
+                            this.subcategoryList.push(new subcategoryCard(tmp[i]['subcategoryIdx'],tmp[i]['subcategoryName']));
+                        }
+
+
+
+
+                    },
+                    error => console.log(error)
+                );
 
     }
 
@@ -176,5 +194,15 @@ export class RankingComponent implements OnInit {
         );
 
     }
+
+
+
+
+    itemloading(args){
+        this.cnt++;
+        if(this.cnt>=2) this.isBusy = false;
+    }
+
+
 }
 

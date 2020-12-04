@@ -2,7 +2,7 @@
     <StackLayout class="content">
 
         <DockLayout class="dock" stretchLastChild="true" >
-            <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+            <Label dock="left" (tap)="goBack()" class="fas h2 back" text ="&#xf053;"> </Label>
             <Label dock="right" class="title" text ="프로필 수정"> </Label>
         </DockLayout>
 
@@ -53,7 +53,7 @@
 
         <TextField class="name" hint="생년월일을 입력해주세요" style.placeholderColor="#A6A6A6" editable="false" [text]="dateText" (tap)="onPickDateTap($event)" ></TextField>
 
-        <Label class="next" (tap)="next()"  text="프로필 정보 저장"></Label>
+        <Button class="next" (tap)="next()"  text="프로필 정보 저장"></Button>
 
 
     </StackLayout>

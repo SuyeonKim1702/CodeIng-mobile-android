@@ -3,6 +3,9 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {ProfileService} from "./profile.service";
 import {getString} from "@nativescript/core/application-settings";
 import {Router} from "@angular/router";
+import {RouterExtensions} from "@nativescript/angular";
+import * as application from "@nativescript/core/application";
+import {AndroidActivityBackPressedEventData, AndroidApplication} from "@nativescript/core";
 
 
 
@@ -41,12 +44,33 @@ export class ProfileComponent implements OnInit {
 
 
 
-    constructor(private profileService: ProfileService, private router: Router) {
+    constructor(private profileService: ProfileService, private routerExtensions: RouterExtensions, private zone: NgZone) {
 
 
     }
 
     ngOnInit(): void {
+
+
+        if (application.android) {
+            application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+
+                if (this.routerExtensions.router.isActive("/profile", false)) {
+                    data.cancel = true;
+                    this.zone.run(() => {
+                        this.routerExtensions.back();
+                    });
+
+
+                }
+
+            });
+        }
+
+
+
+
+
         this.cateState = false;
         this.subcateState = false;
         this.check1 = false;
@@ -306,10 +330,14 @@ export class ProfileComponent implements OnInit {
 
 
 
-        this.router.navigate(['/profile2', this.final_cate.toString(), this.final_subcate.toString(), this.final_level]);
+        this.routerExtensions.navigate(['/profile2', this.final_cate.toString(), this.final_subcate.toString(), this.final_level]);
 
     }
 
+
+    goBack(){
+        this.routerExtensions.back();
+    }
 
 
 

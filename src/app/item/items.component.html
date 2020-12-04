@@ -1,13 +1,14 @@
+<Page>
 <StackLayout orientation="vertical">
     <DockLayout class="dock" stretchLastChild="false">
-        <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+        <Label dock="left" class="fas h2 back" (tap)="goBack()" text ="&#xf053;"> </Label>
         <Label dock="right" class="fas h2 heart" text ="&#xf004;" (tap)="changeLike()" [ngClass]="{'visible': likeState, 'invisible': !likeState}"> </Label>
         <Label dock="right" class="far h2 heart2" text ="&#xf004;" (tap)="changeLike()" [ngClass]="{'visible': !likeState, 'invisible': likeState}" > </Label>
 
     </DockLayout>
-    <StackLayout>
+    <StackLayout >
         <Label  textWrap="true" class="title" [text]="info['lectureName']"></Label>
-        <StackLayout  id="stack">
+        <StackLayout [ngClass]="{'visible': !scrollState, 'invisible': scrollState}" id="stack">
             <Label  textWrap="true" class="subtitle" text="Pass the AWS Solutions Architect Associate Certification SAA-C02. Complete Amazon Web Services Cloud training!"></Label>
             <Image  class="thumb" [src]="info['thumbUrl']" stretch="aspectFill"></Image>
 
@@ -23,9 +24,9 @@
 
     </StackLayout>
 
-    <StackLayout class="outer-tab">
+    <StackLayout (swipe)="please($event)" class="outer-tab">
 
-        <Tabs>
+        <Tabs (swipe)="please($event)" >
             <TabStrip class="test">
                 <TabStripItem class="test">
                     <Label class="tab-name" text="강의정보"></Label>
@@ -39,8 +40,14 @@
             </TabStrip>
 
             <TabContentItem>
-                <ScrollView orientation="vertical">
-                <StackLayout class="tab1" (swipe)="please($event)">
+                <ScrollView (swipe)="please($event)" orientation="vertical">
+                    <DockLayout>
+                        <DockLayout dock="Bottom" class="bottom-button" stretchLastChild="false">
+                            <Button class="cost2"  dock="left" [text]="info['price']"></Button>
+                            <Button (tap)="go()" class="goToLink" dock="right" text="강의 보러 가기" ></Button>
+                        </DockLayout>
+
+                <StackLayout dock="Top" class="tab1" >
                     <Label text="무엇을 배우게 되나요?" class="info-title"> </Label>
                     <Label textWrap="true" class="content"  text="✔️ Fully Updated for SAA-CO2: Pass the AWS      Certified Solutins Architect Associate Certification"></Label>
                     <Label textWrap="true"  class="content" text="✔️All 600+ slides available as downloadable PDF"></Label>
@@ -51,25 +58,21 @@
                     <Label text="요구사항" class="info-title"> </Label>
                     <Label class="content" textWrap="true"  text="Welcome! I’m here to help you prepare and PASS the newest AWS Certified Solutions Architect Associate exam."></Label>
 
-                    <DockLayout class="bottom-button" stretchLastChild="false">
-                        <Label class="cost2"  dock="left" [text]="info['price']"></Label>
-                        <Label (tap)="go()" class="goToLink" dock="right" text="강의 보러 가기" ></Label>
-                    </DockLayout>
-
                 </StackLayout>
+                    </DockLayout>
                 </ScrollView>
             </TabContentItem>
 
-            <TabContentItem>
-                <ScrollView orientation="vertical">
+            <TabContentItem >
+
                 <DockLayout (swipe)="please($event)">
-                        <Label class="writeQna" text="후기 작성하기" dock="bottom"> </Label>
-                    <ListView dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+                        <Button class="writeQna" text="후기 작성하기" dock="bottom"> </Button>
+                    <ListView (swipe)="please($event)"  dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
                         <ng-template let-item="item" let-i="index">
                                 <StackLayout class="left" orientation="vertical">
                                     <StackLayout orientation="horizontal">
                                     <Label class="nickname" [text]= "item['nickname']"></Label>
-                                        <StackLayout orientation="horizontal">
+                                        <StackLayout class="ff" orientation="horizontal">
                                             <Label *ngFor="let rate of [1,2,3,4,5]" class="fas" text ="&#xf005;" [ngClass]="{'yellow': item['totalRating'] >= rate, 'default': item['totalRating'] < rate}"> </Label>
                                     </StackLayout>
                                     <Label class="time" [text]= "item['createdAt']"></Label>
@@ -80,34 +83,34 @@
                     </ListView>
 
                 </DockLayout>
-                </ScrollView>
             </TabContentItem>
-            <TabContentItem>
-                <ScrollView orientation="vertical">
-                <DockLayout stretchLastChild="true" (swipe)="please($event)">
-                   <Label class="writeQna" text="질문 작성하기" dock="bottom"> </Label>
+            <TabContentItem >
+
+                <DockLayout (swipe)="please($event)" stretchLastChild="true" (swipe)="please($event)">
+                   <Button class="writeQna" text="질문 작성하기" dock="bottom"> </Button>
 
 
-                    <ListView dock=Top [items]="qnas" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+                    <ListView (swipe)="please($event)" dock=Top [items]="qnas" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
                         <ng-template let-item="item" let-i="index">
-                            <DockLayout stretchLastChild="false" class="item-dock">
-                                <StackLayout dock="left" class="left" orientation="vertical">
+                            <GridLayout columns="*,auto"  class="item-dock">
+                                <StackLayout col="0" class="left" orientation="vertical">
                                     <Label class="nickname" [text]= "item['qnaTitle']"></Label>
                                     <Label class="qnaDes" [text]= "item['qnaDes']"></Label>
                                 </StackLayout>
 
-                                <StackLayout dock="right" class="right" orientation="vertical">
+                                <StackLayout col="1" class="right" orientation="vertical">
                                     <Label class="time" [text]= "item['createdAt']"></Label>
                                     <Label class="likesCount" [text]= "item['likesCount']"></Label>
                                 </StackLayout>
 
-                            </DockLayout>
+                            </GridLayout>
                         </ng-template>
                     </ListView>
 
                 </DockLayout>
-                </ScrollView>
+
             </TabContentItem>
         </Tabs>
     </StackLayout>
 </StackLayout>
+</Page>

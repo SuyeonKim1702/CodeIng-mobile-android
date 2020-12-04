@@ -18,69 +18,75 @@ import {RouterExtensions} from "@nativescript/angular";
 export class MypageComponent implements OnInit {
 
     profile: any;
-    setting: boolean;
+    setting: number;
     nickname: string;
     level: string;
     interest: any;
+    jwt: string;
 
     constructor(private mypageService: MypageService, private router: Router, private routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
-        this.setting = false;
+        this.setting = 0;
         this.interest = [];
-        const jwt: string = getString("JWT");
 
 
         if(!hasKey("JWT")){
             this.routerExtensions.navigate(['/login'], { clearHistory: true });
         }
+        else{
+            this.jwt = getString("JWT");
+            this.mypageService.getProfile(this.jwt).subscribe(
+                data =>{
+                    this.profile = data['result'];
+                    this.level = data['result']['levelName'];
 
-
-
-        this.mypageService.getProfile(jwt).subscribe(
-            data =>{
-                this.profile = data['result'];
-                this.level = data['result']['levelName'];
-
-                for(var i=0;i<data['result']['category'].length;i++){
-                    console.log("");
-                    this.interest.push("# "+data['result']['category'][i]['categoryName']);
-                }
-
-                for(var i=0;i<data['result']['subcategory'].length;i++){
-                    this.interest.push("# "+data['result']['subcategory'][i]['subcategoryName']);
-                }
-
-                for(var key in data['result']){
-                    if(this.profile[key].length>0){
-                        this.setting = true;
-                        break;
+                    for(var i=0;i<data['result']['category'].length;i++){
+                        console.log("");
+                        this.interest.push("# "+data['result']['category'][i]['categoryName']);
                     }
-                }
 
-                //프로필이 설정되어있을 때 - visibility 변경
-                if(this.setting){
+                    for(var i=0;i<data['result']['subcategory'].length;i++){
+                        this.interest.push("# "+data['result']['subcategory'][i]['subcategoryName']);
+                    }
 
-                    //회원 정보 호출
-                    this.mypageService.getPersonalInfo(jwt).subscribe(
-                        data =>{
-                            this.nickname = data['result']['nickname'];
+                    for(var key in data['result']){
+                        if(this.profile[key].length>0){
+                            this.setting = 1; //세팅 되어있을 때
+                            break;
+                        }
+                    }
+
+                    //프로필이 설정되어있을 때 - visibility 변경
+                    if(this.setting == 1){
+
+                        //회원 정보 호출
+                        this.mypageService.getPersonalInfo(this.jwt).subscribe(
+                            data =>{
+                                this.nickname = data['result']['nickname'];
 
 
 
 
-                        },
-                        error => console.log(error)
-                    );
+                            },
+                            error => console.log(error)
+                        );
 
-                }
+                    }else{
+                        this.setting = 2;
+                    }
 
 
 
 
-            },
-            error => console.log(error)
-        );
+                },
+                error => console.log(error)
+            );
+
+        }
+
+
+
 
     }
 

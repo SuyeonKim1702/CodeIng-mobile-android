@@ -26,7 +26,7 @@ import {NativeScriptDateTimePickerModule} from "@nativescript/datetimepicker/ang
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
-import {Class2Component} from "./class2/class2.component";
+import {LecturesSearchComponent} from "./lecture/lectures-search.component";
 
 
 
@@ -49,6 +49,7 @@ import {Class2Component} from "./class2/class2.component";
 
     ],
     declarations: [
+        LecturesSearchComponent,
         AppComponent,
         ItemsComponent,
         LecturesComponent,
@@ -69,7 +70,6 @@ import {Class2Component} from "./class2/class2.component";
         Profile2Component,
         Profile3Component,
         FavLectureComponent,
-        Class2Component
 
     ],
     providers: [],

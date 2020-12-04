@@ -3,9 +3,7 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {getString} from "@nativescript/core/application-settings";
 import {PersonalInfoService} from "./personal-info.service";
 import { RouterExtensions} from "@nativescript/angular";
-
-
-
+import * as Toast from 'nativescript-toast';
 
 @Component({
     selector: "ns-items",
@@ -80,6 +78,8 @@ export class PersonalInfo2Component implements OnInit {
 
         this.personalInfoService.patchPersonalInfo(this.jwt, this.email, this.name, this.nickname, this.phonenumber, this.password, this.passwordConfirm).subscribe(
             data => {
+
+                Toast.makeText("회원정보가 수정되었습니다.").show();
 
                 this.routerExtensions.navigate(['/my-page'], { clearHistory: true });
 

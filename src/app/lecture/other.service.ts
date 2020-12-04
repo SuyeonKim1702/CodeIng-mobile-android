@@ -31,4 +31,10 @@ export class OtherService {
     }
 
 
+    getOverallContent(){
+        return this.httpClient.get(this.baseUrl+'/api/recommend', {headers: this.headers});
+
+    }
+
+
 }

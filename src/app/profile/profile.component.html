@@ -1,9 +1,9 @@
 <GridLayout rows="*">
-    <RadSideDrawer drawerLocation="Bottom" drawerContentSize="380" >
+    <RadSideDrawer gesturesEnabled="false" drawerLocation="Bottom" drawerContentSize="380" >
 
         <DockLayout  class="outerDock" tkDrawerContent stretchLastChild="true" >
 
-            <DockLayout [ngClass]="{'visible': check1 ,'invisible': !check1}"   dock="Top" stretchLastChild="true">
+            <DockLayout [ngClass]="{'visible': check1 ,'invisible': !check1}"  dock="Top" stretchLastChild="true">
             <StackLayout  orientation="vertical" dock="Top">
 
                 <Label class="title-top" text="관심있는 분야"></Label>
@@ -19,8 +19,8 @@
             </StackLayout>
 
             <GridLayout class="drawerBottom" columns="*,*" dock="Bottom">
-                <Label class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo()"></Label>
-                <Label class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete()"></Label>
+                <Button class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo()"></Button>
+                <Button class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete()"></Button>
             </GridLayout>
             </DockLayout>
 
@@ -44,8 +44,8 @@
                 </StackLayout>
 
                 <GridLayout class="drawerBottom" columns="*,*" dock="Bottom">
-                    <Label class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo2()"></Label>
-                    <Label class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete2()"></Label>
+                    <Button class="redoChoose" row="0" col="0" text="필터 초기화" (tap)="redo2()"></Button>
+                    <Button class="completeChoose" row="0" col="1" text="선택 완료" (tap)="complete2()"></Button>
                 </GridLayout>
 
 
@@ -65,17 +65,17 @@
         <DockLayout tkMainContent stretchLastChild="true">
     <StackLayout dock="top">
     <DockLayout class="dock" stretchLastChild="true" >
-        <Label dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
+        <Label (tap)="goBack()" dock="left" class="fas h2 back" text ="&#xf053;"> </Label>
         <Label dock="right" class="title" text ="프로필 수정"> </Label>
     </DockLayout>
-        <StackLayout orientation="horizontal">
+        <StackLayout class="upper" orientation="horizontal">
      <Label class="subtitle" text="관심있는 분야" ></Label>
             <Label class="choose" text="선택하기" (tap)="drawer1()"></Label>
         </StackLayout>
       <TextField [ngClass]="{'cate-no': !cateState , 'cate-yes': cateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="drawer1()" ></TextField>
 
         <WrapLayout [ngClass]="{'wrap-no': !cateState , 'wrap-yes': cateState }" orientation="horizontal">
-            <StackLayout *ngFor="let tag of interestCategory" orientation="horizontal">
+            <StackLayout class="stack" *ngFor="let tag of interestCategory" orientation="horizontal">
             <Label class="tag" [text]="tag['categoryName']"></Label >
                 <Label (tap)="onOpenDrawerTap(interestCategory.indexOf(tag), tag['categoryIdx'])" class="delete" text="X"></Label>
             </StackLayout>
@@ -141,7 +141,7 @@
 
             </StackLayout>
 
-            <Label dock="Bottom" (tap)="next()" class="next"  text="다음"></Label>
+            <Button dock="Bottom" (tap)="next()" class="next"  text="다음"></Button>
         </DockLayout>
 
 

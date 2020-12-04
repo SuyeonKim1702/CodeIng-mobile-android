@@ -1,8 +1,4 @@
 
-.btnav{
-    background-color: darkkhaki;
-}
-
 
 .rank{
     height: 130;
@@ -11,7 +7,7 @@
 }
 .title{
 
-    margin-top: 9;
+    margin-top: 40;
     height: 25;
 
     font-size: 17;
@@ -179,6 +175,7 @@
 }
 
 .w{
+    height: 34;
     font-size: 15;
     font-family: Roboto;
     color: #efefef;
@@ -190,20 +187,31 @@
     padding-left: 12;
     padding-right: 12;
     margin-bottom: 5;
+    padding-top: 5;
+    z-index: 0;
 
 }
 
 
+.icon-selected{
+    width: 22;
+    height: 22;
+    background-color: #fff;
+
+}
+
 .icon{
-    width: 24;
-    height: 24;
+    width: 22;
+    height: 22;
+    background-color: #fff;
+
 }
 
 
 .menu-text{
     font-size: 13;
     font-family: NotoSansCJKkr;
-    color: #e6e6e6;
+    color: #000000;
 }
 
 .menu-text-selected{
@@ -221,9 +229,18 @@
     width: 100%;
     height: 1;
     background-color: #e6e6e6;
-    margin-bottom: 15;
+    margin-bottom: 8;
 }
 .outer{
     height: 60;
+    margin-bottom: 10;
 
+}
+
+.scroll{
+    height: 100%;
+}
+
+.unset{
+    height: 50;
 }

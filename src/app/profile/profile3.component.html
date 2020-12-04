@@ -1,24 +1,25 @@
-<StackLayout>
+<Docklayout>
+    <Button dock="Bottom" (tap)="move()" class="complete" text="메인 화면으로 이동하기"></Button>
+
+    <StackLayout dock="Top">
 
 
-    <Label  class="far fa-check-circle fa-10x check" text="&#xf058;"> </Label>
-    <Image class="logo" src="https://firebasestorage.googleapis.com/v0/b/codeing-9f456.appspot.com/o/logo.png?alt=media&token=e63f86e9-dfe1-4454-ad55-af5ebb425b35" stretch="aspectFill"></Image>
+        <Label  class="far fa-check-circle fa-10x check" text="&#xf058;"> </Label>
+        <Image class="logo" src="res://codeing" stretch="aspectFill"></Image>
 
+        <Stacklayout orientation="horizontal" class="block">
+            <Label class="greeting" text="프로필 설정 완료"></Label>
 
-    <Stacklayout orientation="horizontal" class="block">
-        <Label class="greeting" text="프로필 설정 완료"></Label>
+        </Stacklayout>
 
-    </Stacklayout>
-
-    <Label class="congratz" textWrap="true" text="프로필 설정이 완료되었습니다! 회원님의 관심 분야에 맞는 맞춤 강의를 추천받으실 수 있습니다."></Label>
-
-    <Label (tap)="move()" class="complete" text="메인 화면으로 이동하기"></Label>
-
-
+        <Label class="congratz" textWrap="true" text="프로필 설정이 완료되었습니다! 회원님의 관심 분야에 맞는 맞춤 강의를 추천받으실 수 있습니다."></Label>
 
 
 
-</StackLayout>
+    </StackLayout>
+
+
+</Docklayout>
 
 
 

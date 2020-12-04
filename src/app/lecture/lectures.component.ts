@@ -1,9 +1,20 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {EventData, GestureEventData, ImageSource} from "@nativescript/core";
+import {
+    AndroidActivityBundleEventData,
+    AndroidActivityEventData, AndroidActivityResultEventData,
+    EventData,
+    GestureEventData,
+    ImageSource
+} from "@nativescript/core";
 import {OtherService} from "./other.service";
-import {getString} from "@nativescript/core/application-settings";
+import {getString, hasKey} from "@nativescript/core/application-settings";
 import { RouterExtensions} from "@nativescript/angular";
 import { ActivityIndicator} from "@nativescript/core";
+import * as application from "@nativescript/core/application";
+
+import { AndroidApplication, AndroidActivityBackPressedEventData} from "@nativescript/core";
+import {android} from "@nativescript/core/application";
+
 
 
 @Component({
@@ -18,57 +29,76 @@ export class LecturesComponent implements OnInit {
     recLectures: any = [];
     jwt: string;
     isBusy: boolean = true;
+    cnt: number = 0;
+
 
 
 
 
 
     constructor(private otherService: OtherService, private routerExtensions: RouterExtensions) {
-        this.jwt = getString("JWT");
+
 
     }
 
     ngOnInit(): void {
-
-
-
+        // Android activity events
 
 
         this.otherService.getOverallRanking().subscribe(
             data =>{
-               this.allLectures = data['result'];
+                this.allLectures = data['result'];
 
-            },
-                error => console.log(error)
-        );
-
-
-        this.otherService.getRecommendContent(this.jwt).subscribe(
-            data =>{
-                this.recLectures = data['result'];
             },
             error => console.log(error)
         );
 
 
 
+        if(hasKey("JWT")){
 
+            this.jwt = getString("JWT");
+            this.otherService.getRecommendContent(this.jwt).subscribe(
+                data =>{
+                    this.recLectures = data['result'];
+                },
+                error => console.log(error)
+            );
+        }else{
+            this.otherService.getOverallContent().subscribe(
+                data =>{
+                    this.recLectures = data['result'];
+                },
+                error => console.log(error)
+            );
 
-
+        }
 
 
     }
+
+
+
+
 
     itemClick(args){
         //console.log(args.object.idx);
-        this.routerExtensions.navigate(['/lecture',args.object.idx]);
+        this.routerExtensions.navigate(['/lecture',args.object.idx], {
+            transition:
+                {
+                    name: 'flip',
+                    duration: 2000,
+                    curve: 'linear'
+                }});
 
     }
 
-    onBusyChanged(args: EventData) {
-        let indicator: ActivityIndicator = <ActivityIndicator>args.object;
-        //console.log("indicator.busy changed to: " + indicator.busy);
-        //this.isBusy = !this.isBusy;
+    onLoaded(args){
+        this.cnt++;
+        if(this.cnt>=2) this.isBusy = false;
+
     }
+
+
 
 }

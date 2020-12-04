@@ -1,5 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {GestureEventData} from "@nativescript/core";
+import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
+import {AndroidActivityBackPressedEventData, AndroidApplication, GestureEventData} from "@nativescript/core";
 import {
     getString, hasKey,
 
@@ -8,6 +8,7 @@ import {
 import {FavLectureService} from "./fav-lecture.service";
 import {Router} from "@angular/router";
 import {RouterExtensions} from "@nativescript/angular";
+import * as application from "@nativescript/core/application";
 
 
 @Component({
@@ -20,9 +21,29 @@ export class FavLectureComponent implements OnInit {
     page: number =1;
     jwt: string;
 
-    constructor(private favLectureService: FavLectureService, private router: Router, private routerExtensions: RouterExtensions) { }
+    constructor(private favLectureService: FavLectureService, private router: Router, private routerExtensions: RouterExtensions, private zone: NgZone) { }
 
     ngOnInit(): void {
+
+
+        if (application.android) {
+            application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+
+                if (this.routerExtensions.router.isActive("/fav-lecture", false)) {
+                    data.cancel = true;
+                    this.zone.run(() => {
+                        this.routerExtensions.back();
+                    });
+
+
+                }
+
+            });
+        }
+
+
+
+
 
         this.jwt = getString("JWT");
 
@@ -53,4 +74,10 @@ export class FavLectureComponent implements OnInit {
    itemClick(args){
         this.routerExtensions.navigate(['/lecture',args.object.idx]);
    }
+
+    goBack(){
+        this.routerExtensions.back();
+
+    }
 }
+

@@ -14,7 +14,7 @@ export class Signup4Component implements OnInit {
 
     constructor(private route: ActivatedRoute) {
         this.route.params.subscribe((params) => {
-            this.nickname = params["name"]+"님, ";
+            this.nickname = params["name"]+"님, 환영합니다! ";
         });
     }
 
