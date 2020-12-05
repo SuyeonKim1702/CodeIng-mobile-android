@@ -8,7 +8,7 @@ import * as application from "@nativescript/core/application";
 
 import { RouterExtensions} from "@nativescript/angular";
 import { AndroidApplication, AndroidActivityBackPressedEventData} from "@nativescript/core";
-
+import * as Toast from 'nativescript-toast';
 
 @Component({
     selector: "ns-details",
@@ -67,7 +67,7 @@ export class LecturesSearchComponent implements OnInit {
         }
 
 
-            this.height = Screen.mainScreen.heightDIPs * 0.8;
+            this.height = Screen.mainScreen.heightDIPs * 0.85;
             this.check = false;
             this.rating = 0;
             this.level = 0;
@@ -138,6 +138,9 @@ export class LecturesSearchComponent implements OnInit {
                     this.counter = i;
 
                 }
+                if(tmp.length == 0)
+                    Toast.makeText("검색결과가 없습니다.").show();
+
 
             },
             error => console.log(error)

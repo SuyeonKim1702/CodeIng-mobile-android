@@ -45,7 +45,7 @@
          <Label class="title" text="프로필"></Label>
          <Label class="underline"> </Label>
          <Label class="text" textWrap="true" text="관심 언어와 분야를 설정해주세요. 더 많은 정보를 얻을 수 있습니다."> </Label>
-         <Label class="btn" text="설정하기"></Label>
+         <Button class="btn" text="설정하기" (tap)="next()" ></Button>
       </StackLayout>
 
       <StackLayout [ngClass]="{'stack-outer-no': setting == 1 , 'stack-outer-yes': setting != 1}">

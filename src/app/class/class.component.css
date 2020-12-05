@@ -180,3 +180,45 @@ TabStrip {
 .invisible1{
     visibility: collapse;
 }
+
+
+
+.dialogOpen .content {
+    background-color: rgba(0,0,0,0.15);
+}
+.dialogOpen .dialog-wrapper {
+    visibility: visible;
+}
+.dialog-wrapper {
+    visibility: collapse;
+    alignment: center;
+
+}
+.dialog {
+    border-color: #fc8f41;
+    border-width: 1;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    height: 135;
+    margin-top: 200;
+    background-color: #ffffff;
+    border-radius: 5;
+}
+
+.text{
+    font-size: 16;
+    text-align: center;
+    margin-top: 25;
+    margin-bottom: 15;
+}
+
+.btn{
+    width: 80;
+    height: 35;
+    color: #fc8f41;
+    border-color: #fc8f41;
+    text-align: center;
+    border-width: 1;
+    border-radius: 5;
+}

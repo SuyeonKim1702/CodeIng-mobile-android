@@ -36,13 +36,15 @@ export class MypageComponent implements OnInit {
         }
         else{
             this.jwt = getString("JWT");
+
             this.mypageService.getProfile(this.jwt).subscribe(
                 data =>{
+
                     this.profile = data['result'];
                     this.level = data['result']['levelName'];
 
                     for(var i=0;i<data['result']['category'].length;i++){
-                        console.log("");
+
                         this.interest.push("# "+data['result']['category'][i]['categoryName']);
                     }
 
@@ -51,10 +53,14 @@ export class MypageComponent implements OnInit {
                     }
 
                     for(var key in data['result']){
-                        if(this.profile[key].length>0){
-                            this.setting = 1; //세팅 되어있을 때
-                            break;
+
+                        if(this.profile[key]){
+                            if(this.profile[key].length>0 && this.profile[key] !="None" && this.profile[key]!=6 && this.profile[key]!="미정"){
+                                this.setting = 1; //세팅 되어있을 때
+                                break;
+                            }
                         }
+
                     }
 
                     //프로필이 설정되어있을 때 - visibility 변경
@@ -73,6 +79,7 @@ export class MypageComponent implements OnInit {
                         );
 
                     }else{
+
                         this.setting = 2;
                     }
 

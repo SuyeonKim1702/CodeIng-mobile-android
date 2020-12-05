@@ -31,6 +31,9 @@ export class ItemsComponent implements OnInit {
     likeState: boolean;
     jwt: string;
     scrollState: boolean;
+    dialogOpen = false;
+    content = false;
+    content2 = false;
 
 
 
@@ -85,7 +88,7 @@ export class ItemsComponent implements OnInit {
             this.itemService.checkFavLecture(this.jwt, this.lectureIdx).subscribe(
                 data => {
 
-                    this.likeState = (data['state'] == 'true')
+                    this.likeState = (data['state'] == 'true');
 
                 },
                 error => console.log(error)
@@ -98,6 +101,7 @@ export class ItemsComponent implements OnInit {
                 var tmp = data['result'];
 
                 for(var i =0; i<tmp.length; i++){
+                    this.content = true;
                     this.qnas.push(new Qna(tmp[i]['qnaIdx'],tmp[i]['qnaTitle'],tmp[i]['qnaDes'],tmp[i]['likesCount'], tmp[i]['createdAt']));
 
                 }
@@ -112,6 +116,7 @@ export class ItemsComponent implements OnInit {
         this.itemService.getReview(this.lectureIdx,1).subscribe(
             data =>{
                 this.review = data['result'];
+                if(this.review['result'].length != 0)  this.content2 = true;
 
             },
             error => console.log(error)
@@ -121,6 +126,19 @@ export class ItemsComponent implements OnInit {
 
 
     }
+
+    showDialog() {
+        this.dialogOpen = true;
+
+    }
+
+    closeDialog() {
+        this.dialogOpen = false;
+    }
+
+
+
+
 
     //방향 4: 위, 방향 8: 아래
     public please(args){
@@ -191,6 +209,10 @@ export class ItemsComponent implements OnInit {
         this.routerExtensions.back();
     }
 
+
+    buttonClick(){
+        this.showDialog();
+    }
 
 
 }

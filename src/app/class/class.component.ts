@@ -24,6 +24,9 @@ export class ClassComponent implements OnInit {
     login: boolean;
     isBusy: boolean = true;
     cnt: number;
+    dialogOpen = false;
+    content: number =0;
+    message: string;
 
     constructor(private classService: ClassService) {
         this.page = 1;
@@ -32,7 +35,8 @@ export class ClassComponent implements OnInit {
 
     ngOnInit(): void {
         this.login = false;
-        this.cnt = 0;
+        this.cnt = 1;
+        this.message = "로그인 후 이용할 수 있습니다."
 
 
         this.classService.getAllClass(this.page).subscribe(
@@ -51,6 +55,10 @@ export class ClassComponent implements OnInit {
 
             this.classService.getMyClass(this.page, this.jwt).subscribe(
             data =>{
+                if(data['result'].length == 0){
+                    this.login = false;
+                    this.message = "참여하고 있는 스터디가 없습니다."
+                }
                 this.allClasses2 = data['result'];
 
 
@@ -63,6 +71,16 @@ export class ClassComponent implements OnInit {
 
 
         }
+    }
+
+
+    showDialog() {
+        this.dialogOpen = true;
+
+    }
+
+    closeDialog() {
+        this.dialogOpen = false;
     }
 
 
@@ -86,7 +104,10 @@ export class ClassComponent implements OnInit {
             this.page2++;
             this.classService.getMyClass(this.page, this.jwt).subscribe(
                 data => {
+
+                    console.log('모모모');
                     for (var i = 0; i < data['result'].length; i++) {
+
                         this.allClasses2.push(data['result'][i]);
 
                     }
@@ -100,13 +121,13 @@ export class ClassComponent implements OnInit {
 
 
     itemClick(args){
-        //console.log(args.object.idx);
+       this.showDialog();
 
     }
 
     itemloading(args){
         this.cnt++;
-        if(this.cnt>=3) this.isBusy = false;
+        if(this.cnt>=2) this.isBusy = false;
 
     }
 

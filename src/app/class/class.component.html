@@ -1,4 +1,5 @@
-
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
+    <StackLayout class="content">
 <DockLayout>
     <StackLayout class="outer2" dock="Bottom">
         <Label class="line2"></Label>
@@ -76,6 +77,7 @@
                             </ng-template>
                         </ListView>
 
+
                             <ActivityIndicator col="0" [busy]="isBusy" color="#1c7ced" width="100" height="100"></ActivityIndicator>
                         </GridLayout>
 
@@ -111,7 +113,8 @@
                             </StackLayout>
                         </ng-template>
                     </ListView>
-                    <Label [ngClass]="{'visible1': !login, 'invisible1': login}" text="로그인 후 이용할 수 있습니다"> </Label>
+                    <Label [ngClass]="{'visible1': !login, 'invisible1': login}" [text]="message"> </Label>
+
 
 
                 </StackLayout>
@@ -126,3 +129,17 @@
 
 
 </DockLayout>
+
+    </StackLayout>
+
+
+        <AbsoluteLayout class="dialog-wrapper">
+            <StackLayout class="dialog">
+                <Label class="text" textWrap="true" text="준비중인 서비스입니다 :)"></Label>
+                <Button class="btn" text="확인" (tap)="closeDialog()"></Button>
+            </StackLayout>
+        </AbsoluteLayout>
+
+
+</GridLayout>
+

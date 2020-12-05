@@ -1,4 +1,6 @@
+.most{
 
+}
 .logo{
     width: 79;
     height: 17;
@@ -9,12 +11,17 @@
     width: 150;
     height: 180;
     border-radius: 3;
+    border-width: 1;
+    border-color: #efefef;
+
 }
 
 .thumb2{
     width: 103;
     height: 146;
     border-radius: 3;
+    border-width: 1;
+    border-color: #efefef;
 }
 
 .title{

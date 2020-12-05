@@ -72,7 +72,7 @@
      <Label class="subtitle" text="관심있는 분야" ></Label>
             <Label class="choose" text="선택하기" (tap)="drawer1()"></Label>
         </StackLayout>
-      <TextField [ngClass]="{'cate-no': !cateState , 'cate-yes': cateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="drawer1()" ></TextField>
+      <TextField [ngClass]="{'cate-no': !cateState , 'cate-yes': cateState}" editable= "false" hint="선택하기 버튼을 눌러주세요." style.placeholderColor="#A6A6A6" (tap)="drawer1()" ></TextField>
 
         <WrapLayout [ngClass]="{'wrap-no': !cateState , 'wrap-yes': cateState }" orientation="horizontal">
             <StackLayout class="stack" *ngFor="let tag of interestCategory" orientation="horizontal">
@@ -86,7 +86,7 @@
       <Label class="subtitle" text="관심있는 언어"></Label>
           <Label class="choose" text="선택하기" (tap)="drawer2()"></Label>
       </StackLayout>
-        <TextField (tap)="drawer2()" [ngClass]="{'cate-no': !subcateState , 'cate-yes': subcateState}" hint="영문으로 입력해주세요" style.placeholderColor="#A6A6A6" (tap)="drawer2()" ></TextField>
+        <TextField (tap)="drawer2()" [ngClass]="{'cate-no': !subcateState , 'cate-yes': subcateState}" editable= "false" hint="선택하기 버튼을 눌러주세요." style.placeholderColor="#A6A6A6" (tap)="drawer2()" ></TextField>
 
         <WrapLayout [ngClass]="{'wrap-no': !subcateState , 'wrap-yes': subcateState }" orientation="horizontal">
             <StackLayout *ngFor="let tag of interestSubcategory" orientation="horizontal">

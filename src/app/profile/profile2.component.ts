@@ -199,8 +199,7 @@ export class Profile2Component implements OnInit {
                 break;
             }
         }
-
-
+       if(this.dateText=="None") this.dateText = "";
         if(this.g_state[0]) this.gender ='M';
         else this.gender = 'W';
 

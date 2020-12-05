@@ -14,6 +14,7 @@ import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import {subcategoryCard} from "./subcategoryCard";
 import {isAndroid, isIOS} from "@nativescript/core";
 import {Screen} from "@nativescript/core";
+import * as Toast from 'nativescript-toast';
 
 @Component({
     selector: "ns-items",
@@ -188,6 +189,9 @@ export class RankingComponent implements OnInit {
                     this.lectures.push(new lectureCard(tmp[i]['lectureIdx'],tmp[i]['lectureName'],tmp[i]['siteName'],tmp[i]['thumbUrl'], tmp[i]['price'],tmp[i]['rating'] ));
 
                 }
+                if(tmp.length ==0)
+                    Toast.makeText("검색결과가 없습니다.").show();
+
 
             },
             error => console.log(error)

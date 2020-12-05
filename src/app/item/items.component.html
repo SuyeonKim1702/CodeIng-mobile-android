@@ -1,3 +1,5 @@
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
+    <StackLayout class="content">
 <Page>
 <StackLayout orientation="vertical">
     <DockLayout class="dock" stretchLastChild="false">
@@ -66,7 +68,7 @@
             <TabContentItem >
 
                 <DockLayout (swipe)="please($event)">
-                        <Button class="writeQna" text="후기 작성하기" dock="bottom"> </Button>
+                        <Button class="writeQna" (onTap)="buttonClick()" text="후기 작성하기" dock="bottom"> </Button>
                     <ListView (swipe)="please($event)"  dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
                         <ng-template let-item="item" let-i="index">
                                 <StackLayout class="left" orientation="vertical">
@@ -81,13 +83,13 @@
                             </StackLayout>
                         </ng-template>
                     </ListView>
-
+                    <Label dock="Top" [ngClass]="{'visible1': !content2, 'invisible1': content2}" text="글 목록이 없습니다."> </Label>
                 </DockLayout>
             </TabContentItem>
             <TabContentItem >
 
                 <DockLayout (swipe)="please($event)" stretchLastChild="true" (swipe)="please($event)">
-                   <Button class="writeQna" text="질문 작성하기" dock="bottom"> </Button>
+                   <Button class="writeQna" text="질문 작성하기" (onTap)="buttonClick()" dock="bottom"> </Button>
 
 
                     <ListView (swipe)="please($event)" dock=Top [items]="qnas" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
@@ -106,6 +108,7 @@
                             </GridLayout>
                         </ng-template>
                     </ListView>
+                    <Label dock="Top" [ngClass]="{'visible1': !content2, 'invisible1': content2}" text="글 목록이 없습니다."> </Label>
 
                 </DockLayout>
 
@@ -114,3 +117,14 @@
     </StackLayout>
 </StackLayout>
 </Page>
+    </StackLayout>
+
+
+
+    <AbsoluteLayout class="dialog-wrapper">
+        <StackLayout class="dialog">
+            <Label class="text" textWrap="true" text="준비중인 서비스입니다 :)"></Label>
+            <Button class="btn" text="확인" (tap)="closeDialog()"></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+</GridLayout>

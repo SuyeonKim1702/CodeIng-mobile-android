@@ -84,12 +84,9 @@ export class LecturesComponent implements OnInit {
     itemClick(args){
         //console.log(args.object.idx);
         this.routerExtensions.navigate(['/lecture',args.object.idx], {
-            transition:
-                {
-                    name: 'flip',
-                    duration: 2000,
-                    curve: 'linear'
-                }});
+            animated: true,
+            transition: { name: 'slide' }
+        });
 
     }
 
