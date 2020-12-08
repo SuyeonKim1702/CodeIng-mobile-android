@@ -27,6 +27,8 @@ import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 import {NativeScriptSvgModule} from "@sergeymell/nativescript-svg/angular";
 import {LecturesSearchComponent} from "./lecture/lectures-search.component";
+import {ReviewComponent} from "./review/review.component";
+import {QnaComponent} from "./qna/qna.component";
 
 
 
@@ -70,6 +72,8 @@ import {LecturesSearchComponent} from "./lecture/lectures-search.component";
         Profile2Component,
         Profile3Component,
         FavLectureComponent,
+        ReviewComponent,
+        QnaComponent
 
     ],
     providers: [],

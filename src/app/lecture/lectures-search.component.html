@@ -47,9 +47,9 @@
                 <Label row="0" col="2" class="fas h3 searchIcon" text ="&#xf1de;" (tap)="onOpenDrawerTap()"> </Label>
             </GridLayout>
             <GridLayout width="100%" height="100%" columns="*">
-            <ListView col="0" [items]="lectures"  (loadMoreItems)="loadMoreItems()" (itemLoading)="itemloading($event)">
+            <ListView (loaded)="onLoaded($event)"  col="0" [items]="lectures"  (loadMoreItems)="loadMoreItems()" (itemLoading)="itemloading($event)">
                 <ng-template let-item="item" let-i="index">
-                    <GridLayout class="grid" columns="73, *, 115" rows="auto" [idx]="item['lectureIdx']" (tap)="itemClick($event)">
+                    <GridLayout class="grid" columns="73, *, 115" rows="auto" [idx]="item['lectureIdx']" [order]="i" (tap)="itemClick($event)">
                         <Image row="0" col="0" class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
                         <StackLayout row="0" col="1" orientation="vertical">
                             <Label class="siteName" [text]= "item['siteName']"></Label>

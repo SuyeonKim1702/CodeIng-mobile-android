@@ -1,6 +1,7 @@
 <GridLayout class="page" [class.dialogOpen]="dialogOpen">
     <StackLayout class="content">
 <Page>
+
 <StackLayout orientation="vertical">
     <DockLayout class="dock" stretchLastChild="false">
         <Label dock="left" class="fas h2 back" (tap)="goBack()" text ="&#xf053;"> </Label>
@@ -8,7 +9,7 @@
         <Label dock="right" class="far h2 heart2" text ="&#xf004;" (tap)="changeLike()" [ngClass]="{'visible': !likeState, 'invisible': likeState}" > </Label>
 
     </DockLayout>
-    <StackLayout >
+    <StackLayout (tap)="please2($event)" >
         <Label  textWrap="true" class="title" [text]="info['lectureName']"></Label>
         <StackLayout [ngClass]="{'visible': !scrollState, 'invisible': scrollState}" id="stack">
             <Label  textWrap="true" class="subtitle" text="Pass the AWS Solutions Architect Associate Certification SAA-C02. Complete Amazon Web Services Cloud training!"></Label>
@@ -29,15 +30,15 @@
     <StackLayout (swipe)="please($event)" class="outer-tab">
 
         <Tabs (swipe)="please($event)" >
-            <TabStrip class="test">
+            <TabStrip  class="test">
                 <TabStripItem class="test">
-                    <Label class="tab-name" text="강의정보"></Label>
+                    <Label (swipe)="please($event)" class="tab-name" text="강의정보"></Label>
                 </TabStripItem>
                 <TabStripItem>
-                    <Label  class="tab-name" text="후기"></Label>
+                    <Label (swipe)="please($event)" class="tab-name" text="후기"></Label>
                 </TabStripItem>
                 <TabStripItem>
-                    <Label  class="tab-name" text="Q&A"></Label>
+                    <Label (swipe)="please($event)" class="tab-name" text="Q&A"></Label>
                 </TabStripItem>
             </TabStrip>
 
@@ -50,15 +51,12 @@
                         </DockLayout>
 
                 <StackLayout dock="Top" class="tab1" >
+                    <Label text="강의소개" class="info-title"> </Label>
+
+                        <Label (loaded)="onLoaded($event)" textWrap="true"  class="content" [text] ="intro"> </Label>
+
                     <Label text="무엇을 배우게 되나요?" class="info-title"> </Label>
-                    <Label textWrap="true" class="content"  text="✔️ Fully Updated for SAA-CO2: Pass the AWS      Certified Solutins Architect Associate Certification"></Label>
-                    <Label textWrap="true"  class="content" text="✔️All 600+ slides available as downloadable PDF"></Label>
-                    <Label textWrap="true" class="content" text="✔️ Perform Real-World Solution Architecture on AWS"></Label>
-                    <Label textWrap="true" class="content" text="✔️ Learn the AWS Fundamentals (EC2, ELB, RDS, ElastiCache, S3)"></Label>
-                    <Label text="설명" class="info-title"> </Label>
-                    <Label class="content" textWrap="true"  text="Welcome! I’m here to help you prepare and PASS the newest AWS Certified Solutions Architect Associate exam."></Label>
-                    <Label text="요구사항" class="info-title"> </Label>
-                    <Label class="content" textWrap="true"  text="Welcome! I’m here to help you prepare and PASS the newest AWS Certified Solutions Architect Associate exam."></Label>
+                    <Label textWrap="true" class="content" [text] ="contents"> </Label>
 
                 </StackLayout>
                     </DockLayout>
@@ -68,10 +66,10 @@
             <TabContentItem >
 
                 <DockLayout (swipe)="please($event)">
-                        <Button class="writeQna" (onTap)="buttonClick()" text="후기 작성하기" dock="bottom"> </Button>
-                    <ListView (swipe)="please($event)"  dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
-                        <ng-template let-item="item" let-i="index">
-                                <StackLayout class="left" orientation="vertical">
+                        <Button class="writeQna" (onTap)="reviewbuttonClick()" text="후기 작성하기" dock="bottom"> </Button>
+                    <ListView  (swipe)="please($event)"  dock=Top [items]="review" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
+                        <ng-template  let-item="item" let-i="index" >
+                                <StackLayout (onLoaded)="onLoaded($event)" [idx]="item['nickname']" class="left" orientation="vertical">
                                     <StackLayout orientation="horizontal">
                                     <Label class="nickname" [text]= "item['nickname']"></Label>
                                         <StackLayout class="ff" orientation="horizontal">
@@ -89,7 +87,7 @@
             <TabContentItem >
 
                 <DockLayout (swipe)="please($event)" stretchLastChild="true" (swipe)="please($event)">
-                   <Button class="writeQna" text="질문 작성하기" (onTap)="buttonClick()" dock="bottom"> </Button>
+                   <Button class="writeQna" text="질문 작성하기" (onTap)="qnabuttonClick()" dock="bottom"> </Button>
 
 
                     <ListView (swipe)="please($event)" dock=Top [items]="qnas" (itemTap)="onItemTap($event)"  (loadMoreItems)="loadMoreItems()">
@@ -108,13 +106,14 @@
                             </GridLayout>
                         </ng-template>
                     </ListView>
-                    <Label dock="Top" [ngClass]="{'visible1': !content2, 'invisible1': content2}" text="글 목록이 없습니다."> </Label>
+                    <Label dock="Top" [ngClass]="{'visible1': !content, 'invisible1': content}" text="글 목록이 없습니다."> </Label>
 
                 </DockLayout>
 
             </TabContentItem>
         </Tabs>
     </StackLayout>
+
 </StackLayout>
 </Page>
     </StackLayout>

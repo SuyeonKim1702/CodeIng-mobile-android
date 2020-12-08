@@ -1,5 +1,5 @@
 {
-  "name": "@nativescript/template-hello-world-ng",
+  "name": "@nativescript/codeing",
   "main": "main.js",
   "version": "7.0.2",
   "author": "NativeScript Team <oss@nativescript.org>",
@@ -22,6 +22,15 @@
   "scripts": {
     "ngcc": "ngcc --properties es2015 module main --first-only",
     "postinstall": "npm run ngcc"
+  },
+  "nativescript": {
+    "id": "com.codeing.codeing",
+    "tns-android": {
+      "version": "1.0.0"
+    },
+    "tns-ios": {
+      "version": "1.0.0"
+    }
   },
   "dependencies": {
     "@angular-devkit/schematics": "^11.0.2",

@@ -1,0 +1,38 @@
+<GridLayout class="page" >
+    <ScrollView>
+    <StackLayout class="content">
+        <DockLayout class="dock" stretchLastChild="true" >
+            <Label dock="left" (tap)="goBack()" class="fas h2 back" text ="&#xf00d;"> </Label>
+            <Label dock="right" class="title" text ="QnA 작성"> </Label>
+        </DockLayout>
+
+        <Label class="subtitle" text="제목"></Label>
+        <TextField [(ngModel)]="title" class="board-title" hint="제목을 입력해주세요" returnKeyType="done"
+                  returnPress="done" style.placeholderColor="#A6A6A6"> </TextField>
+
+        <Label class="subtitle" text="내용"></Label>
+        <TextView [(ngModel)]="content" class="board" hint="질문 내용을 적어주세요" returnKeyType="done"
+                  returnPress="done" style.placeholderColor="#A6A6A6"> </TextView>
+
+
+
+
+
+        <Button class="next" (tap)="next()"  text="QnA 작성"></Button>
+
+
+
+
+</StackLayout>
+
+    </ScrollView>
+
+    <AbsoluteLayout class="dialog-wrapper">
+        <StackLayout class="dialog">
+            <Label class="text" textWrap="true" ></Label>
+            <Button class="btn" text="확인" ></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+
+
+</GridLayout>

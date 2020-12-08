@@ -2,7 +2,7 @@ import {Component, ElementRef, NgZone, OnInit, ViewChild} from "@angular/core";
 import {LectureService} from "./lectures.service";
 import {lectureCard} from "./lectureCard";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
-import {EventData, getViewById, Screen, Slider} from "@nativescript/core";
+import {EventData, getViewById, ListView, Screen, Slider} from "@nativescript/core";
 import { Page } from "@nativescript/core";
 import * as application from "@nativescript/core/application";
 
@@ -33,12 +33,14 @@ export class LecturesSearchComponent implements OnInit {
     height: number;
     isBusy: boolean = true;
     cnt: number;
+    index: number;
 
 
 
 
     constructor(private zone: NgZone, private lectureService: LectureService,private pg: Page, private routerExtensions: RouterExtensions) {
         this.lectures = [];
+        this.index =0;
         this.counter = 0;
         this.page = 1;
         this.cnt =0;
@@ -185,7 +187,11 @@ export class LecturesSearchComponent implements OnInit {
 
     itemClick(args){
         //console.log(args.object.idx);
-        this.routerExtensions.navigate(['/lecture',args.object.idx]);
+        this.index = args.object.order;
+        this.routerExtensions.navigate(['/lecture',args.object.idx], {
+
+            transition: { name: 'slide', duration: 130, curve: 'linear' }
+        });
 
     }
 
@@ -195,6 +201,11 @@ export class LecturesSearchComponent implements OnInit {
 
     }
 
+
+    onLoaded(args){
+        var list = <ListView>args.object;
+        list.scrollToIndex(this.index);
+    }
 
 
 }

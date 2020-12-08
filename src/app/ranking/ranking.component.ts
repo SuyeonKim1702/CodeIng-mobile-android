@@ -5,8 +5,8 @@ import {
     ActivityIndicator, AndroidActivityBackPressedEventData,
     AndroidActivityBundleEventData, AndroidActivityEventData, AndroidActivityResultEventData,
     AndroidApplication,
-    EventData,
-    GestureEventData
+    EventData, Frame,
+    GestureEventData, ListView
 } from "@nativescript/core";
 import {RankingService} from "./ranking.service";
 import {lectureCard} from "../lecture/lectureCard";
@@ -15,6 +15,7 @@ import {subcategoryCard} from "./subcategoryCard";
 import {isAndroid, isIOS} from "@nativescript/core";
 import {Screen} from "@nativescript/core";
 import * as Toast from 'nativescript-toast';
+import {RouterExtensions} from "@nativescript/angular";
 
 @Component({
     selector: "ns-items",
@@ -40,8 +41,9 @@ export class RankingComponent implements OnInit {
     height: number;
     isBusy: boolean = true;
     cnt: number;
+    index: number;
 
-    constructor(private rankingService: RankingService) {
+    constructor(private rankingService: RankingService, private routerExtensions: RouterExtensions) {
         this.page=1;
         this.categoryIdx=0;
         this.subcategoryIdx=0;
@@ -51,6 +53,12 @@ export class RankingComponent implements OnInit {
     ngOnInit(): void {
 
 
+
+
+
+
+
+                this.index = 0;
                 this.cnt = 0;
                 this.height = Screen.mainScreen.heightDIPs*0.8;
                 this.prev = 0;
@@ -109,6 +117,11 @@ export class RankingComponent implements OnInit {
     }
 
     public onItemTap(args) {
+        this.index = args.object.order;
+        this.routerExtensions.navigate(['/lecture',args.object.idx], {
+
+            transition: { name: 'slide', duration: 130, curve: 'linear' }
+        });
 
     }
 
@@ -201,11 +214,17 @@ export class RankingComponent implements OnInit {
 
 
 
-
     itemloading(args){
         this.cnt++;
         if(this.cnt>=2) this.isBusy = false;
     }
+
+
+    onLoaded(args){
+       var list = <ListView>args.object;
+       list.scrollToIndex(this.index);
+    }
+
 
 
 }

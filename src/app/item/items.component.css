@@ -21,7 +21,7 @@ TabStrip {
 }
 
 .title{
-    font-size: 28;
+    font-size: 26;
     width: 310;
     color: #34353a;
     font-family: Roboto-M;
@@ -209,7 +209,8 @@ TabStrip {
 .review-content{
     font-size: 14;
     font-family: Roboto;
-    color: #737373;
+    color: #34353a;
+    margin-left: 10;
 }
 
 .yellow{

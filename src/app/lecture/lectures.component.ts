@@ -77,15 +77,20 @@ export class LecturesComponent implements OnInit {
 
     }
 
+searchClick(){
+    this.routerExtensions.navigate(['/lectures/search'], {
 
+        transition: { name: 'slide', duration: 130, curve: 'linear' }
+    });
+}
 
 
 
     itemClick(args){
         //console.log(args.object.idx);
         this.routerExtensions.navigate(['/lecture',args.object.idx], {
-            animated: true,
-            transition: { name: 'slide' }
+
+            transition: { name: 'slide', duration: 130, curve: 'linear' }
         });
 
     }

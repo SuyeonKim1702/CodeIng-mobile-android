@@ -77,9 +77,9 @@
 
             </GridLayout>
             <GridLayout width="100%" height="100%" columns="*">
-            <ListView col="0" dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (itemLoading)="itemloading($event)" (loadMoreItems)="loadMoreItems()">
+            <ListView (loaded)="onLoaded($event)" col="0" dock=Top [items]="lectures" (itemTap)="onItemTap($event)"  (itemLoading)="itemloading($event)" (loadMoreItems)="loadMoreItems()">
                 <ng-template let-item="item" let-i="index">
-                    <StackLayout [nsRouterLink]="['/lecture',item['lectureIdx']]" class="outer-stack">
+                    <StackLayout  [idx]="item['lectureIdx']"  [order]="i"  (tap)="onItemTap($event)" class="outer-stack">
                         <Image class="rank" [src]="item['thumbUrl']" stretch="aspectFill"></Image>
                         <StackLayout orientation="vertical">
                             <StackLayout class="up" orientation="horizontal">

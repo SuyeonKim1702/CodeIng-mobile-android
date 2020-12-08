@@ -21,6 +21,8 @@ import {Profile2Component} from "./profile/profile2.component";
 import {Profile3Component} from "./profile/profile3.component";
 import {FavLectureComponent} from "./fav-lecture/fav-lecture.component";
 import {LecturesSearchComponent} from "./lecture/lectures-search.component";
+import {ReviewComponent} from "./review/review.component";
+import {QnaComponent} from "./qna/qna.component";
 
 const routes: Routes = [
 
@@ -43,7 +45,9 @@ const routes: Routes = [
     { path: "personal-info", component: PersonalInfoComponent},
     { path: "personal-info2", component: PersonalInfo2Component},
     { path: "fav-lecture", component: FavLectureComponent},
-    { path: "lectures/search", component: LecturesSearchComponent}
+    { path: "lectures/search", component: LecturesSearchComponent},
+    { path: "review/:lectureIdx", component: ReviewComponent},
+    { path: "qna/:lectureIdx", component: QnaComponent}
 
 
 

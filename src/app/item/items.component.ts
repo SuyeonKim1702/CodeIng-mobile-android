@@ -1,5 +1,5 @@
 import {Component, NgZone, OnInit} from "@angular/core";
-import {AndroidActivityBackPressedEventData, AndroidApplication, Page, View} from "@nativescript/core";
+import {AndroidActivityBackPressedEventData, AndroidApplication, ListView, Page, View} from "@nativescript/core";
 import {AnimationCurve, Visibility} from "@nativescript/core/ui/enums";
 import {
     getString, hasKey,
@@ -34,6 +34,10 @@ export class ItemsComponent implements OnInit {
     dialogOpen = false;
     content = false;
     content2 = false;
+    intro: any = [];
+    contents: any = [];
+    cnt: number =0;
+    lv : any;
 
 
 
@@ -45,6 +49,8 @@ export class ItemsComponent implements OnInit {
         this.route.params.subscribe((params) => {
             this.lectureIdx = params["lectureIdx"];
             this.utilityModule = require("utils/utils");
+
+
 
         });
     }
@@ -58,7 +64,9 @@ export class ItemsComponent implements OnInit {
                 if (this.routerExtensions.router.isActive("/lecture/"+this.lectureIdx, false)) {
                     data.cancel = true;
                     this.zone.run(() => {
-                        this.routerExtensions.back();
+
+                        if(this.scrollState) this.scrollState = false;
+                        else this.routerExtensions.back();
                     });
 
 
@@ -77,6 +85,40 @@ export class ItemsComponent implements OnInit {
         this.itemService.getDetail(this.lectureIdx).subscribe(
             data =>{
                 this.info = data['result'];
+
+
+                if(!this.info['intro'] || this.info['intro'].length==0) {
+                    this.intro = ["Welcome to this Full stack course. This course is mainly based on Django and Angular and NativeScript but we will cover much more than just these frameworks. We will build full applications including backend restful API, front-end web app and mobile apps on both Android and iOS."
+                    +
+                    "We will discover how to make a user authentication (register and login users), how to create a full CRUD (create, read, update and delete) and how to create our own endpoints. I will show how to communicate between the API and web app. We will discover how to style the application and restrict certain parts of it to authenticated users only. All that done with very popular frameworks. We will use javascript and python languages and basic knowledge of these is required.\n" +
+                    "\n" +
+                    "This course is built from two kinds of sections: First is an introduction to the framework where I explain everything from scratch, and 2nd is a hands-on section to build a ready application. After finishing this course you will have both knowledge and also experience how to build a full-stack application using Django, Angular, and NativeScript.\n" +
+                    "\n" +
+                    "Also, I will show you how to deploy back-end API and front-end web app on the production server absolutely for free. You don’t need to spend any money to put your full application live."];
+
+                }else{
+                    this.intro=this.info['intro'];
+                }
+
+
+                if(!this.info['contents'] || this.info['contents'].length==0){
+                    this.contents= ["Welcome to this Full stack course. This course is mainly based on Django and Angular and NativeScript but we will cover much more than just these frameworks. We will build full applications including backend restful API, front-end web app and mobile apps on both Android and iOS."
+                    +
+                    "We will discover how to make a user authentication (register and login users), how to create a full CRUD (create, read, update and delete) and how to create our own endpoints. I will show how to communicate between the API and web app. We will discover how to style the application and restrict certain parts of it to authenticated users only. All that done with very popular frameworks. We will use javascript and python languages and basic knowledge of these is required.\n" +
+                    "\n" +
+                    "This course is built from two kinds of sections: First is an introduction to the framework where I explain everything from scratch, and 2nd is a hands-on section to build a ready application. After finishing this course you will have both knowledge and also experience how to build a full-stack application using Django, Angular, and NativeScript.\n" +
+                    "\n" +
+                    "Also, I will show you how to deploy back-end API and front-end web app on the production server absolutely for free. You don’t need to spend any money to put your full application live."];
+
+
+                }else{
+                    this.contents = this.info['contents'];
+                }
+
+
+
+
+
 
 
             },
@@ -122,9 +164,6 @@ export class ItemsComponent implements OnInit {
             error => console.log(error)
         );
 
-
-
-
     }
 
     showDialog() {
@@ -138,18 +177,23 @@ export class ItemsComponent implements OnInit {
 
 
 
-
-
     //방향 4: 위, 방향 8: 아래
     public please(args){
 
         if(args.direction == 4){
             this.scrollState = true;
+
         }
-        else if(args.direction == 8){
-            this.scrollState = false;
-        }
+
     }
+
+    public please2(args){
+
+       this.scrollState = !this.scrollState;
+
+
+    }
+
 
     public go(){
         this.utilityModule.openUrl(this.info['lectureLink']);
@@ -206,12 +250,37 @@ export class ItemsComponent implements OnInit {
     }
 
     goBack(){
-        this.routerExtensions.back();
+        if(this.scrollState) this.scrollState = false;
+        else this.routerExtensions.back();
     }
 
 
-    buttonClick(){
-        this.showDialog();
+    reviewbuttonClick(){
+
+        if(hasKey("JWT")) {
+            this.routerExtensions.navigate(['/review',this.lectureIdx]);
+        }else{
+            Toast.makeText("리뷰 작성은 로그인 후 이용가능합니다").show();
+        }
+
+
+
+
+
+
+    }
+
+    qnabuttonClick(){
+        if(hasKey("JWT")) {
+            this.routerExtensions.navigate(['/qna',this.lectureIdx]);
+        }else{
+            Toast.makeText("Qna 작성은 로그인 후 이용가능합니다").show();
+        }
+
+    }
+
+    onLoaded(args){
+       console.log(args.object.idx);
     }
 
 
